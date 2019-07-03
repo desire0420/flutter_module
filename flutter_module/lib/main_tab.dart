@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/demo/sliver_demo.dart';
-import 'package:flutter_module/project/gank_gril_display.dart';
+import 'package:flutter_module/demo/demo_main/demo_main_display.dart';
+import 'package:flutter_module/project/gank_girl_display.dart';
 import 'package:flutter_module/project/tab_android_page.dart';
-import 'package:flutter_module/tab/tab_layout.dart';
 
 class MainTab extends StatefulWidget {
   @override
@@ -16,9 +15,8 @@ class MainTabDemo extends State<MainTab> {
   int currentIndex = 0;
 
   final List<Widget> children = [
-    GankGridDemo(),
-    TabLayout(),
-    SliverDemo(),
+    WidgetDemoPage(),
+    GankGirlDemo(),
     GitHubPage(),
   ];
 
@@ -38,11 +36,9 @@ class MainTabDemo extends State<MainTab> {
           //底部导航栏激活时候颜色
           items: [
             BottomNavigationBarItem(
-                icon: new Icon(Icons.explore), title: new Text("main")),
+                icon: new Icon(Icons.explore), title: new Text("Widget")),
             BottomNavigationBarItem(
-                icon: new Icon(Icons.history), title: new Text("study")),
-            BottomNavigationBarItem(
-                icon: new Icon(Icons.mail), title: new Text("mail")),
+                icon: new Icon(Icons.history), title: new Text("Girl")),
             BottomNavigationBarItem(
                 icon: new Icon(Icons.ac_unit), title: new Text("mine"))
           ]),

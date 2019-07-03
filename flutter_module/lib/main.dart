@@ -1,10 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_module/demo/demo_globalkey/globalkey_form_page.dart';
+import 'package:flutter_module/demo/demo_sliver/sliver_demo.dart';
 import 'package:flutter_module/demo/main_detail_demo.dart';
 import 'package:flutter_module/home_page.dart';
-import 'package:flutter_module/project/gank_gril_display.dart';
-import 'package:flutter_module/tab/tab_main.dart';
+import 'package:flutter_module/main_tab.dart';
+import 'package:flutter_module/project/gank_girl_display.dart';
 
 void main() => runApp(new MyApp());
 
@@ -19,11 +21,14 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/main': (context) => MainTab(),
+
+        '/GlobalKeyFromPage': (context) => GlobalKeyFromPage(),
+        '/SliverDemo': (context) => SliverDemo(),
         '/detail': (context) => MainDetailDemo(
             desc: '福利',
             url:
                 'https://ws1.sinaimg.cn/large/0065oQSqly1fytdr77urlj30sg10najf.jpg'),
-        '/gridDisplay': (context) => GankGridDemo(),
+        '/gridDisplay': (context) => GankGirlDemo(),
       },
       home: widgetForRoute(window.defaultRouteName),
     );

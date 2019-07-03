@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/demo/drawer_demo.dart';
+import 'package:flutter_module/demo/demo_listview_drawer/drawer_demo.dart';
 import 'package:flutter_module/demo/main_detail_demo.dart';
-
-import '../model/post.dart';
+import 'package:flutter_module/model/post.dart';
 
 //创建第一个列表 类似ListView
 class ImageList extends StatelessWidget {
@@ -32,7 +31,10 @@ Widget oneListItemBuilder(BuildContext context, int index) {
   return new GestureDetector(
     onTap: () {
       Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => MainDetailDemo(desc:'福利',url: 'https://ws1.sinaimg.cn/large/0065oQSqly1fytdr77urlj30sg10najf.jpg')));
+          builder: (context) => MainDetailDemo(
+              desc: '福利',
+              url:
+                  'https://ws1.sinaimg.cn/large/0065oQSqly1fytdr77urlj30sg10najf.jpg')));
     },
     child: Container(
       color: Colors.white,

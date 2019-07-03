@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/demo/main_detail_demo.dart';
-import 'package:flutter_module/model/post.dart';
 
 class MainView extends StatelessWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class LoginDemo extends StatelessWidget {
+class InputDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

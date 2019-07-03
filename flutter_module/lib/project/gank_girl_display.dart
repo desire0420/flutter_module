@@ -7,33 +7,34 @@ import 'package:flutter_module/mvp/fl_presenter.dart';
 import 'package:flutter_module/mvp/fl_presenter_impl.dart';
 import 'package:flutter_module/mvp/mode/fl_model.dart';
 
-class GankGridDemo extends StatelessWidget {
+class GankGirlDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
       appBar: AppBar(
-        title: new Text('Grid'),
+        title: new Text('Girl'),
         centerTitle: true,
       ),
-      body: new Container(padding: EdgeInsets.all(15), child: new GankGrid()),
+      body: new Container(padding: EdgeInsets.all(15), child: new GankGirl()),
     );
   }
 }
 
-class GankGrid extends StatefulWidget {
-  GankGrid({Key key}) : super(key: key);
+class GankGirl extends StatefulWidget {
+
+  GankGirl({Key key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    GankGridState view = new GankGridState();
+    GankGirlState view = new GankGirlState();
     FLPresenter presenter = new FLPresenterImpl(view);
     presenter.init();
     return view;
   }
 }
 
-class GankGridState extends State<GankGrid> implements FLView {
+class GankGirlState extends State<GankGirl> implements FLView {
   final GlobalKey<RefreshIndicatorState> refreshIndicatorKey =
       new GlobalKey<RefreshIndicatorState>();
 
