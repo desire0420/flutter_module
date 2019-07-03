@@ -1,6 +1,6 @@
 # NativeFlutterApp
-Flutter混合开发App
-# flutter_app
+Flutter混合开发App，开发者可以单独运行FlutterModule  或者原生的DemoApp，亦可混合运行进行开发
+# flutter_module
 
 A new Flutter application.
 
