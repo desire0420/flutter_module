@@ -30,11 +30,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.params);
         frameLayout = findViewById(R.id.rl_flutter);
-
+        // 1. 通过Flutter.createView创建FlutterView组件方式
         flutterView = Flutter.createView(this, getLifecycle(), "route2");
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
+        // 2. 将Flutter 视图添加到原生布局中
         frameLayout.addView(flutterView, layoutParams);
+//        FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
+//        tx.replace(R.id.rl_flutter, Flutter.createFragment("route2"));
+//        tx.commit();
 
+        // EventChannel 使用场景：Native端向Flutter端发送通知
         new EventChannel(flutterView, AndroidToFlutterCHANNEL)
                 .setStreamHandler(new EventChannel.StreamHandler() {
                     @Override
@@ -49,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-
+// MethodChannel 使用场景：Flutter端向Native端发送通知
+// name 就是双发通信的唯一标识，我们可以简单理解为钥匙即可。
         new MethodChannel(flutterView, FlutterToAndroidCHANNEL).setMethodCallHandler(new MethodChannel.MethodCallHandler() {
             @Override
             public void onMethodCall(MethodCall methodCall, MethodChannel.Result result) {

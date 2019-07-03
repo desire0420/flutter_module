@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_module/tab/tab_main.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -67,8 +66,20 @@ class MyHomePageState extends State<MyHomePage> {
                 textColor: Colors.black,
                 child: new Text('Flutter App'),
                 onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => TabMain()));
+                  Navigator.pushNamed(context, '/main');
+//                  Navigator.of(context)
+//                      .push(MaterialPageRoute(builder: (context) => TabMain()));
+                }),
+          ),
+          new Padding(
+            padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
+            child: new RaisedButton(
+                textColor: Colors.black,
+                child: new Text('Flutter MVP模式  展示妹子'),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/gridDisplay');
+//                  Navigator.of(context)
+//                      .push(MaterialPageRoute(builder: (context) => TabMain()));
                 }),
           ),
         ],
@@ -80,10 +91,20 @@ class MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     print('---创建执行的第一个方法-----init state');
-    startfromAndroiPlugin();
+    startfromAndroiPlugin(); //开启监听
   }
 
-  //加载来自原生的参数
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    //取消监听
+    if (fromAndroiSub != null) {
+      fromAndroiSub.cancel();
+    }
+  }
+
+  //加载来自原生的参数， Flutter接收原生发送的参数
   void startfromAndroiPlugin() {
     if (fromAndroiSub == null) {
       fromAndroiSub = fromAndroiPlugin
@@ -111,7 +132,6 @@ class MyHomePageState extends State<MyHomePage> {
   //跳转原生
   Future<Null> jumpToNative() async {
     String result = await toAndroidPlugin.invokeMethod('noParams');
-
     print(result);
   }
 
