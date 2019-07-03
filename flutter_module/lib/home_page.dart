@@ -71,17 +71,6 @@ class MyHomePageState extends State<MyHomePage> {
 //                      .push(MaterialPageRoute(builder: (context) => TabMain()));
                 }),
           ),
-          new Padding(
-            padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
-            child: new RaisedButton(
-                textColor: Colors.black,
-                child: new Text('Flutter MVP模式  展示妹子'),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/gridDisplay');
-//                  Navigator.of(context)
-//                      .push(MaterialPageRoute(builder: (context) => TabMain()));
-                }),
-          ),
         ],
       )),
     );

@@ -9,8 +9,8 @@ class MainView extends StatelessWidget {
         color: Colors.white,
         child: GestureDetector(
           onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => MainDetailDemo(post: posts[0])));
+//            Navigator.of(context).push(MaterialPageRoute(
+//                builder: (context) => MainDetailDemo(post: posts[0])));
           },
           child: new Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

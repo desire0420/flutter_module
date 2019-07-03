@@ -1,34 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/demo/image_list.dart';
-import 'package:flutter_module/demo/login_register_from_demo.dart';
-import 'package:flutter_module/demo/main_detail_demo.dart';
 import 'package:flutter_module/demo/sliver_demo.dart';
+import 'package:flutter_module/project/gank_gril_display.dart';
+import 'package:flutter_module/project/tab_android_page.dart';
 import 'package:flutter_module/tab/tab_layout.dart';
 
-class TabMain extends StatefulWidget {
+class MainTab extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return new TabMainDemo();
+    return new MainTabDemo();
   }
 }
 
-class TabMainDemo extends State<TabMain> {
+class MainTabDemo extends State<MainTab> {
   int currentIndex = 0;
 
   final List<Widget> children = [
-    ImageList(),
+    GankGridDemo(),
     TabLayout(),
     SliverDemo(),
-    LoginDemo(),
+    GitHubPage(),
   ];
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
-
-
       body: children[currentIndex],
 
       //底部菜单

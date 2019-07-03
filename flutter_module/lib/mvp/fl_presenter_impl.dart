@@ -15,7 +15,7 @@ class FLPresenterImpl implements FLPresenter {
   void loadFLData(int pageNum, int pageSize) {
     assert(view != null);
     repository.fetch(pageNum, pageSize).then((data) {
-      view.onloadFLSuc(data);
+      view.onloadFLSucces(data);
     }).catchError((error) {
       print(error);
       view.onloadFLFail();

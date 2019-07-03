@@ -15,7 +15,10 @@ class GridViewBuilderDemo extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => MainDetailDemo(post: posts[index])));
+            builder: (context) => MainDetailDemo(
+                desc: '福利',
+                url:
+                    'https://ws1.sinaimg.cn/large/0065oQSqly1fytdr77urlj30sg10najf.jpg')));
       },
       child: Image.network(posts[index].imageUrl, fit: BoxFit.cover),
     );

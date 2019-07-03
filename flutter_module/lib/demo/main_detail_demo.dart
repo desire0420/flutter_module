@@ -1,41 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/model/post.dart';
 
 //点击后的详情页
 class MainDetailDemo extends StatelessWidget {
-  final Post post;
+  final String desc;
+  final String url;
 
-  MainDetailDemo({
-    @required this.post,
-  });
+  MainDetailDemo({@required this.desc, this.url});
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
-      appBar: new AppBar(
-        leading: new IconButton(
-          icon: new Icon(Icons.arrow_back),
-          tooltip: 'Navigation menu',
-          onPressed: () => Navigator.pop(context), //点击事件
+        appBar: new AppBar(
+          leading: new IconButton(
+            icon: new Icon(Icons.arrow_back),
+            tooltip: 'Navigation menu',
+            onPressed: () => Navigator.pop(context), //点击事件
+          ),
+          title: new Text(
+            desc,
+            style: TextStyle(fontSize: 15),
+          ),
+          centerTitle: true,
         ),
-        title: new Text(
-          post.title,
-          style: TextStyle(fontSize: 15),
-        ),
-        centerTitle: true,
-      ),
-      body: creatBody(post: post),
-    );
+        body: creatBody(desc: desc, url: url));
   }
 }
 
 class creatBody extends StatelessWidget {
-  final Post post;
+  final String desc;
+  final String url;
 
-  creatBody({
-    @required this.post,
-  });
+  creatBody({@required this.desc, this.url});
 
   @override
   Widget build(BuildContext context) {
@@ -46,18 +42,42 @@ class creatBody extends StatelessWidget {
         child: new Column(
           mainAxisSize: MainAxisSize.min, //如果没设置主轴  则则默认占满最大屏幕空间
           children: <Widget>[
-            new AspectRatio(
-              aspectRatio: 16 / 9,
-              child: Image.network(
-                post.imageUrl,
-                fit: BoxFit.fill,
-              ),
+            new Image.network(
+              url,
+              width: double.infinity,
+              height: 600,
+              fit: BoxFit.cover,
             ),
             DetailStart(),
             DetailMiddle(),
             new Container(
               padding: EdgeInsets.all(20),
               child: new Text(
+                  "Lake Oeschinen lies at the foot of"
+                  " the Blüemlisalp in the Bernese Alps. Situated 1,578 meters "
+                  "above sea level, it is one of the larger Alpine Lakes. A gondola"
+                  " ride from Kandersteg, followed by a half-hour walk through pastures"
+                  " and pine forest, leads you to the lake, which warms to 20 degrees "
+                  "Celsius in the summer. Activities enjoyed here include rowing, and"
+                  " riding the summer toboggan run,Lake Oeschinen lies at the foot of"
+                  " the Blüemlisalp in the Bernese Alps. Situated 1,578 meters "
+                  "above sea level, it is one of the larger Alpine Lakes. A gondola"
+                  " ride from Kandersteg, followed by a half-hour walk through pastures"
+                  " and pine forest, leads you to the lake, which warms to 20 degrees "
+                  "Celsius in the summer. Activities enjoyed here include rowing, and"
+                  " riding the summer toboggan run,Lake Oeschinen lies at the foot of"
+                  " the Blüemlisalp in the Bernese Alps. Situated 1,578 meters "
+                  "above sea level, it is one of the larger Alpine Lakes. A gondola"
+                  " ride from Kandersteg, followed by a half-hour walk through pastures"
+                  " and pine forest, leads you to the lake, which warms to 20 degrees "
+                  "Celsius in the summer. Activities enjoyed here include rowing, and"
+                  " riding the summer toboggan runLake Oeschinen lies at the foot of"
+                  " the Blüemlisalp in the Bernese Alps. Situated 1,578 meters "
+                  "above sea level, it is one of the larger Alpine Lakes. A gondola"
+                  " ride from Kandersteg, followed by a half-hour walk through pastures"
+                  " and pine forest, leads you to the lake, which warms to 20 degrees "
+                  "Celsius in the summer. Activities enjoyed here include rowing, and"
+                  " riding the summer toboggan run"
                   "Lake Oeschinen lies at the foot of"
                   " the Blüemlisalp in the Bernese Alps. Situated 1,578 meters "
                   "above sea level, it is one of the larger Alpine Lakes. A gondola"

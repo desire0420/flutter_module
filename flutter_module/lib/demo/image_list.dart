@@ -32,7 +32,7 @@ Widget oneListItemBuilder(BuildContext context, int index) {
   return new GestureDetector(
     onTap: () {
       Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => MainDetailDemo(post: posts[index])));
+          builder: (context) => MainDetailDemo(desc:'福利',url: 'https://ws1.sinaimg.cn/large/0065oQSqly1fytdr77urlj30sg10najf.jpg')));
     },
     child: Container(
       color: Colors.white,

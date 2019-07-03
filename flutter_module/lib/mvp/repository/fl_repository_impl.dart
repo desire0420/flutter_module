@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_module/common/constant.dart';
-import 'package:flutter_module/mvp/fl_model.dart';
+import 'package:flutter_module/mvp/mode/fl_model.dart';
 import 'package:flutter_module/mvp/repository/fl_repository.dart';
 
 //分类数据: http://gank.io/api/data/数据类型/请求个数/第几页
