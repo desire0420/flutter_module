@@ -41,7 +41,7 @@ class HttpRequestDemoState extends State<HttpRequestDemo> {
     if (resultData.isSuccess()) {
       NetModeEntity weatherBean = NetModeEntity.fromJson(resultData.response);
       list = weatherBean.result;
-      print('-----weather----${json.encode(list)}');
+      print('-----weather-----${json.encode(list)}');
       setState(() {});
     }
   }
