@@ -72,6 +72,7 @@ class NetService {
 
       switch (method) {
         case Method.GET:
+          print("---net_service-- url:" + url);
           response = await sessionManager.get(url, queryParameters: params);
           break;
         case Method.POST:

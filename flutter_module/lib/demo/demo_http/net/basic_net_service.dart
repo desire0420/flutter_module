@@ -3,6 +3,7 @@ library basicnetservice;
 import 'dart:io';
 
 import 'package:flutter/widgets.dart';
+import 'package:flutter_module/common/constant.dart';
 import 'package:flutter_module/demo/demo_http/net/dialog_param.dart';
 import 'package:flutter_module/demo/demo_http/net/loading_dialog.dart';
 import 'package:flutter_module/demo/demo_http/net/net_service.dart';
@@ -49,7 +50,7 @@ class BasicNetService extends NetService {
 
   @override
   getBasicUrl() {
-    return "https://api.apiopen.top";
+    return Constant.base_url;
   }
 
   @override
