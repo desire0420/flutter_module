@@ -50,6 +50,7 @@ class NetService {
   }) async {
     try {
       Response response;
+
       SessionManager sessionManager = SessionManager();
       var headers = await getHeaders();
       if (headers != null) {
