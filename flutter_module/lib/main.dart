@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_module/demo/demo_globalkey/globalkey_form_page.dart';
+import 'package:flutter_module/demo/demo_route/two_route_demo.dart';
 import 'package:flutter_module/demo/demo_sliver/sliver_demo.dart';
 import 'package:flutter_module/demo/main_detail_demo.dart';
 import 'package:flutter_module/home_page.dart';
@@ -21,7 +22,6 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/main': (context) => MainTab(),
-
         '/GlobalKeyFromPage': (context) => GlobalKeyFromPage(),
         '/SliverDemo': (context) => SliverDemo(),
         '/detail': (context) => MainDetailDemo(
@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
             url:
                 'https://ws1.sinaimg.cn/large/0065oQSqly1fytdr77urlj30sg10najf.jpg'),
         '/gridDisplay': (context) => GankGirlDemo(),
+        '/twoRouter': (context) => TwoRouteDemo(),
       },
       home: widgetForRoute(window.defaultRouteName),
     );

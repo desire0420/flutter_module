@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_module/demo/demo_box_decoration/box_decoration_demo.dart';
 import 'package:flutter_module/demo/demo_button/button_demo.dart';
 import 'package:flutter_module/demo/demo_card/card_demo.dart';
 import 'package:flutter_module/demo/demo_checkbox/check_box_demo.dart';
@@ -7,17 +8,23 @@ import 'package:flutter_module/demo/demo_clip/clip_demo.dart';
 import 'package:flutter_module/demo/demo_datatable/data_table_demo.dart';
 import 'package:flutter_module/demo/demo_datatable/paginated_data_table_demo.dart';
 import 'package:flutter_module/demo/demo_dialog/dialog_study_demo.dart';
+import 'package:flutter_module/demo/demo_gesture/dismiss_gesture_demo.dart';
+import 'package:flutter_module/demo/demo_gesture/gesture_demo.dart';
 import 'package:flutter_module/demo/demo_globalkey/globalkey_form_page.dart';
 import 'package:flutter_module/demo/demo_gridview/grid_demo.dart';
-import 'package:flutter_module/demo/demo_http/http_request_demo.dart';
+import 'package:flutter_module/demo/demo_http/http_request_dio.dart';
 import 'package:flutter_module/demo/demo_input/login_register_from_demo.dart';
 import 'package:flutter_module/demo/demo_lifecycle/life_recyle_test.dart';
 import 'package:flutter_module/demo/demo_listview_drawer/drawer_demo.dart';
 import 'package:flutter_module/demo/demo_listview_drawer/image_list.dart';
+import 'package:flutter_module/demo/demo_route/route_demo.dart';
+import 'package:flutter_module/demo/demo_shared_preferences/shared_preferences_demo.dart';
 import 'package:flutter_module/demo/demo_sliver/sliver_demo.dart';
 import 'package:flutter_module/demo/demo_step/step_demo.dart';
+import 'package:flutter_module/demo/demo_tablayout/tab_layout.dart';
 import 'package:flutter_module/demo/demo_text/text_demo.dart';
 import 'package:flutter_module/demo/demo_viewpager/page_view_demo.dart';
+import 'package:flutter_module/demo/demo_visible_gone/visible_gone_demo.dart';
 
 class WidgetDemoPage extends StatefulWidget {
   @override
@@ -33,14 +40,26 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
     // TODO: implement build
     return new Scaffold(
       appBar: AppBar(
-        title: Text('Widget基本知识点'),
+        title: Text('常用Widget'),
         centerTitle: true,
       ),
       body: ListView(
         children: <Widget>[
           ListItem(
-            title: "GlobalKey---能够跨Widget访问状态",
-            page: GlobalKeyFromPage(),
+            title: "GlobalKey---能够跨Widget访问状态1",
+            page: SwitcherWidgetChange(),
+          ),
+          ListItem(
+            title: "VisibleAndGone---显示隐藏",
+            page: VisibleAndGone(),
+          ),
+          ListItem(title: 'Gesture-手势---', page: GesturePageDemo()),
+          ListItem(title: 'Gesture-手势--滑动删除', page: DismissedPage()),
+          ListItem(title: 'Route---路由学习', page: RouteDemo()),
+          ListItem(title: '--TabLayout----Image加载--', page: TabLayoutDemo()),
+          ListItem(
+            title: "SharedPreferencesDemo---数据存储1",
+            page: DataAppPage(),
           ),
           ListItem(
             title: "Sliver--- 折叠布局 的实现",
@@ -50,12 +69,13 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
             title: "Step---",
             page: StepStudyDemo(),
           ),
+          ListItem(title: 'BoxDecoration--装饰---', page: BoxDecorationDemo()),
           ListItem(
             title: "ListView--drawer滑菜单-",
             page: ImageList(),
           ),
           ListItem(
-            title: "GridView-",
+            title: "GridView",
             page: GridDemo(),
           ),
           ListItem(title: 'Clip', page: ClipStudyDemo()),
@@ -76,12 +96,14 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: 'ViewPage', page: PageViewDemo()),
           ListItem(title: 'Text', page: TextDemoTest()),
           ListItem(title: 'EditText', page: InputDemo()),
-
         ],
       ),
-        //侧滑菜单
-        drawer: new DrawerDemo());
+      //侧滑菜单
 
+      drawer: new Drawer(
+        child: new DrawerDemo(),
+      ),
+    );
   }
 }
 

@@ -12,6 +12,21 @@ class DialogStudyDemo extends StatefulWidget {
 }
 
 class DialogStudyState extends State<DialogStudyDemo> {
+  _onPresse2() {
+    showDialog<Null>(
+      context: context,
+      child: new AlertDialog(content: new Text('这是一个弹窗'), actions: <Widget>[
+        new FlatButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: new Text('确定'))
+      ]),
+    );
+  }
+
+
+
   String _choice = 'Nothing';
 
   Future openAlertDialog() async {
