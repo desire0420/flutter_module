@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -6,7 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_module/common/progreess_dialog.dart';
 import 'package:flutter_module/demo/demo_http/async_demo.dart';
+import 'package:flutter_module/demo/demo_http/net/app_api.dart';
+import 'package:flutter_module/demo/demo_http/net/result_data.dart';
+import 'package:flutter_module/demo/demo_http/net/weather_bean.dart';
 import 'package:flutter_module/demo/demo_http/zhihu_mode_entity.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HttpRequestDemo extends StatefulWidget {
   @override
@@ -17,7 +22,6 @@ class HttpRequestDemo extends StatefulWidget {
 
 class HttpRequestDemoState extends State<HttpRequestDemo> {
   var result = '1-';
-  var decodeResult = '----';
   var baseUrl = 'https://api.apiopen.top/musicRankingsDetails?';
   var query = {"type": 1, "page": 1, "PageSize": 15};
   List<ZhihuModeResult> list = [];
@@ -30,10 +34,7 @@ class HttpRequestDemoState extends State<HttpRequestDemo> {
     list = result.map((model) {
       return new ZhihuModeResult.fromJson(model);
     }).toList();
-    print('---list----${list.length}');
-
-//    list.forEach(
-//        (model) => print('---1----${model.country}:${model.artistName}'));
+    //  print('---list----${list.length}');
   }
 
   //使用第三方库Dio的请求
@@ -52,14 +53,29 @@ class HttpRequestDemoState extends State<HttpRequestDemo> {
     setState(() {});
   }
 
+  String weather = "";
+
+  void _getWeather() async {
+    ResultData resultData =
+        await AppApi.getInstance().getWeather(context, true);
+    if (resultData.isSuccess()) {
+      WeatherBean weatherBean = WeatherBean.fromJson(resultData.response);
+      setState(() {
+        weather = json.encode(weatherBean.result[1]);
+        print('-----weather----${weather}');
+      });
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     _loadDataByDio();
+    _getWeather();
   }
 
   Widget itemView(BuildContext context, int index) {
-    print('------index-----${index}');
+    // print('------index-----${index}');
     final String item = list[index].artistName;
     return new GestureDetector(
       onTap: () {
