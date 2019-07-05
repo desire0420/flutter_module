@@ -12,6 +12,7 @@ import 'package:flutter_module/demo/demo_gesture/dismiss_gesture_demo.dart';
 import 'package:flutter_module/demo/demo_gesture/gesture_demo.dart';
 import 'package:flutter_module/demo/demo_globalkey/globalkey_form_page.dart';
 import 'package:flutter_module/demo/demo_gridview/grid_demo.dart';
+import 'package:flutter_module/demo/demo_http/async_demo.dart';
 import 'package:flutter_module/demo/demo_http/http_request_dio.dart';
 import 'package:flutter_module/demo/demo_input/login_register_from_demo.dart';
 import 'package:flutter_module/demo/demo_lifecycle/life_recyle_test.dart';
@@ -45,6 +46,9 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
       ),
       body: ListView(
         children: <Widget>[
+          //SingleChildScrollView
+          ListItem(title: 'Http', page: HttpRequestDemo()),
+          ListItem(title: '异步任务', page: AsyncDemo()),
           ListItem(
             title: "GlobalKey---能够跨Widget访问状态1",
             page: SwitcherWidgetChange(),
@@ -92,7 +96,6 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ),
           ListItem(title: '生命周期', page: LiferecyleTest()),
           ListItem(title: 'Button', page: ButtonStudyDemo()),
-          ListItem(title: 'Http', page: HttpRequestDemo()),
           ListItem(title: 'ViewPage', page: PageViewDemo()),
           ListItem(title: 'Text', page: TextDemoTest()),
           ListItem(title: 'EditText', page: InputDemo()),

@@ -4,8 +4,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_module/common/progreess_dialog.dart';
 import 'package:flutter_module/demo/demo_http/async_demo.dart';
-import 'package:flutter_module/demo/demo_http/network.dart';
+import 'package:flutter_module/demo/demo_http/zhihu_mode_entity.dart';
 
 class HttpRequestDemo extends StatefulWidget {
   @override
@@ -18,14 +19,27 @@ class HttpRequestDemoState extends State<HttpRequestDemo> {
   var result = '1-';
   var decodeResult = '----';
   var baseUrl = 'https://api.apiopen.top/musicRankingsDetails?';
+  var query = {"type": 1, "page": 1, "PageSize": 15};
+  List<ZhihuModeResult> list = [];
 
-  var query = {"type": 1, "page": 2, "PageSize": 15};
+//解析数据
+  decodeTest(var body) {
+    int code = body['code'];
+    String message = body['message'];
+    List result = body['result'];
+    list = result.map((model) {
+      return new ZhihuModeResult.fromJson(model);
+    }).toList();
+    print('---list----${list.length}');
+
+//    list.forEach(
+//        (model) => print('---1----${model.country}:${model.artistName}'));
+  }
 
   //使用第三方库Dio的请求
-  loadDataByDio() async {
+  void _loadDataByDio() async {
     try {
-      Dio dio = new Dio();
-      Response response = await dio.get(baseUrl, data: query);
+      Response response = await Dio().get(baseUrl, queryParameters: query);
       if (response.statusCode == HttpStatus.OK) {
         result = response.data.toString();
         decodeTest(response.data);
@@ -35,15 +49,50 @@ class HttpRequestDemoState extends State<HttpRequestDemo> {
     } catch (exception) {
       result = '网络异常';
     }
-
     setState(() {});
   }
 
-  getHttp() {
-    print('---data----');
-    Get(query).then((data) {
-      print('---data----${data}');
-    });
+  @override
+  void initState() {
+    super.initState();
+    _loadDataByDio();
+  }
+
+  Widget itemView(BuildContext context, int index) {
+    print('------index-----${index}');
+    final String item = list[index].artistName;
+    return new GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context, new CupertinoPageRoute(builder: (context) => AsyncDemo()));
+      },
+      child: Container(
+        color: Colors.white,
+        padding: EdgeInsets.all(15.0),
+        margin: EdgeInsets.only(bottom: 20),
+        child: Column(
+          children: <Widget>[
+            Text(list[index].artistName,
+                style: TextStyle(fontSize: 15, color: Colors.black)),
+            SizedBox(height: 10.0),
+            Text(list[index].siProxycompany,
+                style: TextStyle(fontSize: 12, color: Colors.grey)),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget contentView() {
+    if (list.isEmpty) {
+      return getProgressDialog();
+    } else {
+      return new ListView.builder(
+        padding: const EdgeInsets.all(2.0),
+        itemBuilder: itemView,
+        itemCount: list.length,
+      );
+    }
   }
 
   @override
@@ -53,30 +102,7 @@ class HttpRequestDemoState extends State<HttpRequestDemo> {
         title: Text("请求数据"),
         centerTitle: true,
       ),
-      body: new SingleChildScrollView(
-          child: new Column(
-        children: <Widget>[
-          RaisedButton(
-            onPressed: getHttp,
-            child: new Text("Dio请求"),
-          ),
-          RaisedButton(
-            onPressed: () {
-              Navigator.push(context,
-                  new CupertinoPageRoute(builder: (context) => AsyncDemo()));
-            },
-            child: new Text("异步"),
-          ),
-          new Padding(
-            padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
-            child: new Text('原始数据：\n$result'),
-          ),
-          new Padding(
-            padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
-            child: new Text('解析后的数据：\n$decodeResult'),
-          ),
-        ],
-      )),
+      body: contentView(),
     );
   }
 }
