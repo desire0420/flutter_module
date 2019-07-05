@@ -4,30 +4,25 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_module/demo/demo_http/net/net_config.dart';
 import 'package:flutter_module/demo/demo_http/net/result_data.dart';
 import 'package:flutter_module/demo/demo_http/net/session_manager.dart';
 
 enum Method {
   GET,
   POST,
-  UPLOAD,
-  DOWNLOAD,
 }
 
 class NetService {
-  static const String _TAG = "NetService";
+  static const String _TAG = "----TAG-11--";
 
   /// get请求
-  get(String url,
-      {Map<String, dynamic> params,
-      BuildContext context,
-      bool showLoad}) async {
-    return await request(url,
-        method: Method.GET,
-        params: params,
-        context: context,
-        showLoad: showLoad);
+  get(String url, {Map<String, dynamic> params, BuildContext context}) async {
+    return await request(
+      url,
+      method: Method.GET,
+      params: params,
+      context: context,
+    );
   }
 
   /// post请求
@@ -35,41 +30,26 @@ class NetService {
       {Map<String, dynamic> params,
       BuildContext context,
       bool showLoad}) async {
-    return await request(url,
-        method: Method.POST,
-        params: params,
-        context: context,
-        showLoad: showLoad);
-  }
-
-  /// 附件上传
-  upLoad(
-    var file,
-    String fileName,
-    String url, {
-    Map<String, dynamic> params,
-  }) async {
-    return await request(url,
-        method: Method.UPLOAD, params: params, file: file, fileName: fileName);
-  }
-
-  /// 附件下载
-  download(String url, String savePath) async {
-    return await request(url, method: Method.DOWNLOAD, fileSavePath: savePath);
+    return await request(
+      url,
+      method: Method.POST,
+      params: params,
+      context: context,
+    );
   }
 
   ///  请求部分
-  request(String url,
-      {Method method,
-      Map<String, dynamic> params,
-      var file,
-      String fileName,
-      String fileSavePath,
-      BuildContext context,
-      bool showLoad = false}) async {
+  request(
+    String url, {
+    Method method,
+    Map<String, dynamic> params,
+    var file,
+    String fileName,
+    String fileSavePath,
+    BuildContext context,
+  }) async {
     try {
       Response response;
-
       SessionManager sessionManager = SessionManager();
       var headers = await getHeaders();
       if (headers != null) {
@@ -88,7 +68,7 @@ class NetService {
       requestParam.write("$_TAG ");
       requestParam.write("params:");
       requestParam.write(json.encode(params));
-      printLog(requestParam.toString());
+      // print(requestParam.toString());
 
       switch (method) {
         case Method.GET:
@@ -97,25 +77,10 @@ class NetService {
         case Method.POST:
           response = await sessionManager.post(url, data: params);
           break;
-        case Method.UPLOAD:
-          {
-            FormData formData = new FormData();
-            if (params != null) {
-              formData = FormData.from(params);
-            }
-            formData.add(fileName, UploadFileInfo.fromBytes(file, fileName));
-
-            /// 第一个fileName是参数名, 必须和接口一致, 第二个fileName是文件的文件名
-            response = await sessionManager.post(url, data: formData);
-            break;
-          }
-        case Method.DOWNLOAD:
-          response = await sessionManager.download(url, fileSavePath);
-          break;
       }
       return await handleDataSource(response, method, url: url);
     } catch (exception) {
-      printLog("$_TAG net exception= " + exception.toString());
+      //printLog("$_TAG net exception= " + exception.toString());
       return ResultData("网络连接异常", false, url: url);
     }
   }
@@ -126,36 +91,24 @@ class NetService {
     String errorMsg = "";
     int statusCode;
     statusCode = response.statusCode;
-    printLog("$_TAG statusCode:" + statusCode.toString());
-    if (method == Method.DOWNLOAD) {
-      if (statusCode == 200) {
-        /// 下载成功
-        resultData = ResultData('下载成功', true);
-      } else {
-        /// 下载失败
-        resultData = ResultData('下载失败', false);
-      }
+    print("---net_service-- statusCode:" + statusCode.toString());
+    Map<String, dynamic> data;
+    if (response.data is Map) {
+      data = response.data;
     } else {
-      Map<String, dynamic> data;
-      if (response.data is Map) {
-        data = response.data;
-      } else {
-        data = json.decode(response.data);
-      }
-      if (isPrint()) {
-        printBigLog("$_TAG data: ", json.encode(data));
-      }
+      data = json.decode(response.data);
+    }
 
-      //处理错误部分
-      if (statusCode != 200) {
-        errorMsg = "网络请求错误,状态码:" + statusCode.toString();
-        resultData = ResultData(errorMsg, false, url: url);
-      } else {
-        try {
-          resultData = ResultData.response(data);
-        } catch (exception) {
-          resultData = ResultData(exception.toString(), true, url: url);
-        }
+    //处理错误部分
+    if (statusCode != 200) {
+      errorMsg = "网络请求错误,状态码:" + statusCode.toString();
+      resultData = ResultData(errorMsg, false, url: url);
+    } else {
+      try {
+        resultData = ResultData.response(data);
+        print('------net_service---${resultData.result}');
+      } catch (exception) {
+        resultData = ResultData(exception.toString(), true, url: url);
       }
     }
     return resultData;
@@ -167,53 +120,5 @@ class NetService {
 
   getBasicUrl() {
     return null;
-  }
-
-  static void printLog(String log, {tag}) {
-    bool print = isPrint();
-    if (print) {
-      String tagLog;
-      if (tag != null) {
-        tagLog = tag + log;
-      } else {
-        tagLog = log;
-      }
-      debugPrint(tagLog);
-    }
-  }
-
-  static void printBigLog(String tag, String log) {
-    //log = TEST_POEM;
-    bool print = isPrint();
-    const MAX_COUNT = 800;
-    if (print) {
-      if (log != null && log.length > MAX_COUNT) {
-        // 超过1000就分次打印
-        int len = log.length;
-        int paragraphCount = ((len / MAX_COUNT) + 1).toInt();
-        for (int i = 0; i < paragraphCount; i++) {
-          int printCount = MAX_COUNT;
-          if (i == paragraphCount - 1) {
-            printCount = len - (MAX_COUNT * (paragraphCount - 1));
-          }
-          String finalTag = "" + tag + "\n";
-          printLog(
-              log.substring(i * MAX_COUNT, i * MAX_COUNT + printCount) + "\n",
-              tag: finalTag);
-        }
-      } else {
-        String tagLog;
-        if (tag == null) {
-          tagLog = tag + log;
-        } else {
-          tagLog = log;
-        }
-        printLog(tagLog);
-      }
-    }
-  }
-
-  static bool isPrint() {
-    return NetConfig.DEBUG;
   }
 }

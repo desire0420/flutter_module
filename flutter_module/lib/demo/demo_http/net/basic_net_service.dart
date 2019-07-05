@@ -49,7 +49,7 @@ class BasicNetService extends NetService {
 
   @override
   getBasicUrl() {
-    return "http://api.k780.com:88";
+    return "https://api.apiopen.top/musicRankingsDetails?";
   }
 
   @override

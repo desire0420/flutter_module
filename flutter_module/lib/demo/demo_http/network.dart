@@ -21,7 +21,7 @@ decodeTest(var body) {
 }
 
 //使用第三方库Dio的请求
-getHttp(query) async {
+Future getHttp() async {
   try {
     Response response = await Dio().get(baseUrl, queryParameters: query);
     if (response.statusCode == HttpStatus.OK) {
@@ -50,4 +50,20 @@ get(url, {data, options}) async {
     print('get请求发生错误：$e');
   }
   return response.data;
+}
+
+//使用第三方库Dio的请求
+void _loadDataByDio() async {
+  try {
+    Response response = await Dio().get(baseUrl, queryParameters: query);
+    if (response.statusCode == HttpStatus.OK) {
+      result = response.data.toString();
+      decodeTest(response.data);
+    } else {
+      result = 'error code : ${response.statusCode}';
+    }
+  } catch (exception) {
+    result = '网络异常';
+  }
+  //setState(() {});
 }

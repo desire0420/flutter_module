@@ -1,17 +1,13 @@
 import 'dart:convert';
-import 'dart:io';
 
-import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_module/common/progreess_dialog.dart';
 import 'package:flutter_module/demo/demo_http/async_demo.dart';
 import 'package:flutter_module/demo/demo_http/net/app_api.dart';
+import 'package:flutter_module/demo/demo_http/net/net_mode_entity.dart';
 import 'package:flutter_module/demo/demo_http/net/result_data.dart';
-import 'package:flutter_module/demo/demo_http/net/weather_bean.dart';
-import 'package:flutter_module/demo/demo_http/zhihu_mode_entity.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class HttpRequestDemo extends StatefulWidget {
   @override
@@ -24,53 +20,36 @@ class HttpRequestDemoState extends State<HttpRequestDemo> {
   var result = '1-';
   var baseUrl = 'https://api.apiopen.top/musicRankingsDetails?';
   var query = {"type": 1, "page": 1, "PageSize": 15};
-  List<ZhihuModeResult> list = [];
+  List<NetModeResult> list = [];
 
 //解析数据
-  decodeTest(var body) {
-    int code = body['code'];
-    String message = body['message'];
-    List result = body['result'];
-    list = result.map((model) {
-      return new ZhihuModeResult.fromJson(model);
-    }).toList();
-    //  print('---list----${list.length}');
-  }
-
-  //使用第三方库Dio的请求
-  void _loadDataByDio() async {
-    try {
-      Response response = await Dio().get(baseUrl, queryParameters: query);
-      if (response.statusCode == HttpStatus.OK) {
-        result = response.data.toString();
-        decodeTest(response.data);
-      } else {
-        result = 'error code : ${response.statusCode}';
-      }
-    } catch (exception) {
-      result = '网络异常';
-    }
-    setState(() {});
-  }
-
-  String weather = "";
+//  decodeTest(var body) {
+//    int code = body['code'];
+//    String message = body['message'];
+//    List result = body['result'];
+//
+//    list = result.map((model) {
+//      return new NetModeResult.fromJson(model);
+//    }).toList();
+//
+//    //  print('---list----${list.length}');
+//  }
 
   void _getWeather() async {
-    ResultData resultData =
-        await AppApi.getInstance().getWeather(context, true);
+    ResultData resultData = await AppApi.getInstance().getWeather(context);
+    print('-----http_request_dio---${resultData.isSuccess()}');
     if (resultData.isSuccess()) {
-      WeatherBean weatherBean = WeatherBean.fromJson(resultData.response);
-      setState(() {
-        weather = json.encode(weatherBean.result[1]);
-        print('-----weather----${weather}');
-      });
+      NetModeEntity weatherBean = NetModeEntity.fromJson(resultData.response);
+      list = weatherBean.result;
+      print('-----weather----${json.encode(list)}');
+      setState(() {});
     }
   }
 
   @override
   void initState() {
     super.initState();
-    _loadDataByDio();
+    //  _loadDataByDio();
     _getWeather();
   }
 
