@@ -49,13 +49,11 @@ class HttpRequestDemoState extends State<HttpRequestDemo> {
   @override
   void initState() {
     super.initState();
-    //  _loadDataByDio();
     _getWeather();
   }
 
   Widget itemView(BuildContext context, int index) {
     // print('------index-----${index}');
-    final String item = list[index].artistName;
     return new GestureDetector(
       onTap: () {
         Navigator.push(
