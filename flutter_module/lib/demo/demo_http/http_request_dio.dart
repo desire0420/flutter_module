@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -24,10 +22,11 @@ class HttpRequestDemoState extends State<HttpRequestDemo> {
 
   void _getMusic() async {
     ResultData resultData = await AppApi.getInstance().getMusic(context);
+    print('-----weather-----${resultData}');
     if (resultData.isSuccess()) {
       NetModeEntity weatherBean = NetModeEntity.fromJson(resultData.response);
       list = weatherBean.result;
-      print('-----weather-----${json.encode(list)}');
+      // print('-----weather-----${json.encode(list)}');
       setState(() {});
     }
   }

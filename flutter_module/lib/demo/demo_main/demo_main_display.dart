@@ -48,7 +48,8 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
         children: <Widget>[
           //SingleChildScrollView
           ListItem(title: 'Http', page: HttpRequestDemo()),
-          ListItem(title: '异步任务', page: AsyncDemo()),
+          ListItem(
+              title: '---Flutter/FutureBuilder/async/async', page: AsyncDemo()),
           ListItem(
             title: "GlobalKey---能够跨Widget访问状态1",
             page: SwitcherWidgetChange(),
