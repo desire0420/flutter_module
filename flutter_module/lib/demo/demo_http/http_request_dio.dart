@@ -24,7 +24,6 @@ class HttpRequestDemoState extends State<HttpRequestDemo> {
 
   void _getMusic() async {
     ResultData resultData = await AppApi.getInstance().getMusic(context);
-    print('-----http_request_dio---${resultData.isSuccess()}');
     if (resultData.isSuccess()) {
       NetModeEntity weatherBean = NetModeEntity.fromJson(resultData.response);
       list = weatherBean.result;

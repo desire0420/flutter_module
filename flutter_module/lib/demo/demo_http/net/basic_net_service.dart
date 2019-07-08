@@ -7,92 +7,71 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_module/common/constant.dart';
-import 'package:flutter_module/demo/demo_http/net/net_service.dart';
 import 'package:flutter_module/demo/demo_http/net/result_data.dart';
 import 'package:flutter_module/demo/demo_http/net/session_manager.dart';
 
-class BasicNetService extends NetService {
-  static const String _TAG = "----TAG-11--";
+class BasicNetService {
+  static const String _TAG = "----TAG---";
 
   // get请求
-  getRequest(String url,
-      {Map<String, dynamic> params, BuildContext context}) async {
+  getRequest(
+      String url, Map<String, dynamic> params, BuildContext context) async {
     return await request(
       url,
-      method: Method.GET,
-      params: params,
-      context: context,
+      Method.GET,
+      params,
+      context,
     );
   }
 
-  /// post请求
-  post(String url,
-      {Map<String, dynamic> params,
-      BuildContext context,
-      bool showLoad}) async {
+  // post请求
+  postRequest(
+      String url, Map<String, dynamic> params, BuildContext context) async {
     return await request(
       url,
-      method: Method.POST,
-      params: params,
-      context: context,
+      Method.POST,
+      params,
+      context,
     );
   }
 
-  request(String url,
-      {Method method,
-      Map<String, dynamic> params,
-      BuildContext context}) async {
-    /// 传参进行统一处理, 加上基本参数
-    Map<String, dynamic> basicParam = await getBasicParam();
-    basicParam["timeStamp"] =
-        (new DateTime.now().millisecondsSinceEpoch ~/ 1000).toString();
-    if (params != null) {
-      basicParam.addAll(params);
-    }
-
-    ResultData resultData =
-        await requestReadly(url, method: method, params: basicParam);
-
-    /// 当apiToken 过期或者错误时的提示码
-    if ("0" == resultData.code && context != null) {
-      // 退出登录并跳转到登录界面
-      //App.navigateTo(context, QuRoutes.ROUTE_MINE_LOGIN, clearStack: true);
-    }
-    return resultData;
-  }
-
-  // 请求部分
-  requestReadly(
-    String url, {
-    Method method,
-    Map<String, dynamic> params,
-    BuildContext context,
-  }) async {
+  //真正的請求
+  request(String url, Method method, Map<String, dynamic> params,
+      BuildContext context) async {
     try {
       Response response;
+      //传参进行统一处理, 加上基本公共参数
+      Map<String, dynamic> basicParam = await getBasicParam();
+      basicParam["timeStamp"] =
+          (new DateTime.now().millisecondsSinceEpoch ~/ 1000).toString();
+      if (params != null) {
+        basicParam.addAll(params);
+      }
+
+      //请求header
       SessionManager sessionManager = SessionManager();
       var headers = await getHeaders();
       if (headers != null) {
         sessionManager.options.headers = headers;
       }
-      var baseUrl = await getBasicUrl();
+
+      //请求域名
+      var baseUrl = Constant.base_url;
       sessionManager.options.baseUrl = baseUrl;
 
       // 打印网络日志
       StringBuffer requestParam = new StringBuffer();
-      requestParam.write("$_TAG ");
       requestParam.write("Url:");
-      requestParam.write(baseUrl);
-      requestParam.write(url);
+      requestParam.write(baseUrl + url);
       requestParam.write("\n");
-      requestParam.write("$_TAG ");
-      requestParam.write("params:");
+      requestParam.write("basicParam:---");
+      requestParam.write(json.encode(basicParam));
+      requestParam.write("params:---");
       requestParam.write(json.encode(params));
-      // print(requestParam.toString());
+      print('-------params------->${requestParam.toString()}');
 
       switch (method) {
         case Method.GET:
-          print("---net_service-- url:" + url);
           response = await sessionManager.get(url, queryParameters: params);
           break;
         case Method.POST:
@@ -101,18 +80,16 @@ class BasicNetService extends NetService {
       }
       return await handleDataSource(response, method, url: url);
     } catch (exception) {
-      //printLog("$_TAG net exception= " + exception.toString());
       return ResultData("网络连接异常", false, url: url);
     }
   }
 
-  /// 数据处理
+  // 数据处理
   static handleDataSource(Response response, Method method, {String url = ""}) {
     ResultData resultData;
     String errorMsg = "";
     int statusCode;
     statusCode = response.statusCode;
-    print("---net_service-- statusCode:" + statusCode.toString());
     Map<String, dynamic> data;
     if (response.data is Map) {
       data = response.data;
@@ -127,21 +104,21 @@ class BasicNetService extends NetService {
     } else {
       try {
         resultData = ResultData.response(data);
-        print('------net_service---${resultData.result}');
       } catch (exception) {
         resultData = ResultData(exception.toString(), true, url: url);
       }
+    }
+    // 当apiToken 过期或者错误时的提示码
+    if (102 == resultData.code /*&& context != null*/) {
+      // 退出登录并跳转到未登陸界面
     }
     return resultData;
   }
 }
 
-getBasicUrl() {
-  return Constant.base_url;
-}
-
 getHeaders() async {
   Map<String, dynamic> headers;
+  //headers["token"] = "absqghsnldmw1349818742864njddbw";
   return headers;
 }
 
