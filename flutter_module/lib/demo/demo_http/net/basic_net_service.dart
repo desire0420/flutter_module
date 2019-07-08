@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 import 'dart:io';
 
@@ -12,9 +11,9 @@ import 'package:flutter_module/demo/demo_http/net/session_manager.dart';
 Widget getProgress() {
   return new Center(child: new CircularProgressIndicator());
 }
+
 class BasicNetService {
   static const String _TAG = "----TAG---";
-
 
   // get请求
   getRequest(
