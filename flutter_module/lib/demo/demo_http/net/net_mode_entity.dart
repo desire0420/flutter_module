@@ -1,6 +1,7 @@
 class NetModeEntity {
   List<NetModeResult> result;
   int code;
+
   String message;
 
   NetModeEntity({this.result, this.code, this.message});
