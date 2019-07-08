@@ -7,7 +7,6 @@ import 'package:flutter_module/demo/demo_http/net/result_data.dart';
 /**音乐排行榜详情接口：
     https://api.apiopen.top/musicRankingsDetails?type=1
  */
-
 class AppApi extends BasicNetService {
   static const String _GET_WEATHER = "musicRankingsDetails";
 

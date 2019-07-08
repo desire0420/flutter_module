@@ -1,4 +1,3 @@
-library basicnetservice;
 
 import 'dart:convert';
 import 'dart:io';
@@ -10,8 +9,12 @@ import 'package:flutter_module/common/constant.dart';
 import 'package:flutter_module/demo/demo_http/net/result_data.dart';
 import 'package:flutter_module/demo/demo_http/net/session_manager.dart';
 
+Widget getProgress() {
+  return new Center(child: new CircularProgressIndicator());
+}
 class BasicNetService {
   static const String _TAG = "----TAG---";
+
 
   // get请求
   getRequest(
@@ -44,8 +47,8 @@ class BasicNetService {
       Map<String, dynamic> basicParam = await getBasicParam();
       basicParam["timeStamp"] =
           (new DateTime.now().millisecondsSinceEpoch ~/ 1000).toString();
-      if (params != null) {
-        basicParam.addAll(params);
+      if (basicParam != null) {
+        params.addAll(basicParam);
       }
 
       //请求header
@@ -61,13 +64,9 @@ class BasicNetService {
 
       // 打印网络日志
       StringBuffer requestParam = new StringBuffer();
-      requestParam.write("Url:");
-      requestParam.write(baseUrl + url);
-      requestParam.write("\n");
-      requestParam.write("basicParam:---");
-      requestParam.write(json.encode(basicParam));
-      requestParam.write("params:---");
-      requestParam.write(json.encode(params));
+      requestParam.write('\n${baseUrl + url}');
+      requestParam.write('\nparams:---${json.encode(params)}');
+      requestParam.write('\nheaders:---${json.encode(headers)}');
       print('-------params------->${requestParam.toString()}');
 
       switch (method) {
