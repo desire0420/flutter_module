@@ -22,21 +22,8 @@ class HttpRequestDemoState extends State<HttpRequestDemo> {
   var query = {"type": 1, "page": 1, "PageSize": 15};
   List<NetModeResult> list = [];
 
-//解析数据
-//  decodeTest(var body) {
-//    int code = body['code'];
-//    String message = body['message'];
-//    List result = body['result'];
-//
-//    list = result.map((model) {
-//      return new NetModeResult.fromJson(model);
-//    }).toList();
-//
-//    //  print('---list----${list.length}');
-//  }
-
-  void _getWeather() async {
-    ResultData resultData = await AppApi.getInstance().getWeather(context);
+  void _getMusic() async {
+    ResultData resultData = await AppApi.getInstance().getMusic(context);
     print('-----http_request_dio---${resultData.isSuccess()}');
     if (resultData.isSuccess()) {
       NetModeEntity weatherBean = NetModeEntity.fromJson(resultData.response);
@@ -49,11 +36,10 @@ class HttpRequestDemoState extends State<HttpRequestDemo> {
   @override
   void initState() {
     super.initState();
-    _getWeather();
+    _getMusic();
   }
 
   Widget itemView(BuildContext context, int index) {
-    // print('------index-----${index}');
     return new GestureDetector(
       onTap: () {
         Navigator.push(
