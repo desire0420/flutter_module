@@ -8,7 +8,6 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileOptions {
@@ -16,17 +15,49 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
 
     }
-    buildTypes {
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    signingConfigs {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            keyAlias 'app'
+            keyPassword '88888888'
+            storeFile file('../keystore/key.jks')
+            storePassword '88888888'
+        }
+        debug {
+            keyAlias 'app'
+            keyPassword '88888888'
+            storeFile file('../keystore/key.jks')
+            storePassword '88888888'
         }
     }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true //开启代码混淆
+            zipAlignEnabled true
+            shrinkResources true // 移除无用资源
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+
+            minifyEnabled false //开启代码混淆
+            zipAlignEnabled false
+            shrinkResources false // 移除无用资源
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
     // 加入下面配置
-    implementation project(':flutter')
+    // implementation project(':flutter')
 }
