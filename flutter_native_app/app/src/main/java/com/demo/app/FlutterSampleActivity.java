@@ -1,13 +1,15 @@
 package com.demo.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.FrameLayout;
-
-import com.demo.app.plugin.PluginConstant;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import io.flutter.facade.Flutter;
+import io.flutter.plugin.common.EventChannel;
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel;
 import io.flutter.view.FlutterView;
 
 /**
@@ -16,10 +18,11 @@ import io.flutter.view.FlutterView;
 
 public class FlutterSampleActivity extends AppCompatActivity {
 
-
     private FrameLayout frameLayout;
 
     private FlutterView flutterView;
+    public static final String FlutterToAndroidCHANNEL = "com.demo.app.toandroid/plugin";
+    public static final String AndroidToFlutterCHANNEL = "com.demo.app.toflutter/plugin";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,35 +34,23 @@ public class FlutterSampleActivity extends AppCompatActivity {
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
         // 2. 将Flutter 视图添加到原生布局中
         frameLayout.addView(flutterView, layoutParams);
+
 //        FragmentTransaction tx = getSupportFragmentManager().beginTransaction();
 //        tx.replace(R.id.rl_flutter, Flutter.createFragment("route2"));
 //        tx.commit();
 
-/*
-        // MethodChannel 使用场景：Flutter端向Native端发送通知
-        // name 就是双发通信的唯一标识，我们可以简单理解为钥匙即可。
+        // MethodChannel 使用场景：Flutter端向Native端发送通知,name 就是双发通信的唯一标识，我们可以简单理解为钥匙即可。
         new MethodChannel(flutterView, FlutterToAndroidCHANNEL).setMethodCallHandler(new MethodChannel.MethodCallHandler() {
             @Override
             public void onMethodCall(MethodCall methodCall, MethodChannel.Result result) {
-
                 //接收来自flutter的指令oneAct
-                if (methodCall.method.equals("noParams")) {
-                    //跳转到指定Activity
-                    Intent intent = new Intent(FlutterSampleActivity.this, FlutterPluginJumpToNativeActivity.class);
-                    startActivity(intent);
-                    //返回给flutter的参数
-                    result.success("success");
-                }
-
-                //接收来自flutter的指令twoAct
-                else if (methodCall.method.equals("withParams")) {
+                if (methodCall.method.equals("flutterToNative")) {
                     //解析参数
-                    String text = methodCall.argument("flutter");
+                    String value = methodCall.argument("flutter");
                     //带参数跳转到指定Activity
                     Intent intent = new Intent(FlutterSampleActivity.this, FlutterPluginJumpToNativeActivity.class);
-                    intent.putExtra("test", text);
+                    intent.putExtra("value", value);
                     startActivity(intent);
-
                     //返回给flutter的参数
                     result.success("success");
                 } else {
@@ -82,7 +73,8 @@ public class FlutterSampleActivity extends AppCompatActivity {
                     public void onCancel(Object o) {
 
                     }
-                });*/
+                });
+
 
     }
 

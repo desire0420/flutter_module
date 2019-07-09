@@ -18,11 +18,20 @@ class MyHomePage extends StatefulWidget {
 class MyHomePageState extends State<MyHomePage> {
   int counter = 0;
 
+/*
   //获取到插件与原生的交互通道   MethodChannel 使用场景：Flutter端向Native端发送通知
   static const toAndroidPlugin =
       const MethodChannel("com.demo.app.toandroid/plugin");
 
   // EventChannel 使用场景：Native端向Flutter端发送通知
+  static const fromAndroiPlugin =
+      const EventChannel('com.demo.app.toflutter/plugin');
+*/
+
+  //获取到插件与原生的交互通道
+  static const toAndroidPlugin =
+      const MethodChannel('com.demo.app.toandroid/plugin');
+
   static const fromAndroiPlugin =
       const EventChannel('com.demo.app.toflutter/plugin');
 
@@ -41,7 +50,7 @@ class MyHomePageState extends State<MyHomePage> {
                 textColor: Colors.black,
                 child: new Text('跳转到原生界面--'),
                 onPressed: () {
-                  _jumpToNative();
+                  jumpToNative();
                 }),
           ),
           new Padding(
@@ -115,10 +124,13 @@ class MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  Future<Null> _jumpToNative() async {
-    String result = await toAndroidPlugin.invokeMethod('oneAct');
-    print('------re-${result}');
+  //跳转原生
+  Future<Null> jumpToNative() async {
+    Map<String, String> map = {"flutter": "这是一条来自flutter的参数"};
+    String result = await toAndroidPlugin.invokeMethod('flutterToNative', map);
+    print(result);
   }
+
 
   //跳转原生传参
   Future<Null> _jumpToNativeWithValue() async {

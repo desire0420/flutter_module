@@ -6,21 +6,19 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.demo.app.plugin.FlutterPluginJumpToAct;
+import com.demo.app.plugin.FlutterPluginJumpToAndroid;
 
 import androidx.annotation.Nullable;
 import io.flutter.app.FlutterActivity;
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.PluginRegistry;
 import io.flutter.plugins.GeneratedPluginRegistrant;
 
 public class MainActivity extends FlutterActivity {
 
     private TextView textView;
-    private LinearLayout one;
-    private LinearLayout two;
-    private LinearLayout three;
-    private LinearLayout four;
-
+    private LinearLayout one, two, three, four;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,12 +31,8 @@ public class MainActivity extends FlutterActivity {
     }
 
     private static void registerCustomPlugin(PluginRegistry registrar) {
-        FlutterPluginJumpToAct.registerWith(registrar.registrarFor("com.demo.app.toandroid/plugin"));
+        FlutterPluginJumpToAndroid.registerWith(registrar.registrarFor(FlutterPluginJumpToAndroid.CHANNEL));
     }
-
-
-
-
 
 
     private void findView() {
@@ -47,7 +41,6 @@ public class MainActivity extends FlutterActivity {
         three = findViewById(R.id.three);
         four = findViewById(R.id.four);
         textView = findViewById(R.id.params);
-
     }
 
     private void setListener() {
@@ -68,6 +61,7 @@ public class MainActivity extends FlutterActivity {
         three.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
 
             }
         });

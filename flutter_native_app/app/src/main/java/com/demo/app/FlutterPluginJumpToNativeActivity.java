@@ -1,10 +1,7 @@
 package com.demo.app;
 
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,14 +19,10 @@ public class FlutterPluginJumpToNativeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.main_content);
-
         mTextView = findViewById(R.id.text);
-
         String text = getIntent().getStringExtra(VALUE);
-
-        mTextView.setText(text);
+        mTextView.setText("原生界面----->" + text);
 
     }
 }

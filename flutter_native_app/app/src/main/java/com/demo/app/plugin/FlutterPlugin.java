@@ -9,7 +9,7 @@ import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.PluginRegistry;
 
-public class FlutterPluginJumpToAct implements MethodChannel.MethodCallHandler {
+public class FlutterPlugin implements MethodChannel.MethodCallHandler {
 
     public static String CHANNEL = PluginConstant.FlutterToAndroidCHANNEL;
 
@@ -17,13 +17,13 @@ public class FlutterPluginJumpToAct implements MethodChannel.MethodCallHandler {
 
     private Activity activity;
 
-    private FlutterPluginJumpToAct(Activity activity) {
+    private FlutterPlugin(Activity activity) {
         this.activity = activity;
     }
 
     public static void registerWith(PluginRegistry.Registrar registrar) {
         channel = new MethodChannel(registrar.messenger(), "com.demo.app.toandroid/plugin");
-        FlutterPluginJumpToAct instance = new FlutterPluginJumpToAct(registrar.activity());
+        FlutterPlugin instance = new FlutterPlugin(registrar.activity());
         //setMethodCallHandler在此通道上接收方法调用的回调
         channel.setMethodCallHandler(instance);
     }
