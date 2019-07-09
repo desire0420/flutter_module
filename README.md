@@ -8,7 +8,7 @@ A new Flutter application.
 
 [Flutter官网](https://github.com/flutter/flutter)
 
-Flutter 个人学习记录链接，欢迎各位Star  提出意见
+Flutter 个人学习记录链接，欢迎各位Star提出意见
 
 [Flutter环境搭建和创建第一个Flutter程序](https://www.jianshu.com/p/dcf025dde34c)
 
@@ -22,10 +22,13 @@ Flutter 个人学习记录链接，欢迎各位Star  提出意见
 
 项目部分页面图片展示如下，有兴趣可自定clone下载学习
 
-![image.png](https://github.com/wang709693972wei/NativeFlutterApp/blob/master/flutter_module/images/image1.png)
-
-![image.png](https://github.com/wang709693972wei/NativeFlutterApp/blob/master/flutter_module/images/image2.png)
-
-![image.png](https://github.com/wang709693972wei/NativeFlutterApp/blob/master/flutter_module/images/image3.png)
-
-![image.png](https://github.com/wang709693972wei/NativeFlutterApp/blob/master/flutter_module/images/image4.png)
+![image.png](https://github.com/wang709693972wei/NativeFlutterApp/blob/master/flutter_module/lib/demo/imageshow/image_show1.png)
+![image.png](https://github.com/wang709693972wei/NativeFlutterApp/blob/master/flutter_module/lib/demo/imageshow/image_show2.png)
+![image.png](https://github.com/wang709693972wei/NativeFlutterApp/blob/master/flutter_module/lib/demo/imageshow/image_show3.png)
+![image.png](https://github.com/wang709693972wei/NativeFlutterApp/blob/master/flutter_module/lib/demo/imageshow/image_show4.png)
+![image.png](https://github.com/wang709693972wei/NativeFlutterApp/blob/master/flutter_module/lib/demo/imageshow/image_show5.png)
+![image.png](https://github.com/wang709693972wei/NativeFlutterApp/blob/master/flutter_module/lib/demo/imageshow/image_show6.png)
+![image.png](https://github.com/wang709693972wei/NativeFlutterApp/blob/master/flutter_module/lib/demo/imageshow/image_show7.png)
+![image.png](https://github.com/wang709693972wei/NativeFlutterApp/blob/master/flutter_module/lib/demo/imageshow/image_show8.png)
+![image.png](https://github.com/wang709693972wei/NativeFlutterApp/blob/master/flutter_module/lib/demo/imageshow/image_show9.png)
+![image.png](https://github.com/wang709693972wei/NativeFlutterApp/blob/master/flutter_module/lib/demo/imageshow/image_show10.png)
