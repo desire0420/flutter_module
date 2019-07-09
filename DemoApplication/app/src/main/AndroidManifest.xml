@@ -19,7 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SampleActivity" />
+        <activity android:name=".FlutterPluginJumpToNativeActivity" />
+        <activity android:name=".FlutterSampleActivity" />
+        <activity android:name=".NativeActivity" />
+
     </application>
 
 </manifest>

@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
 Widget widgetForRoute(String route) {
   switch (route) {
     case 'route1':
