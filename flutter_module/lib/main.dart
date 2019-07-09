@@ -40,6 +40,7 @@ class MyApp extends StatelessWidget {
 Widget widgetForRoute(String route) {
   switch (route) {
     case 'route1':
+
       return MyHomePage(title: 'Flutter  Home Page1');
     case 'route2':
       return MyHomePage(title: 'Flutter  Home Page2---');
