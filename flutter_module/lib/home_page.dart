@@ -23,8 +23,6 @@ class MyHomePageState extends State<MyHomePage> {
   //MethodChannel 使用场景：Flutter端向Native端发送通知
   static const toAndroidPlugin =
       const MethodChannel('com.demo.app.toandroid/plugin');
-  static const toAndroidPlugin1 =
-      const MethodChannel('com.demo.app.toandroid/plugin123');
 
 //EventChannel使用场景：Native端向Flutter端发送通知
   static const fromAndroiPlugin =

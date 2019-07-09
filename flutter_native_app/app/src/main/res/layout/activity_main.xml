@@ -33,7 +33,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="Flutter 界面" />
+                android:text="携带参数跳转Flutter 界面" />
         </LinearLayout>
 
         <LinearLayout

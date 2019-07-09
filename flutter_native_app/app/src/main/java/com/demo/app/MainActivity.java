@@ -6,16 +6,10 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.demo.app.plugin.FlutterPluginJumpToAndroid;
-
 import androidx.annotation.Nullable;
-import io.flutter.app.FlutterActivity;
-import io.flutter.plugin.common.MethodCall;
-import io.flutter.plugin.common.MethodChannel;
-import io.flutter.plugin.common.PluginRegistry;
-import io.flutter.plugins.GeneratedPluginRegistrant;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends FlutterActivity {
+public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
     private LinearLayout one, two, three, four;
@@ -26,13 +20,8 @@ public class MainActivity extends FlutterActivity {
         setContentView(R.layout.activity_main);
         findView();
         setListener();
-        GeneratedPluginRegistrant.registerWith(this);
-        registerCustomPlugin(this);
     }
 
-    private static void registerCustomPlugin(PluginRegistry registrar) {
-        FlutterPluginJumpToAndroid.registerWith(registrar.registrarFor(FlutterPluginJumpToAndroid.CHANNEL));
-    }
 
 
     private void findView() {
