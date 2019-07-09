@@ -22,7 +22,7 @@ Flutter 个人学习记录链接，欢迎各位Star提出意见
 
 项目部分页面图片展示如下，有兴趣可自定clone下载学习
 
-<img src="https://github.com/wang709693972wei/NativeFlutterApp/blob/master/flutter_module/lib/demo/imageshow/image_show1.png" width="200"><img src="https://github.com/wang709693972wei/NativeFlutterApp/blob/master/flutter_module/lib/demo/imageshow/image_show2.png" width="200">
+<img src="https://github.com/wang709693972wei/NativeFlutterApp/blob/master/flutter_module/lib/demo/imageshow/image_show1.png" width="200">  <img src="https://github.com/wang709693972wei/NativeFlutterApp/blob/master/flutter_module/lib/demo/imageshow/image_show2.png" width="200">
 
 ![image.png](https://github.com/wang709693972wei/NativeFlutterApp/blob/master/flutter_module/lib/demo/imageshow/image_show1.png)
 ![image.png](https://github.com/wang709693972wei/NativeFlutterApp/blob/master/flutter_module/lib/demo/imageshow/image_show2.png)
