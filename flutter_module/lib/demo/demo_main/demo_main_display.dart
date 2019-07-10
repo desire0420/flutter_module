@@ -21,6 +21,7 @@ import 'package:flutter_module/demo/demo_listview_drawer/image_list.dart';
 import 'package:flutter_module/demo/demo_route/route_demo.dart';
 import 'package:flutter_module/demo/demo_shared_preferences/shared_preferences_demo.dart';
 import 'package:flutter_module/demo/demo_sliver/sliver_demo.dart';
+import 'package:flutter_module/demo/demo_staggered_grid_view/staggered_grid_view.dart';
 import 'package:flutter_module/demo/demo_step/step_demo.dart';
 import 'package:flutter_module/demo/demo_tablayout/tab_layout.dart';
 import 'package:flutter_module/demo/demo_text/text_demo.dart';
@@ -58,6 +59,8 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
             title: "VisibleAndGone---显示隐藏",
             page: VisibleAndGone(),
           ),
+          ListItem(
+              title: '---StaggeredGridViewDemo', page: StaggeredGridViewDemo()),
           ListItem(title: 'Gesture-手势---', page: GesturePageDemo()),
           ListItem(title: 'Gesture-手势--滑动删除', page: DismissedPage()),
           ListItem(title: 'Route---路由学习', page: RouteDemo()),
