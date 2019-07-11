@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_module/common/app_bar_title.dart';
 import 'package:flutter_module/demo/main_detail_demo.dart';
 import 'package:flutter_module/model/post.dart';
 
@@ -77,16 +78,19 @@ class GridViewCountDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 3,
-      //每一行的个数
-      crossAxisSpacing: 10.0,
-      //垂直方向的间距
-      mainAxisSpacing: 10.0,
-      //水平方向的间距
-      scrollDirection: Axis.vertical,
-      //滚动方式
-      children: buildTiles(100),
+    return new Scaffold(
+      appBar: TitleBar('GridView'),
+      body: GridView.count(
+        crossAxisCount: 3,
+        //每一行的个数
+        crossAxisSpacing: 10.0,
+        //垂直方向的间距
+        mainAxisSpacing: 10.0,
+        //水平方向的间距
+        scrollDirection: Axis.vertical,
+        //滚动方式
+        children: buildTiles(100),
+      ),
     );
   }
 }
