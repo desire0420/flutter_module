@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_module/demo/main_detail_demo.dart';
 import 'package:flutter_module/mvp/fl_presenter.dart';
 import 'package:flutter_module/mvp/fl_presenter_impl.dart';
 import 'package:flutter_module/mvp/mode/fl_model.dart';
@@ -91,8 +92,9 @@ class GankGirlState extends State<GankGirl> implements FLView {
     final String item = datas[index].url;
     return new GestureDetector(
       onTap: () {
-//        Navigator.of(context).push(MaterialPageRoute(
-//            builder: (context) => MainDetailDemo(desc: datas[index].desc,url:item)));
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) =>
+                MainDetailDemo(desc: datas[index].desc, url: item)));
       },
       child: new Column(
         crossAxisAlignment: CrossAxisAlignment.center,

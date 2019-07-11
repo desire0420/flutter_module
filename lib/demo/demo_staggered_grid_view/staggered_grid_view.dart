@@ -18,7 +18,7 @@ class StaggeredGridViewState extends State<StaggeredGridViewDemo> {
       appBar: TitleBar('StaggeredGridView'),
       body: new StaggeredGridView.countBuilder(
         crossAxisCount: 4,
-        itemCount: 18,
+        itemCount: 6,
         itemBuilder: (BuildContext context, int index) => new Container(
             color: Colors.green,
             child: new Center(
