@@ -17,6 +17,10 @@ import 'package:flutter_module/demo/demo_input/login_register_from_demo.dart';
 import 'package:flutter_module/demo/demo_lifecycle/life_recyle_test.dart';
 import 'package:flutter_module/demo/demo_listview_drawer/drawer_demo.dart';
 import 'package:flutter_module/demo/demo_listview_drawer/image_list.dart';
+import 'package:flutter_module/demo/demo_route/route_demo.dart';
+import 'package:flutter_module/demo/demo_route/two_route_demo.dart';
+import 'package:flutter_module/demo/demo_sliver/sliver_demo.dart';
+import 'package:flutter_module/demo/demo_step/step_demo.dart';
 
 class WidgetDemoPage extends StatefulWidget {
   @override
@@ -57,6 +61,10 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: 'GridDemo', page: GridDemo()),
           ListItem(title: 'InputDemo', page: InputDemo()),
           ListItem(title: 'LiferecyleTest', page: LiferecyleTest()),
+          ListItem(title: 'RouteDemo', page: RouteDemo()),
+          ListItem(title: 'TwoRouteDemo', page: TwoRouteDemo()),
+          ListItem(title: 'SliverDemo', page: SliverDemo()),
+          ListItem(title: 'StepStudyDemo', page: StepStudyDemo()),
         ],
       ),
       //侧滑菜单
