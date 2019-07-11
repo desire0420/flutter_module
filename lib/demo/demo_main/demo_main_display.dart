@@ -19,9 +19,7 @@ import 'package:flutter_module/demo/demo_listview_drawer/drawer_demo.dart';
 import 'package:flutter_module/demo/demo_listview_drawer/image_list.dart';
 import 'package:flutter_module/demo/demo_route/route_demo.dart';
 import 'package:flutter_module/demo/demo_route/two_route_demo.dart';
-import 'package:flutter_module/demo/demo_shared_preferences/shared_preferences_demo.dart';
 import 'package:flutter_module/demo/demo_sliver/sliver_demo.dart';
-import 'package:flutter_module/demo/demo_staggered_grid_view/staggered_grid_view.dart';
 import 'package:flutter_module/demo/demo_step/step_demo.dart';
 import 'package:flutter_module/demo/demo_tablayout/tab_layout.dart';
 import 'package:flutter_module/demo/demo_text/text_demo.dart';
@@ -75,10 +73,6 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: 'PageViewDemo', page: PageViewDemo()),
           ListItem(title: 'VisibleAndGone', page: VisibleAndGone()),
           ListItem(title: 'TabLayoutDemo', page: TabLayoutDemo()),
-          ListItem(
-              title: 'SharedPreferencesDemo', page: SharedPreferencesSample()),
-          ListItem(
-              title: 'StaggeredGridViewDemo', page: StaggeredGridViewDemo()),
         ],
       ),
       //侧滑菜单
