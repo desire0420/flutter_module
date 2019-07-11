@@ -21,6 +21,7 @@ import 'package:flutter_module/demo/demo_route/route_demo.dart';
 import 'package:flutter_module/demo/demo_route/two_route_demo.dart';
 import 'package:flutter_module/demo/demo_sliver/sliver_demo.dart';
 import 'package:flutter_module/demo/demo_step/step_demo.dart';
+import 'package:flutter_module/demo/demo_tablayout/tab_layout.dart';
 import 'package:flutter_module/demo/demo_text/text_demo.dart';
 import 'package:flutter_module/demo/demo_viewpager/page_view_demo.dart';
 import 'package:flutter_module/demo/demo_visible_gone/visible_gone_demo.dart';
@@ -71,6 +72,8 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: 'TextDemoTest', page: TextDemoTest()),
           ListItem(title: 'PageViewDemo', page: PageViewDemo()),
           ListItem(title: 'VisibleAndGone', page: VisibleAndGone()),
+          ListItem(title: 'TabLayoutDemo', page: TabLayoutDemo()),
+
         ],
       ),
       //侧滑菜单
