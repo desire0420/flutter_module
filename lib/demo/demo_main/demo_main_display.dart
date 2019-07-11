@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_module/demo/demo_box_decoration/box_decoration_demo.dart';
+import 'package:flutter_module/demo/demo_button/button_demo.dart';
+import 'package:flutter_module/demo/demo_card/card_demo.dart';
 import 'package:flutter_module/demo/demo_http/http_request_dio.dart';
 import 'package:flutter_module/demo/demo_listview_drawer/drawer_demo.dart';
 import 'package:flutter_module/demo/demo_listview_drawer/image_list.dart';
@@ -28,8 +31,11 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
             page: ImageList(),
           ),
           ListItem(title: 'Http', page: HttpRequestDemo()),
+          ListItem(title: 'BoxDecorationDemo', page: BoxDecorationDemo()),
+          ListItem(title: 'Button', page: ButtonStudyDemo()),
+          ListItem(title: 'CardView', page: CardStudyDemo()),
 
-        ],
+          ],
       ),
       //侧滑菜单
 
