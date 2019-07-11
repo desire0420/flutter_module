@@ -3,7 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_module/demo/demo_box_decoration/box_decoration_demo.dart';
 import 'package:flutter_module/demo/demo_button/button_demo.dart';
 import 'package:flutter_module/demo/demo_card/card_demo.dart';
+import 'package:flutter_module/demo/demo_checkbox/check_box_demo.dart';
+import 'package:flutter_module/demo/demo_clip/clip_demo.dart';
+import 'package:flutter_module/demo/demo_datatable/data_table_demo.dart';
+import 'package:flutter_module/demo/demo_datatable/paginated_data_table_demo.dart';
+import 'package:flutter_module/demo/demo_dialog/dialog_study_demo.dart';
+import 'package:flutter_module/demo/demo_gesture/dismiss_gesture_demo.dart';
+import 'package:flutter_module/demo/demo_gesture/gesture_demo.dart';
+import 'package:flutter_module/demo/demo_globalkey/globalkey_form_page.dart';
+import 'package:flutter_module/demo/demo_gridview/grid_demo.dart';
 import 'package:flutter_module/demo/demo_http/http_request_dio.dart';
+import 'package:flutter_module/demo/demo_input/login_register_from_demo.dart';
+import 'package:flutter_module/demo/demo_lifecycle/life_recyle_test.dart';
 import 'package:flutter_module/demo/demo_listview_drawer/drawer_demo.dart';
 import 'package:flutter_module/demo/demo_listview_drawer/image_list.dart';
 
@@ -34,8 +45,19 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: 'BoxDecorationDemo', page: BoxDecorationDemo()),
           ListItem(title: 'Button', page: ButtonStudyDemo()),
           ListItem(title: 'CardView', page: CardStudyDemo()),
-
-          ],
+          ListItem(title: 'CheckboxDemo', page: CheckboxDemo()),
+          ListItem(title: 'ClipStudy', page: ClipStudyDemo()),
+          ListItem(
+              title: 'PaginatedDataTableDemo', page: PaginatedDataTableDemo()),
+          ListItem(title: 'DataTableDemo', page: DataTableDemo()),
+          ListItem(title: 'DialogStudyDemo', page: DialogStudyDemo()),
+          ListItem(title: 'DismissedPage', page: DismissedPage()),
+          ListItem(title: 'GesturePageDemo', page: GesturePageDemo()),
+          ListItem(title: 'SwitcherWidget', page: SwitcherWidget()),
+          ListItem(title: 'GridDemo', page: GridDemo()),
+          ListItem(title: 'InputDemo', page: InputDemo()),
+          ListItem(title: 'LiferecyleTest', page: LiferecyleTest()),
+        ],
       ),
       //侧滑菜单
 
