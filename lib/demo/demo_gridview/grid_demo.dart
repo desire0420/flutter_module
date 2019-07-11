@@ -27,16 +27,18 @@ class GridViewBuilderDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      padding: EdgeInsets.all(8.0),
-      itemCount: posts.length,
-      itemBuilder: _gridItemBuilder,
-      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 160.0, // 最大副轴长度,最大宽度
-        crossAxisSpacing: 18.0,
-        mainAxisSpacing: 18.0,
-      ),
-    );
+    return new Scaffold(
+        appBar: TitleBar('GridView'),
+        body: GridView.builder(
+          padding: EdgeInsets.all(8.0),
+          itemCount: posts.length,
+          itemBuilder: _gridItemBuilder,
+          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 160.0, // 最大副轴长度,最大宽度
+            crossAxisSpacing: 18.0,
+            mainAxisSpacing: 18.0,
+          ),
+        ));
   }
 }
 
