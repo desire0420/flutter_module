@@ -5,6 +5,7 @@ import 'package:flutter_module/demo/demo_button/button_demo.dart';
 import 'package:flutter_module/demo/demo_card/card_demo.dart';
 import 'package:flutter_module/demo/demo_checkbox/check_box_demo.dart';
 import 'package:flutter_module/demo/demo_clip/clip_demo.dart';
+import 'package:flutter_module/demo/demo_communication/parent_widget_communication.dart';
 import 'package:flutter_module/demo/demo_datatable/data_table_demo.dart';
 import 'package:flutter_module/demo/demo_datatable/paginated_data_table_demo.dart';
 import 'package:flutter_module/demo/demo_dialog/dialog_study_demo.dart';
@@ -75,6 +76,7 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: 'VisibleAndGone', page: VisibleAndGone()),
           ListItem(title: 'TabLayoutDemo', page: TabLayoutDemo()),
           ListItem(title: 'SharedPreferences', page: SharedPreferencesDemo()),
+          ListItem(title: '组件之间的通讯', page: ParentWidget()),
         ],
       ),
       //侧滑菜单
@@ -105,6 +107,8 @@ class ListItem extends StatelessWidget {
             trailing: Icon(Icons.keyboard_arrow_right),
             title: new Text(title),
             onTap: () {
+              print("---点击了");
+
               Navigator.push(
                   context, new CupertinoPageRoute(builder: (context) => page));
             },

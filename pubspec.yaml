@@ -38,6 +38,8 @@ dependencies:
   # transparent_image: ^0.1.0
  # path_provider: ^0.4.1
   #fluttertoast: ^3.0.3
+  event_bus: ^1.0.1
+
 
 dev_dependencies:
   flutter_test:
