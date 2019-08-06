@@ -63,7 +63,8 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: 'DialogStudyDemo', page: DialogStudyDemo()),
           ListItem(title: 'DismissedPage', page: DismissedPage()),
           ListItem(title: 'GesturePageDemo', page: GesturePageDemo()),
-          ListItem(title: 'SwitcherWidget', page: SwitcherWidget()),
+          ListItem(
+              title: 'Switcher-GlobalKey-Widget', page: SwitcherWidgetChange()),
           ListItem(title: 'GridDemo', page: GridDemo()),
           ListItem(title: 'InputDemo', page: InputDemo()),
           ListItem(title: 'LiferecyleTest', page: LiferecyleTest()),

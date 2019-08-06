@@ -15,16 +15,14 @@ class SwitcherWidgetState extends State<SwitcherWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Switch.adaptive(
-            value: isActive,
-            activeColor: Colors.blueAccent,
-            onChanged: (bool currentStatus) {
-              isActive = currentStatus;
-              setState(() {});
-            }),
-      ),
+    return Container(
+      child: Switch.adaptive(
+          value: isActive,
+          activeColor: Colors.blueAccent,
+          onChanged: (bool currentStatus) {
+            isActive = currentStatus;
+            setState(() {});
+          }),
     );
   }
 
@@ -52,7 +50,16 @@ class SwitcherWidgetChangeState extends State<SwitcherWidgetChange> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SwitcherWidget(key: key),
+      appBar: AppBar(
+        title: Text('GlobalKey 跨部件访问状态'),
+        centerTitle: true,
+      ),
+      body: new Column(
+        children: <Widget>[
+          new Text('开关控件是一个单独的控件，如果我们要想在外部该变改控件的状态，我们就需要使用GlobalKey'),
+          SwitcherWidget(key: key)
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // 通过这个key拿到它所绑定的SwitcherWidgetState在外部调用SwitcherWidgetState的changeState
