@@ -16,7 +16,6 @@ class HttpRequestDemo extends StatefulWidget {
 
 class HttpRequestDemoState extends State<HttpRequestDemo> {
   var result = '1-';
-  var baseUrl = 'https://api.apiopen.top/musicRankingsDetails?';
   var query = {"type": 1, "page": 1, "PageSize": 15};
   List<NetModeResult> list = [];
 

@@ -19,7 +19,7 @@ class AppApi extends BasicNetService {
     return _instance;
   }
 
-  Future<ResultData> getMusic(BuildContext context) async {
+  Future<ResultData> getMusic(BuildContext context,) async {
     Map<String, dynamic> param = {};
     param["type"] = "1";
     ResultData resultData = await getRequest(_GET_WEATHER, param, context);
