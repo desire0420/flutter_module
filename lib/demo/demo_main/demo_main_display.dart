@@ -24,6 +24,7 @@ import 'package:flutter_module/demo/demo_shared_preferences/shared_preferences_d
 import 'package:flutter_module/demo/demo_sliver/sliver_demo.dart';
 import 'package:flutter_module/demo/demo_state_inheritedwidget/inheritedwidget_demo.dart';
 import 'package:flutter_module/demo/demo_state_inheritedwidget/scoped_mode_demo.dart';
+import 'package:flutter_module/demo/demo_state_inheritedwidget/weater/test_weater_app.dart';
 import 'package:flutter_module/demo/demo_step/step_demo.dart';
 import 'package:flutter_module/demo/demo_tablayout/tab_layout.dart';
 import 'package:flutter_module/demo/demo_text/text_demo.dart';
@@ -56,6 +57,7 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: '轻量级状态管理ScopedModel', page: ScopedModelDemo()),
           ListItem(
               title: '轻量级状态管理InheritedWidget', page: InheritedWidgetDemo()),
+          ListItem(title: 'scoped_model_weater', page: WeaterApp()),
           ListItem(title: 'Http', page: HttpRequestDemo()),
           ListItem(title: 'BoxDecorationDemo', page: BoxDecorationDemo()),
           ListItem(title: 'Button', page: ButtonStudyDemo()),

@@ -4,9 +4,18 @@ import 'package:flutter_module/model/post.dart';
 import '../main_detail_demo.dart';
 
 //创建第一个列表 类似ListView
-class ImageList extends StatelessWidget {
+class ImageList extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return ImageListState();
+  }
+}
+
+class ImageListState extends State<ImageList> {
   @override
   Widget build(BuildContext context) {
+    // TODO: implement build
     return new Scaffold(
       appBar: new AppBar(
         actions: <Widget>[
@@ -18,6 +27,7 @@ class ImageList extends StatelessWidget {
         ],
       ),
       body: ListView.builder(
+        //physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         itemCount: posts.length,
         itemBuilder: oneListItemBuilder,
       ),
