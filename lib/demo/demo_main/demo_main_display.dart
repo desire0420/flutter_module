@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_module/demo/demo_bloc/test/count_bloc_demo.dart';
 import 'package:flutter_module/demo/demo_box_decoration/box_decoration_demo.dart';
 import 'package:flutter_module/demo/demo_button/button_demo.dart';
 import 'package:flutter_module/demo/demo_card/card_demo.dart';
@@ -26,6 +27,7 @@ import 'package:flutter_module/demo/demo_state_inheritedwidget/inheritedwidget_d
 import 'package:flutter_module/demo/demo_state_inheritedwidget/scoped_mode_demo.dart';
 import 'package:flutter_module/demo/demo_state_inheritedwidget/weater/test_weater_app.dart';
 import 'package:flutter_module/demo/demo_step/step_demo.dart';
+import 'package:flutter_module/demo/demo_stream/stream_demo.dart';
 import 'package:flutter_module/demo/demo_tablayout/tab_layout.dart';
 import 'package:flutter_module/demo/demo_text/text_demo.dart';
 import 'package:flutter_module/demo/demo_viewpager/page_view_demo.dart';
@@ -50,6 +52,8 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
       ),
       body: ListView(
         children: <Widget>[
+          ListItem(title: 'bloc', page: CountBlocDemo()),
+          ListItem(title: 'StreamDemo', page: StreamDemo()),
           ListItem(
             title: "ListView--drawer滑菜单-",
             page: ImageList(),

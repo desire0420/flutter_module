@@ -75,6 +75,7 @@ class ChildTwoState extends State<ChildTwo> {
   Widget build(BuildContext context) {
     //rebuildOnChange属性能够控制当该状态发生变化时，是否rebuild，作用等同于setState。也就是说我们调用改变状态的一些方法时，不必再setState。
     return ScopedModelDescendant<CountModel>(
+      rebuildOnChange: true,
       builder: (context, child, model) {
         return Container(
           width: double.infinity,

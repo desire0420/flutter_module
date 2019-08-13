@@ -18,7 +18,7 @@ description: A new flutter module project.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.0.0-dev.68.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -40,6 +40,11 @@ dependencies:
   #fluttertoast: ^3.0.3
   event_bus: ^1.0.1
   scoped_model: ^1.0.0
+  bloc: ^0.14.4
+  flutter_bloc: ^0.20.1
+  meta: ^1.1.6
+  equatable: ^0.2.0
+
 
 
 dev_dependencies:

@@ -17,9 +17,8 @@ class ListPageState extends State<ListPage> {
   @override
   void initState() {
     super.initState();
-    ListModel model = ScopedModel.of<ListModel>(context); // 获取ListModel
-    model.loadList(); // 加载列表
-    print('------- model.loadList(--');
+//    ListModel model = ScopedModel.of<ListModel>(context); // 获取ListModel
+//    model.loadList(); // 加载列表
   }
 
   @override
