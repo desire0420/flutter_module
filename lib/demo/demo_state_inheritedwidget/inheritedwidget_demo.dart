@@ -43,11 +43,6 @@ class InheritedWidgetDemoState extends State<InheritedWidgetDemo> {
 }
 
 class Counter extends StatelessWidget {
-//  final int count;
-//  final VoidCallback increaseCount;
-//
-//  //父布局传递increaseCount回调给子目录
-//  const Counter({Key key, this.count, this.increaseCount}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
