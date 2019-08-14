@@ -10,12 +10,12 @@ class CounterPage extends StatelessWidget {
     final CounterBloc _counterBloc = BlocProvider.of<CounterBloc>(context);
 
     return Container(
-      child: BlocBuilder<CounterBloc, int>(
-        builder: (BuildContext context, int count) {
+      child: BlocBuilder<CounterBloc, List<String>>(
+        builder: (BuildContext context, List<String> list) {
           return new Column(
             children: <Widget>[
               Text(
-                '$count',
+                '${list.length}',
                 style: TextStyle(fontSize: 24.0),
               ),
               RaisedButton(
@@ -25,9 +25,21 @@ class CounterPage extends StatelessWidget {
                 },
               ),
               RaisedButton(
-                child: Icon(Icons.close),
+                child: Icon(Icons.remove),
                 onPressed: () {
-                  _counterBloc.dispatch(CounterEvent.increment);
+                  _counterBloc.dispatch(CounterEvent.decrement);
+                },
+              ),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                itemCount: list.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title: Text(list[index]),
+                    onTap: () {
+                    },
+                  );
                 },
               ),
             ],
@@ -37,32 +49,3 @@ class CounterPage extends StatelessWidget {
     );
   }
 }
-
-/* return Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              Text(
-                '$count',
-                style: TextStyle(fontSize: 24.0),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 5.0),
-                child: FloatingActionButton(
-                  child: Icon(Icons.add),
-                  onPressed: () {
-                    _counterBloc.dispatch(CounterEvent.increment);
-                  },
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 5.0),
-                child: FloatingActionButton(
-                  child: Icon(Icons.remove),
-                  onPressed: () {
-                    _counterBloc.dispatch(CounterEvent.decrement);
-                  },
-                ),
-              ),
-            ],
-          );*/
