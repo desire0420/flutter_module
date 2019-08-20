@@ -31,7 +31,6 @@ class InheritedWidgetDemoState extends State<InheritedWidgetDemo> {
         appBar: new AppBar(
           title: new Text('InheritedWidget'),
         ),
-
         body: Counter(),
         floatingActionButton: FloatingActionButton(onPressed: _incerseCount),
       ),
@@ -39,8 +38,9 @@ class InheritedWidgetDemoState extends State<InheritedWidgetDemo> {
   }
 }
 
-class Counter extends StatelessWidget {
+///子Widget
 
+class Counter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final int count = CounterProvider.of(context).count;

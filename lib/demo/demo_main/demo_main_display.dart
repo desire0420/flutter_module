@@ -35,6 +35,8 @@ import 'package:flutter_module/demo/demo_viewpager/page_view_demo.dart';
 import 'package:flutter_module/demo/demo_visible_gone/visible_gone_demo.dart';
 import 'package:flutter_module/demo/demo_widget/demo_widget.dart';
 
+import '../counter_demo.dart';
+
 class WidgetDemoPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -58,10 +60,17 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: 'Widget', page: WidgetDemo()),
           ListItem(title: 'RouteDemo', page: RouteDemo()),
           ListItem(title: 'TwoRouteDemo', page: TwoRouteDemo()),
+          ListItem(
+              title: '计数器',
+              page: MyCounterPage(
+                title: '计数器',
+              )),
+          ListItem(title: 'InheritedWidget 父传子', page: InheritedWidgetDemo()),
+          ListItem(title: 'Notification 子widget通知上級', page: ParentWidgetPage()),
+          ListItem(title: 'EventBus', page: ParentWidget()),
 
 /*--------------------------------------*/
 
-          ListItem(title: '子widget通知上級', page: ParentWidgetPage()),
           ListItem(title: 'bloc', page: CountBlocDemo()),
           ListItem(title: 'StreamDemo', page: StreamDemo()),
           ListItem(
@@ -69,8 +78,6 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
             page: ImageList(),
           ),
           ListItem(title: '轻量级状态管理ScopedModel', page: ScopedModelDemo()),
-          ListItem(
-              title: '轻量级状态管理InheritedWidget', page: InheritedWidgetDemo()),
           ListItem(title: 'scoped_model_weater', page: WeaterApp()),
           ListItem(title: 'Http', page: HttpRequestDemo()),
           ListItem(title: 'BoxDecorationDemo', page: BoxDecorationDemo()),
@@ -95,7 +102,6 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: 'VisibleAndGone', page: VisibleAndGone()),
           ListItem(title: 'TabLayoutDemo', page: TabLayoutDemo()),
           ListItem(title: 'SharedPreferences', page: SharedPreferencesDemo()),
-          ListItem(title: '组件之间的通讯', page: ParentWidget()),
         ],
       ),
       //侧滑菜单
