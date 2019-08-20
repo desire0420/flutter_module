@@ -33,10 +33,12 @@ class TwoRouteDemo extends StatelessWidget {
             textColor: Colors.black,
             child: new Text("销毁除了栈顶的所有页面"),
           ),
-          //即比如当前从页面1进入页面2，在页面2使用 Navigator.of(context).pushReplacementNamed('/screen3');进入页面3，当进入了页面3后，页面2将执行dispose方法，此时在页面3返回时，会回到页面1.
+          //即比如当前从页面1进入页面2，在页面2使用
+          // Navigator.of(context).pushReplacementNamed('/screen3');进入页面3，
+          // 当进入了页面3后，页面2将执行dispose方法，此时在页面3返回时，会回到页面1.
           new RaisedButton(
             onPressed: () {
-              Navigator.of(context).pushReplacementNamed('/gridDisplay');
+              Navigator.of(context).pushReplacementNamed('/detail');
             },
             textColor: Colors.black,
             child: new Text("跳转并销毁当前页面（1）"),

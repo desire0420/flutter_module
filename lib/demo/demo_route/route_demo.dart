@@ -11,7 +11,7 @@ class RouteDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
-      appBar: TitleBar('Route-路由学习'),
+      appBar: TitleBar('Route-路由'),
       body: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -21,9 +21,9 @@ class RouteDemo extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => MainDetailDemo(
-                      desc: '福利',
+                      desc: '详情',
                       url:
-                          'https://ws1.sinaimg.cn/large/0065oQSqly1fytdr77urlj30sg10najf.jpg')));
+                          'https://ws1.sinaimg.cn/large/0065oQSqly1f ytdr77urlj30sg10najf.jpg')));
             },
             child: new Text('MaterialPageRoute'),
             textColor: Colors.black,
@@ -51,7 +51,6 @@ class RouteDemo extends StatelessWidget {
                   new PageRouteBuilder(
                       transitionDuration: Duration(milliseconds: 500),
                       //动画时间为500毫秒
-
                       pageBuilder: (BuildContext context, Animation animation,
                           Animation secondaryAnimation) {
                         return new FadeTransition(
@@ -66,10 +65,21 @@ class RouteDemo extends StatelessWidget {
           new RaisedButton(
             onPressed: () =>
                 Navigator.of(context).pushNamed('/twoRouter').then((value) {
-                  print('_result' + _result);
-                  _result = value;
-                }),
+              print('_result' + _result);
+              _result = value;
+            }),
             child: new Text('根路由实现-startActivityForResult'),
+            textColor: Colors.black,
+          ),
+          new RaisedButton(
+            onPressed: () => Navigator.pushNamed(context, '/unknowrouter'),
+            child: new Text('未定义的路由'),
+            textColor: Colors.black,
+          ),
+          new RaisedButton(
+            onPressed: () =>
+                Navigator.pushNamed(context, '/transmit_param', arguments: 'hello'),
+            child: new Text('打开页面时传递字符串参数'),
             textColor: Colors.black,
           ),
         ],

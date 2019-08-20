@@ -6,6 +6,7 @@ import 'package:flutter_module/demo/demo_button/button_demo.dart';
 import 'package:flutter_module/demo/demo_card/card_demo.dart';
 import 'package:flutter_module/demo/demo_checkbox/check_box_demo.dart';
 import 'package:flutter_module/demo/demo_clip/clip_demo.dart';
+import 'package:flutter_module/demo/demo_communication/notification/custom_notification.dart';
 import 'package:flutter_module/demo/demo_communication/parent_widget_communication.dart';
 import 'package:flutter_module/demo/demo_datatable/data_table_demo.dart';
 import 'package:flutter_module/demo/demo_datatable/paginated_data_table_demo.dart';
@@ -32,6 +33,7 @@ import 'package:flutter_module/demo/demo_tablayout/tab_layout.dart';
 import 'package:flutter_module/demo/demo_text/text_demo.dart';
 import 'package:flutter_module/demo/demo_viewpager/page_view_demo.dart';
 import 'package:flutter_module/demo/demo_visible_gone/visible_gone_demo.dart';
+import 'package:flutter_module/demo/demo_widget/demo_widget.dart';
 
 class WidgetDemoPage extends StatefulWidget {
   @override
@@ -52,6 +54,14 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
       ),
       body: ListView(
         children: <Widget>[
+          ListItem(title: '生命周期', page: LiferecyleTest()),
+          ListItem(title: 'Widget', page: WidgetDemo()),
+          ListItem(title: 'RouteDemo', page: RouteDemo()),
+          ListItem(title: 'TwoRouteDemo', page: TwoRouteDemo()),
+
+/*--------------------------------------*/
+
+          ListItem(title: '子widget通知上級', page: ParentWidgetPage()),
           ListItem(title: 'bloc', page: CountBlocDemo()),
           ListItem(title: 'StreamDemo', page: StreamDemo()),
           ListItem(
@@ -78,9 +88,6 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
               title: 'Switcher-GlobalKey-Widget', page: SwitcherWidgetChange()),
           ListItem(title: 'GridDemo', page: GridDemo()),
           ListItem(title: 'InputDemo', page: InputDemo()),
-          ListItem(title: 'LiferecyleTest', page: LiferecyleTest()),
-          ListItem(title: 'RouteDemo', page: RouteDemo()),
-          ListItem(title: 'TwoRouteDemo', page: TwoRouteDemo()),
           ListItem(title: 'SliverDemo', page: SliverDemo()),
           ListItem(title: 'StepStudyDemo', page: StepStudyDemo()),
           ListItem(title: 'TextDemoTest', page: TextDemoTest()),

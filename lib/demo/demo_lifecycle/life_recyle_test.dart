@@ -8,7 +8,7 @@ class LiferecyleTest extends StatefulWidget {
 }
 
 class NewsDetailState extends State<LiferecyleTest> {
-  int text = 1;
+  var text = 'setState';
 
   NewsDetailState() {
     print('life-------构造函数');
@@ -17,11 +17,17 @@ class NewsDetailState extends State<LiferecyleTest> {
   @override
   Widget build(BuildContext context) {
     print('life-------build---');
-
     return Scaffold(
         appBar: TitleBar('生命周期'),
         body: new Column(children: <Widget>[
           new Text('----LogCat输入life过滤---查看日志打印的状态'),
+          new RaisedButton(
+              child: Text(text),
+              onPressed: () {
+                setState(() {
+                  text = '我变化了';
+                });
+              }),
           new Image.asset('images/lifecycle.png')
         ]));
   }

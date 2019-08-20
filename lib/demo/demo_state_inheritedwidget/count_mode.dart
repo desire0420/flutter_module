@@ -40,7 +40,8 @@ class CounterProvider extends InheritedWidget {
   static CounterProvider of(BuildContext context) =>
       context.inheritFromWidgetOfExactType(CounterProvider);
 
-  //时候通知继承小部件的小部件
+  //改變的时候通知继承小部件的小部件
+
   @override
   bool updateShouldNotify(InheritedWidget oldWidget) {
     return true;

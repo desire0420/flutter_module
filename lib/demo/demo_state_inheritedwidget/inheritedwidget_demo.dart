@@ -31,10 +31,7 @@ class InheritedWidgetDemoState extends State<InheritedWidgetDemo> {
         appBar: new AppBar(
           title: new Text('InheritedWidget'),
         ),
-//        body: Counter(
-//          count: _count,
-//          increaseCount: _incerseCount,
-//        ),
+
         body: Counter(),
         floatingActionButton: FloatingActionButton(onPressed: _incerseCount),
       ),
