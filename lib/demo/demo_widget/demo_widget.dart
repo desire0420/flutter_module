@@ -162,7 +162,7 @@ class WidgetDemo extends StatelessWidget {
               ],
             ),
 
-//Column 的用法示范
+//--------
             Column(
               children: <Widget>[
                 Container(
