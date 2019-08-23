@@ -69,6 +69,7 @@ flutter:
   - images/pic7.jpg
   - images/pic8.png
   - images/lifecycle.png
+ # - images/2x/lifecycle.png
 
   # To add Flutter specific assets to your application, add an assets section, 
   # like this:

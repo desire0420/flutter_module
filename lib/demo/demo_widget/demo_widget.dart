@@ -134,6 +134,58 @@ class WidgetDemo extends StatelessWidget {
                   child: Text("Stack 提供了层叠布局的容器 "), // 叠加在黄色容器之上的文本
                 )
               ],
+            ),
+
+            //Row 的用法示范
+            Row(
+              children: <Widget>[
+                Container(
+                  color: Colors.yellow,
+                  width: 60,
+                  height: 80,
+                ),
+                Container(
+                  color: Colors.red,
+                  width: 100,
+                  height: 180,
+                ),
+                Container(
+                  color: Colors.black,
+                  width: 60,
+                  height: 80,
+                ),
+                Container(
+                  color: Colors.green,
+                  width: 60,
+                  height: 80,
+                ),
+              ],
+            ),
+
+//Column 的用法示范
+            Column(
+              children: <Widget>[
+                Container(
+                  color: Colors.yellow,
+                  width: 60,
+                  height: 80,
+                ),
+                Container(
+                  color: Colors.red,
+                  width: 100,
+                  height: 180,
+                ),
+                Container(
+                  color: Colors.black,
+                  width: 60,
+                  height: 80,
+                ),
+                Container(
+                  color: Colors.green,
+                  width: 60,
+                  height: 80,
+                ),
+              ],
             )
           ],
         ),
