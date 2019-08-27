@@ -114,7 +114,7 @@ class CountModel extends Model {
 
   void increment() {
     _count++;
-    _mesage = "我是子布局2-->我变了${_count}";
+    _mesage = "我是子布局2-->数字变了${_count}";
     notifyListeners();
   }
 
