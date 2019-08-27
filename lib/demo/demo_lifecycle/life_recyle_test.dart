@@ -46,7 +46,7 @@ class NewsDetailState extends State<LiferecyleTest> {
 
   @override
   void didUpdateWidget(LiferecyleTest oldWidget) {
-    print('life-------组件状态改变时候调-用：didUpdateWidget');
+    print('life---------组件状态改变时候调-用：didUpdateWidget');
     super.didUpdateWidget(oldWidget);
   }
 

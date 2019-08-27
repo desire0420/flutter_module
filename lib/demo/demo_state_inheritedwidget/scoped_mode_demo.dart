@@ -95,3 +95,31 @@ class ChildTwoState extends State<ChildTwo> {
     );
   }
 }
+
+
+
+
+/**自定义的CountModel继承至Model。
+ * 在状态发生变化时（increment）
+ * 通知所有用到了该model的子项更新状态。
+ * (notifyListeners)
+ * */
+class CountModel extends Model {
+  int _count = 0;
+  var _mesage = "我是子布局2,点击布局1里面的button 改变数据源  布局2会跟这刷新";
+
+  get count => _count;
+
+  get mesage => _mesage;
+
+  void increment() {
+    _count++;
+    _mesage = "我是子布局2-->我变了${_count}";
+    notifyListeners();
+  }
+
+  //第二种获取model的方式——使用ScopedModel.of
+  //重写of方法,rebuildOnChange属性默认为false，所以会导致无法刷新（同步）状态的情况发生，需要手动指定rebuildOnChange：true。
+  CountModel of(context) => ScopedModel.of<CountModel>(context);
+}
+

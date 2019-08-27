@@ -13,6 +13,7 @@ class childTwo extends StatefulWidget {
 }
 
 class childTwoState extends State<childTwo> {
+
   void transA() {
     widget.callBack('$inputText');
   }

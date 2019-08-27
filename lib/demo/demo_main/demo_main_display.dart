@@ -23,6 +23,7 @@ import 'package:flutter_module/demo/demo_listview_drawer/image_list.dart';
 import 'package:flutter_module/demo/demo_route/route_demo.dart';
 import 'package:flutter_module/demo/demo_route/two_route_demo.dart';
 import 'package:flutter_module/demo/demo_shared_preferences/shared_preferences_demo.dart';
+import 'package:flutter_module/demo/demo_single_thread/demo_single_thread.dart';
 import 'package:flutter_module/demo/demo_sliver/sliver_demo.dart';
 import 'package:flutter_module/demo/demo_state_inheritedwidget/inheritedwidget_demo.dart';
 import 'package:flutter_module/demo/demo_state_inheritedwidget/scoped_mode_demo.dart';
@@ -56,6 +57,11 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
       ),
       body: ListView(
         children: <Widget>[
+          ListItem(title: '单线程模型', page: SingleThreadDemo()),
+          ListItem(title: 'InheritedWidget 父传子', page: InheritedWidgetDemo()),
+          ListItem(title: 'Notification 子widget通知上級', page: ParentWidgetPage()),
+          ListItem(title: 'EventBus', page: ParentWidget()),
+
           ListItem(title: '生命周期', page: LiferecyleTest()),
           ListItem(title: 'Widget', page: WidgetDemo()),
           ListItem(title: 'RouteDemo', page: RouteDemo()),
@@ -65,9 +71,8 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
               page: MyCounterPage(
                 title: '计数器',
               )),
-          ListItem(title: 'InheritedWidget 父传子', page: InheritedWidgetDemo()),
-          ListItem(title: 'Notification 子widget通知上級', page: ParentWidgetPage()),
-          ListItem(title: 'EventBus', page: ParentWidget()),
+          ListItem(title: '轻量级状态管理ScopedModel', page: ScopedModelDemo()),
+
 
 /*--------------------------------------*/
 
@@ -77,7 +82,6 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
             title: "ListView--drawer滑菜单-",
             page: ImageList(),
           ),
-          ListItem(title: '轻量级状态管理ScopedModel', page: ScopedModelDemo()),
           ListItem(title: 'scoped_model_weater', page: WeaterApp()),
           ListItem(title: 'Http', page: HttpRequestDemo()),
           ListItem(title: 'BoxDecorationDemo', page: BoxDecorationDemo()),

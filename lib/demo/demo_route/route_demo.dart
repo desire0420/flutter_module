@@ -37,7 +37,7 @@ class RouteDemo extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                   context,
-                  new CupertinoPageRoute(
+                  new MaterialPageRoute(
                       builder: (context) => LiferecyleTest()));
             },
             child: new Text('CupertinoPageRoute'),
@@ -65,10 +65,10 @@ class RouteDemo extends StatelessWidget {
           new RaisedButton(
             onPressed: () =>
                 Navigator.of(context).pushNamed('/twoRouter').then((value) {
-              print('_result' + _result);
               _result = value;
+              print('_result' + _result);
             }),
-            child: new Text('根路由实现-startActivityForResult'),
+            child: new Text('startActivityForResult And More Router'),
             textColor: Colors.black,
           ),
           new RaisedButton(
@@ -77,8 +77,8 @@ class RouteDemo extends StatelessWidget {
             textColor: Colors.black,
           ),
           new RaisedButton(
-            onPressed: () =>
-                Navigator.pushNamed(context, '/transmit_param', arguments: 'hello'),
+            onPressed: () => Navigator.pushNamed(context, '/transmit_param',
+                arguments: 'hello'),
             child: new Text('打开页面时传递字符串参数'),
             textColor: Colors.black,
           ),

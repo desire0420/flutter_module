@@ -25,17 +25,15 @@ class MyApp extends StatelessWidget {
         '/main': (context) => MainTab(),
         '/detail': (context) => MainDetailDemo(
             desc: '详情',
-            url:
-                'https://ws1.sinaimg.cn/large/0065oQSqly1fytdr77urlj30sg10najf.jpg'),
+            url: 'https://ws1.sinaimg.cn/large/0065oQSqly1fytdr77urlj30sg10najf.jpg'),
         '/twoRouter': (context) => TwoRouteDemo(),
         '/gridDisplay': (context) => GankGirlDemo(),
         '/transmit_param': (context) => TransmitParam(),
-
       },
       // 错误路由处理，统一返回 UnknownPage
       onUnknownRoute: (RouteSettings setting) =>
           MaterialPageRoute(builder: (context) => UnKnowRouter()),
-      home: widgetForRoute(window.defaultRouteName),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -43,7 +41,7 @@ class MyApp extends StatelessWidget {
 Widget widgetForRoute(String route) {
   switch (route) {
     case 'route1':
-      return MyHomePage(title: 'Flutter  Home Page1');
+      return MyHomePage(title: 'Flutter Demo Home Page');
     case 'route2':
       return MyHomePage(title: 'Flutter  Home Page2---');
     default:
