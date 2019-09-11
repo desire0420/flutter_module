@@ -5,6 +5,9 @@ import 'package:flutter_module/home_page.dart';
 import 'package:flutter_module/main_tab.dart';
 import 'package:flutter_module/project/gank_girl_display.dart';
 
+import 'demo/demo_lifecycle/life_recyle_test.dart';
+import 'demo/demo_lifecycle/life_recyle_three.dart';
+import 'demo/demo_lifecycle/life_recyle_two.dart';
 import 'demo/demo_route/transmit_param_demo.dart';
 import 'demo/demo_route/two_route_demo.dart';
 import 'demo/demo_route/unknow_router.dart';
@@ -22,6 +25,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       routes: {
+        '/screen1': (BuildContext context) => new LiferecyleTest(),
+        '/screen2': (BuildContext context) => new LiferecyleTwo(),
+        '/screen3': (BuildContext context) => new LiferecyleThree(),
         '/main': (context) => MainTab(),
         '/detail': (context) => MainDetailDemo(
             desc: '详情',

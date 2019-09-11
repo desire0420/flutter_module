@@ -57,7 +57,7 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
       ),
       body: ListView(
         children: <Widget>[
-          ListItem(title: '单线程模型', page: SingleThreadDemo()),
+          ListItem(title: '单线程模型-', page: SingleThreadDemo()),
           ListItem(title: 'InheritedWidget 父传子', page: InheritedWidgetDemo()),
           ListItem(title: 'Notification 子widget通知上級', page: ParentWidgetPage()),
           ListItem(title: 'EventBus', page: ParentWidget()),
