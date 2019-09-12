@@ -8,28 +8,6 @@ class CustomNotification extends Notification {
   final String msg;
 }
 
-// 抽离出一个子 Widget 用来发通知
-class CustomChild extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new Container(
-      color: UIHelp.color_E22F9C,
-      padding: EdgeInsets.all(20),
-      child: new Column(
-        children: <Widget>[
-          Text("我是子Widget"),
-          RaisedButton(
-            // 按钮点击时分发通知
-            onPressed: () =>
-                CustomNotification("我接受到子Widget发送过来的消息了").dispatch(context),
-            child: Text("点击我通知父Widget更新"),
-          )
-        ],
-      ),
-    );
-  }
-}
-
 class ParentWidgetPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -63,9 +41,31 @@ class _MyHomePageState extends State<ParentWidgetPage> {
             SizedBox(
               height: 20,
             ),
-            CustomChild()
-          ], // 将子 Widget 加入到视图树中
+            CustomChild() // 将子 Widget 加入到视图树中
+          ],
         )),
+      ),
+    );
+  }
+}
+
+// 抽离出一个子 Widget 用来发通知
+class CustomChild extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      color: UIHelp.color_E22F9C,
+      padding: EdgeInsets.all(20),
+      child: new Column(
+        children: <Widget>[
+          Text("我是子Widget"),
+          RaisedButton(
+            // 按钮点击时分发通知
+            onPressed: () =>
+                CustomNotification("我接受到子Widget发送过来的消息了").dispatch(context),
+            child: Text("点击我通知父Widget更新"),
+          )
+        ],
       ),
     );
   }

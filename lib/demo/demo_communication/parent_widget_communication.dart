@@ -57,10 +57,13 @@ class ParentState extends State<ParentWidget> {
                       SizedBox(
                         height: 10,
                       ),
+
+
                       new childOne(),
                       SizedBox(
                         height: 10,
                       ),
+
                       new childTwo(
                           dataTwo: dataTwo,
                           callBack: (value) => onChanged(value)),

@@ -7,6 +7,9 @@ import 'package:flutter_module/project/gank_girl_display.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 import 'demo/UserModel.dart';
+import 'demo/demo_lifecycle/life_recyle_test.dart';
+import 'demo/demo_lifecycle/life_recyle_three.dart';
+import 'demo/demo_lifecycle/life_recyle_two.dart';
 import 'demo/demo_route/transmit_param_demo.dart';
 import 'demo/demo_route/two_route_demo.dart';
 import 'demo/demo_route/unknow_router.dart';
@@ -38,6 +41,28 @@ class MyApp extends StatelessWidget {
             MaterialPageRoute(builder: (context) => UnKnowRouter()),
         home: widgetForRoute(window.defaultRouteName),
       ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      routes: {
+        '/screen1': (BuildContext context) => new LiferecyleTest(),
+        '/screen2': (BuildContext context) => new LiferecyleTwo(),
+        '/screen3': (BuildContext context) => new LiferecyleThree(),
+        '/main': (context) => MainTab(),
+        '/detail': (context) => MainDetailDemo(
+            desc: '详情',
+            url: 'https://ws1.sinaimg.cn/large/0065oQSqly1fytdr77urlj30sg10najf.jpg'),
+        '/twoRouter': (context) => TwoRouteDemo(),
+        '/gridDisplay': (context) => GankGirlDemo(),
+        '/transmit_param': (context) => TransmitParam(),
+      },
+      // 错误路由处理，统一返回 UnknownPage
+      onUnknownRoute: (RouteSettings setting) =>
+          MaterialPageRoute(builder: (context) => UnKnowRouter()),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -45,7 +70,7 @@ class MyApp extends StatelessWidget {
 Widget widgetForRoute(String route) {
   switch (route) {
     case 'route1':
-      return MyHomePage(title: 'Flutter  Home Page1');
+      return MyHomePage(title: 'Flutter Demo Home Page');
     case 'route2':
       return MyHomePage(title: 'Flutter  Home Page2---');
     default:
