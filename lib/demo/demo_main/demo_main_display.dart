@@ -32,9 +32,11 @@ import 'package:flutter_module/demo/demo_stream/stream_demo.dart';
 import 'package:flutter_module/demo/demo_tablayout/tab_layout.dart';
 import 'package:flutter_module/demo/demo_text/text_demo.dart';
 import 'package:flutter_module/demo/demo_viewpager/page_view_demo.dart';
+import 'package:flutter_module/demo/demo_viewpager/test_pageview.dart';
 import 'package:flutter_module/demo/demo_visible_gone/visible_gone_demo.dart';
 import 'package:flutter_module/demo/demo_widget/demo_widget.dart';
 
+import '../LoginPage.dart';
 import '../counter_demo.dart';
 
 class WidgetDemoPage extends StatefulWidget {
@@ -48,7 +50,7 @@ class WidgetDemoPage extends StatefulWidget {
 class WidgetDemoPageState extends State<WidgetDemoPage> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    print('-----------<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>');
     return new Scaffold(
       appBar: AppBar(
         title: Text('常用Widget'),
@@ -56,6 +58,7 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
       ),
       body: ListView(
         children: <Widget>[
+          ListItem(title: '全局状态管理', page: LoginPage()),
           ListItem(title: '生命周期', page: LiferecyleTest()),
           ListItem(title: 'Widget', page: WidgetDemo()),
           ListItem(title: 'RouteDemo', page: RouteDemo()),
@@ -85,20 +88,19 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: 'CardView', page: CardStudyDemo()),
           ListItem(title: 'CheckboxDemo', page: CheckboxDemo()),
           ListItem(title: 'ClipStudy', page: ClipStudyDemo()),
-          ListItem(
-              title: 'PaginatedDataTableDemo', page: PaginatedDataTableDemo()),
+          ListItem(title: 'PaginatedDataTableDemo', page: PaginatedDataTableDemo()),
           ListItem(title: 'DataTableDemo', page: DataTableDemo()),
           ListItem(title: 'DialogStudyDemo', page: DialogStudyDemo()),
           ListItem(title: 'DismissedPage', page: DismissedPage()),
           ListItem(title: 'GesturePageDemo', page: GesturePageDemo()),
-          ListItem(
-              title: 'Switcher-GlobalKey-Widget', page: SwitcherWidgetChange()),
+          ListItem(title: 'Switcher-GlobalKey-Widget', page: SwitcherWidgetChange()),
           ListItem(title: 'GridDemo', page: GridDemo()),
           ListItem(title: 'InputDemo', page: InputDemo()),
           ListItem(title: 'SliverDemo', page: SliverDemo()),
           ListItem(title: 'StepStudyDemo', page: StepStudyDemo()),
           ListItem(title: 'TextDemoTest', page: TextDemoTest()),
           ListItem(title: 'PageViewDemo', page: PageViewDemo()),
+          ListItem(title: 'PageViewDemo1', page: TestPageView()),
           ListItem(title: 'VisibleAndGone', page: VisibleAndGone()),
           ListItem(title: 'TabLayoutDemo', page: TabLayoutDemo()),
           ListItem(title: 'SharedPreferences', page: SharedPreferencesDemo()),
@@ -127,15 +129,13 @@ class ListItem extends StatelessWidget {
       child: new Column(
         children: <Widget>[
           new ListTile(
-            contentPadding: EdgeInsets.symmetric(horizontal: 10.0),
-            //设置内容边距，默认是 16，但我们在这里设置为 0
+            contentPadding: EdgeInsets.symmetric(horizontal: 10.0), //设置内容边距，默认是 16，但我们在这里设置为 0
             trailing: Icon(Icons.keyboard_arrow_right),
             title: new Text(title),
             onTap: () {
               print("---点击了");
 
-              Navigator.push(
-                  context, new CupertinoPageRoute(builder: (context) => page));
+              Navigator.push(context, new CupertinoPageRoute(builder: (context) => page));
             },
           ),
           new Divider(

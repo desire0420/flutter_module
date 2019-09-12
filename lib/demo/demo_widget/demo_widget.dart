@@ -27,7 +27,7 @@ class WidgetDemo extends StatelessWidget {
               ),
             ),
 
-            //Row 的用法示范
+            //Row 的用法示范0
             new Padding(
               padding: EdgeInsets.all(20),
               child: Text('Row横向布局'),

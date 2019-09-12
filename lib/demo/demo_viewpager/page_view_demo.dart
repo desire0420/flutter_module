@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_module/common/ui_help.dart';
 import 'package:flutter_module/model/post.dart';
 
 //滑动列表   类似于ViewPager效果
@@ -6,31 +7,34 @@ class PageViewDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return new PageViewBuilderDemo();
+    return Container(
+        color: UIHelp.color_FFFFFF, child: new PageViewBuilderDemo());
   }
 }
 
 class PageViewBuilderDemo extends StatelessWidget {
   Widget _pageItemBuilder(BuildContext context, int index) {
-    return Stack(
-      children: <Widget>[
-        SizedBox.expand(
-          child: Image.network(posts[index].imageUrl, fit: BoxFit.cover),
-        ),
-        //在Stack  里面布局方式
-        Positioned(
-          bottom: 8.0,
-          left: 8.0,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(posts[index].title,
-                  style: TextStyle(fontWeight: FontWeight.bold)),
-              Text(posts[index].author),
-            ],
+    return Container(
+      child: Stack(
+        children: <Widget>[
+          SizedBox.expand(
+            child: Image.network(posts[index].imageUrl, fit: BoxFit.cover),
           ),
-        ),
-      ],
+          //在Stack  里面布局方式
+          Positioned(
+            bottom: 8.0,
+            left: 8.0,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(posts[index].title,
+                    style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(posts[index].author),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -43,6 +47,7 @@ class PageViewBuilderDemo extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       //pageView每次滑动一半以上就会翻页 一半以下就会弹回来 如果不想这么做设置为false
       pageSnapping: true,
+      controller: PageController(viewportFraction: 0.8),
       itemBuilder: _pageItemBuilder,
     );
   }

@@ -49,7 +49,7 @@ class ParentState extends State<ParentWidget> {
                                 style: TextStyle(fontSize: 15),
                               ),
                               Text(
-                                '子组件2，传过来的值' + '$data',
+                                '子组件2，传过来的值:' + '$data',
                                 style: TextStyle(fontSize: 15),
                               ),
                             ],

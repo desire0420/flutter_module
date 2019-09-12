@@ -47,10 +47,6 @@ class childTwoState extends State<childTwo> {
               style: TextStyle(fontSize: 15),
             ),
           ),
-          new Text(
-            '子组件2传过来的值',
-            style: TextStyle(fontSize: 15),
-          ),
           new TextField(
             controller: controller,
             decoration: (new InputDecoration(labelText: '请输入你要发送的值')),
