@@ -4,6 +4,19 @@ enum Action { Ok, Cancel }
 
 enum Option { A, B, C }
 
+const mostCare = {
+  '160': '年龄',
+  '161': '学历',
+  '162': '收入',
+  '163': '身高',
+  '164': '地域',
+  '165': '婚姻',
+  '166': '颜值',
+  '167': '性格',
+  '185': '身材',
+  '186': '工作地',
+};
+
 class DialogStudyDemo extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -24,8 +37,6 @@ class DialogStudyState extends State<DialogStudyDemo> {
       ]),
     );
   }
-
-
 
   String _choice = 'Nothing';
 
@@ -121,8 +132,7 @@ class DialogStudyState extends State<DialogStudyDemo> {
   final _bottomSheetScaffoldKey = GlobalKey<ScaffoldState>();
 
   _openBottomSheet() {
-    _bottomSheetScaffoldKey.currentState
-        .showBottomSheet((BuildContext context) {
+    _bottomSheetScaffoldKey.currentState.showBottomSheet((BuildContext context) {
       return BottomAppBar(
         child: Container(
           height: 90.0,
@@ -149,6 +159,10 @@ class DialogStudyState extends State<DialogStudyDemo> {
   }
 
   Future _openModalBottomSheet() async {
+    mostCare.forEach((k, v) {
+      print(k + "==" + v.toString()); //类型不一样的时候就toString()
+    });
+
     final option = await showModalBottomSheet(
         context: context,
         builder: (BuildContext context) {
@@ -228,24 +242,20 @@ class DialogStudyState extends State<DialogStudyDemo> {
               new Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        FlatButton(
-                          child: Text('Open BottomSheet'),
-                          onPressed: _openBottomSheet,
-                        ),
-                        FlatButton(
-                          child: Text('Modal BottomSheet'),
-                          onPressed: _openModalBottomSheet,
-                        ),
-                      ]),
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+                    FlatButton(
+                      child: Text('Open BottomSheet'),
+                      onPressed: _openBottomSheet,
+                    ),
+                    FlatButton(
+                      child: Text('Modal BottomSheet'),
+                      onPressed: _openModalBottomSheet,
+                    ),
+                  ]),
                 ],
               ),
               //Toast
-              new Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[SnackBarButton()]),
+              new Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[SnackBarButton()]),
             ],
           )),
       floatingActionButton: FloatingActionButton(

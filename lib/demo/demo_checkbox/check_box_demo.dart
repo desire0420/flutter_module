@@ -1,7 +1,10 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
+import 'checkBoxDemo.dart';
 
 class CheckboxDemo extends StatefulWidget {
   @override
@@ -105,6 +108,9 @@ class CheckBoxLearn extends State<CheckboxDemo> {
         child: new SingleChildScrollView(
           child: new Column(
             children: <Widget>[
+              new RaisedButton(onPressed: (){
+                Navigator.push(context, new CupertinoPageRoute(builder: (context) => new CheckBoxPage()));
+              },child: Text('CheckBox1'),),
               //折叠布局，点击展开  收起
               new ExpansionPanelList(
                   expansionCallback: (int panelIndex, bool isExpanded) {
@@ -287,6 +293,7 @@ class CheckBoxLearn extends State<CheckboxDemo> {
               SizedBox(
                 height: 20,
               ),
+
 
             ],
           ),

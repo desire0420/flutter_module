@@ -38,6 +38,7 @@ import 'package:flutter_module/demo/demo_widget/demo_widget.dart';
 
 import '../LoginPage.dart';
 import '../counter_demo.dart';
+import '../map_list_user.dart';
 
 class WidgetDemoPage extends StatefulWidget {
   @override
@@ -71,6 +72,7 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: 'InheritedWidget 父传子', page: InheritedWidgetDemo()),
           ListItem(title: 'Notification 子widget通知上級', page: ParentWidgetPage()),
           ListItem(title: 'EventBus', page: ParentWidget()),
+          ListItem(title: 'MapListDemo', page: MapListDemo()),
 
 /*--------------------------------------*/
 
