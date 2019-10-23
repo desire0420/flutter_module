@@ -15,7 +15,7 @@ import 'demo/demo_route/unknow_router.dart';
 import 'demo/main_detail_demo.dart';
 
 void main() {
-  debugPaintSizeEnabled = true;
+  //debugPaintSizeEnabled = true;
   runApp(new MyApp());
 }
 
