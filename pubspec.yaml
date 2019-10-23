@@ -45,7 +45,7 @@ dependencies:
   meta: ^1.1.6
   equatable: ^0.1.0
   image_picker: 0.6.1
-  flutter_swiper: ^1.0.6    
+  flutter_swiper: ^1.0.6
 
 
 
@@ -62,18 +62,18 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-  - images/pic1.jpg
-  - images/pic2.jpg
-  - images/pic3.jpg
-  - images/pic4.jpg
-  - images/pic5.jpg
-  - images/pic6.jpg
-  - images/pic7.jpg
-  - images/pic8.png
-  - images/lifecycle.png
- # - images/2x/lifecycle.png
+    - images/pic1.jpg
+    - images/pic2.jpg
+    - images/pic3.jpg
+    - images/pic4.jpg
+    - images/pic5.jpg
+    - images/pic6.jpg
+    - images/pic7.jpg
+    - images/pic8.png
+    - images/lifecycle.png
+  # - images/2x/lifecycle.png
 
-  # To add Flutter specific assets to your application, add an assets section, 
+  # To add Flutter specific assets to your application, add an assets section,
   # like this:
   # assets:
   #  - images/a_dot_burr.jpeg
