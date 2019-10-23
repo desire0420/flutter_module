@@ -15,7 +15,7 @@ import 'demo/demo_route/unknow_router.dart';
 import 'demo/main_detail_demo.dart';
 
 void main() {
-  //debugPaintSizeEnabled = true;
+  debugPaintSizeEnabled = true;
   runApp(new MyApp());
 }
 
@@ -53,6 +53,6 @@ Widget widgetForRoute(String route) {
     case 'route2':
       return MyHomePage(title: 'Flutter  Home Page2---');
     default:
-      return MyHomePage(title: 'Flutter  Home Page2--defeat');
+      return MainTab();
   }
 }

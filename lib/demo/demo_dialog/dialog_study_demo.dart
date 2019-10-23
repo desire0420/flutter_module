@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'dialog_test.dart';
+
 enum Action { Ok, Cancel }
 
 enum Option { A, B, C }
@@ -198,6 +200,8 @@ class DialogStudyState extends State<DialogStudyDemo> {
 
   @override
   Widget build(BuildContext context) {
+    var d = '11';
+    print('======${d.runtimeType}');
     return new Scaffold(
       key: _bottomSheetScaffoldKey,
       appBar: AppBar(
@@ -205,59 +209,45 @@ class DialogStudyState extends State<DialogStudyDemo> {
         centerTitle: true,
       ),
       body: Container(
-          padding: EdgeInsets.all(16.0),
-          child: new Column(
+        padding: EdgeInsets.all(16.0),
+        child: Column(mainAxisAlignment: MainAxisAlignment.start, children: <Widget>[
+          new Row(
+            mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              //两个btn 弹框
-              new Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  Text('Your choice is: $_choice'),
-                  SizedBox(
-                    height: 16.0,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      RaisedButton(
-                        child: Text('Open AlertDialog'),
-                        onPressed: openAlertDialog,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              //列表弹框
-              new Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  // Text('Your choice is: $_choice'),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[],
-                  ),
-                ],
-              ),
-              //底部弹框
-              new Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-                    FlatButton(
-                      child: Text('Open BottomSheet'),
-                      onPressed: _openBottomSheet,
-                    ),
-                    FlatButton(
-                      child: Text('Modal BottomSheet'),
-                      onPressed: _openModalBottomSheet,
-                    ),
-                  ]),
-                ],
-              ),
-              //Toast
-              new Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[SnackBarButton()]),
+              Text('Your choice 1'),
+              Text('Your choice 2'),
+              Text('Your choice 3'),
             ],
-          )),
+          ),
+          SizedBox(
+            height: 36.0,
+          ),
+          Text('Your choice is: $_choice'),
+          RaisedButton(
+            child: Text('Open AlertDialog'),
+            onPressed: openAlertDialog,
+          ),
+          FlatButton(
+            child: Text('Open BottomSheet'),
+            onPressed: _openBottomSheet,
+          ),
+          FlatButton(
+            child: Text('Modal BottomSheet'),
+            onPressed: _openModalBottomSheet,
+          ),
+          FlatButton(
+            child: Text('DialogTest'),
+            onPressed: () {
+              //跳转到下一页
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DialogTest()),
+              );
+            },
+          ),
+          SnackBarButton()
+        ]),
+      ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.format_list_numbered),
         onPressed: _openSimpleDialog,

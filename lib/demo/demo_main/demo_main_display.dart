@@ -29,6 +29,7 @@ import 'package:flutter_module/demo/demo_state_inheritedwidget/scoped_mode_demo.
 import 'package:flutter_module/demo/demo_state_inheritedwidget/weater/test_weater_app.dart';
 import 'package:flutter_module/demo/demo_step/step_demo.dart';
 import 'package:flutter_module/demo/demo_stream/stream_demo.dart';
+import 'package:flutter_module/demo/demo_swiper/SwiperPage.dart';
 import 'package:flutter_module/demo/demo_tablayout/tab_layout.dart';
 import 'package:flutter_module/demo/demo_text/text_demo.dart';
 import 'package:flutter_module/demo/demo_viewpager/page_view_demo.dart';
@@ -73,6 +74,10 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: 'Notification 子widget通知上級', page: ParentWidgetPage()),
           ListItem(title: 'EventBus', page: ParentWidget()),
           ListItem(title: 'MapListDemo', page: MapListDemo()),
+          ListItem(title: '轮播图', page: SwiperPage()),
+
+
+
 
 /*--------------------------------------*/
 
