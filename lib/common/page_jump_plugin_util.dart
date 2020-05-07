@@ -8,7 +8,7 @@ class PageJumpPluginUtil {
   static Future<void> flutterContentFinish() async {
     try {
       print('--------fun1--------->>');
-      await _channel_name.invokeMethod('open');
+      await _channel_name.invokeMethod('flutterToNative');
       print('--------fun2--------->>');
     } catch (exception) {}
   }

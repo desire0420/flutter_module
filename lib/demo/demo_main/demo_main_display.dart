@@ -21,6 +21,7 @@ import 'package:flutter_module/demo/demo_input/login_register_from_demo.dart';
 import 'package:flutter_module/demo/demo_lifecycle/life_recyle_test.dart';
 import 'package:flutter_module/demo/demo_listview_drawer/drawer_demo.dart';
 import 'package:flutter_module/demo/demo_listview_drawer/image_list.dart';
+import 'package:flutter_module/demo/demo_nativeview/SampleView.dart';
 import 'package:flutter_module/demo/demo_route/route_demo.dart';
 import 'package:flutter_module/demo/demo_route/two_route_demo.dart';
 import 'package:flutter_module/demo/demo_shared_preferences/shared_preferences_demo.dart';
@@ -62,6 +63,8 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
       ),
       body: ListView(
         children: <Widget>[
+          ListItem(title: '使用原生的View', page: SampleView()),
+
           ListItem(title: '单线程', page: SingleThreadDemo()),
           ListItem(title: '动画', page: WaterView()),
 

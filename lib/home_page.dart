@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'common/page_jump_plugin_util.dart';
-
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
@@ -19,7 +17,7 @@ class MyHomePage extends StatefulWidget {
 
 class MyHomePageState extends State<MyHomePage> {
   int counter = 0;
-  StreamSubscription fromAndroiSub;
+
   var nativeParams;
 
   //MethodChannel 使用场景：Flutter端向Native端发送通知
@@ -27,6 +25,37 @@ class MyHomePageState extends State<MyHomePage> {
 
 //EventChannel使用场景：Native端向Flutter端发送通知
   static const fromAndroiPlugin = const EventChannel('com.demo.app.toflutter/plugin');
+  StreamSubscription fromAndroiSub;
+
+  static const _channel = BasicMessageChannel('flutter_and_native_100', StringCodec());
+
+  //跳转原生
+  void exampleMethodChannel() async {
+    Map<String, String> map = {"flutter": "这是一条来自flutter的参数"};
+    String result = await toAndroidPlugin.invokeMethod('flutterToNative', map);
+    print('--------result--------->>${result}');
+  }
+
+  void initBasicMessageChannel() {
+    // Receive messages from platform
+    _channel.setMessageHandler((String message) async {
+      print('---->Received message = $message');
+      return '---->我收到了延迟3秒发送过来的信息';
+    });
+  }
+
+  void exampleBasicMessageChannel() async {
+    final String reply = await _channel.send('Hello World form Dart');
+    print('---->$reply');
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    print('---创建执行的第一个方法-----init state');
+    startEventChannel(); //监听原生数据的变化
+    initBasicMessageChannel();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +67,18 @@ class MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
             child: new RaisedButton(
                 textColor: Colors.black,
-                child: new Text('跳转到原生界面--'),
+                child: new Text('--MethodChannel- 用于传递方法调用-'),
                 onPressed: () {
-                  PageJumpPluginUtil.flutterContentFinish();
-
+                  exampleMethodChannel();
+                }),
+          ),
+          new Padding(
+            padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
+            child: new RaisedButton(
+                textColor: Colors.black,
+                child: new Text('--BasicMessageChannel 主要是传递字符串json等数据和一些半结构体的数据，需要指定编码方式--'),
+                onPressed: () {
+                  exampleBasicMessageChannel();
                 }),
           ),
           new Padding(
@@ -55,20 +92,11 @@ class MyHomePageState extends State<MyHomePage> {
                 child: new Text('Flutter App'),
                 onPressed: () {
                   Navigator.pushNamed(context, '/main');
-//                  Navigator.of(context)
-//                      .push(MaterialPageRoute(builder: (context) => TabMain()));
                 }),
           ),
         ],
       )),
     );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    print('---创建执行的第一个方法-----init state');
-    startfromAndroiPlugin(); //开启监听
   }
 
   @override
@@ -82,35 +110,18 @@ class MyHomePageState extends State<MyHomePage> {
   }
 
   //加载来自原生的参数， Flutter接收原生发送的参数
-  void startfromAndroiPlugin() {
+  void startEventChannel() {
     if (fromAndroiSub == null) {
-      fromAndroiSub = fromAndroiPlugin
-          .receiveBroadcastStream()
-          .listen(onfromAndroidEvent, onError: onfromAndroidError);
+      fromAndroiSub = fromAndroiPlugin.receiveBroadcastStream().listen((dynamic event) {
+        print('---------onfromAndroiEvent----- ${event}');
+        setState(() {
+          nativeParams = event;
+        });
+      }, onError: (Object error) {
+        setState(() {
+          nativeParams = "error";
+        });
+      }, cancelOnError: true);
     }
-  }
-
-  //加载来自原生的参数成功
-  void onfromAndroidEvent(Object event) {
-    print('---------onfromAndroiEvent----- ${event}');
-    setState(() {
-      nativeParams = event;
-    });
-  }
-
-  //加载来自原生的参数失败
-  void onfromAndroidError(Object error) {
-    print('-----------onfromAndroiError-----init state${error}');
-    setState(() {
-      nativeParams = "error";
-    });
-  }
-
-  //跳转原生
- jumpToNative() async {
-    /* Map<String, String> map = {"flutter": "这是一条来自flutter的参数"};
-    String result = await toAndroidPlugin.invokeMethod('flutterToNative', map);
-    print('--------result--------->>${result}');*/
-
   }
 }
