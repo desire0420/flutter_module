@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_module/demo/anims/anim_study.dart';
 import 'package:flutter_module/demo/demo_bloc/test/count_bloc_demo.dart';
 import 'package:flutter_module/demo/demo_box_decoration/box_decoration_demo.dart';
 import 'package:flutter_module/demo/demo_button/button_demo.dart';
@@ -23,6 +24,7 @@ import 'package:flutter_module/demo/demo_listview_drawer/image_list.dart';
 import 'package:flutter_module/demo/demo_route/route_demo.dart';
 import 'package:flutter_module/demo/demo_route/two_route_demo.dart';
 import 'package:flutter_module/demo/demo_shared_preferences/shared_preferences_demo.dart';
+import 'package:flutter_module/demo/demo_single_thread/demo_single_thread.dart';
 import 'package:flutter_module/demo/demo_sliver/sliver_demo.dart';
 import 'package:flutter_module/demo/demo_state_inheritedwidget/inheritedwidget_demo.dart';
 import 'package:flutter_module/demo/demo_state_inheritedwidget/scoped_mode_demo.dart';
@@ -60,6 +62,9 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
       ),
       body: ListView(
         children: <Widget>[
+          ListItem(title: '单线程', page: SingleThreadDemo()),
+          ListItem(title: '动画', page: WaterView()),
+
           ListItem(title: '全局状态管理', page: LoginPage()),
           ListItem(title: '生命周期', page: LiferecyleTest()),
           ListItem(title: 'Widget', page: WidgetDemo()),

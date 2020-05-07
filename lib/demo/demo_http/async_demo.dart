@@ -2,16 +2,21 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_module/common/app_bar_title.dart';
 import 'package:flutter_module/common/progreess_dialog.dart';
+import 'package:flutter_module/demo/demo_http/upload_image_bean.dart';
 
 /**参考https://segmentfault.com/a/1190000015620822
  * https://blog.csdn.net/yuzhiqiang_1993/article/details/89155870
  * */
 class AsyncDemo extends StatelessWidget {
   // 模拟异步任务  等待3秒  返回用户信息
-  Future _getUserInfo() async {
+  Future<UploadImageBean> _getUserInfo() async {
     await new Future.delayed(new Duration(milliseconds: 3000));
+    UploadImageBean bean = new UploadImageBean();
+    bean.imgUrl = "123";
+    bean.width = 1232;
+    bean.height = 1239;
     print('-----awt---');
-    return "我是用户";
+    return bean;
   }
 
   @override
@@ -34,12 +39,12 @@ class AsyncDemo extends StatelessWidget {
               '\nFutureBuilder 实际上就是对Future进行封装的一个Widget。'),
           new FutureBuilder(
             //future接收Future<T>类型的值，实际上就是我们的异步函数，通常情况下都是网络请求函数
-            future: getData(),
-            builder: (BuildContext context, AsyncSnapshot<Response> snapshot) {
+            future: _getUserInfo(),
+            builder: (BuildContext context, AsyncSnapshot<UploadImageBean> snapshot) {
               /*表示数据成功返回*/
               if (snapshot.hasData) {
-                Response response = snapshot.data;
-                return Text("${response.data.toString()}");
+                String response = snapshot.data.imgUrl;
+                return Text("${response}");
               } else {
                 return getProgressDialog();
               }
@@ -68,9 +73,8 @@ Future<Response> getData() async {
   String key = "4c52313fc9247e5b4176aed5ddd56ad7";
   String type = "keji";
   print("---开始请求数据");
-  Response response =
-      await Dio().get(url, queryParameters: {"type": type, "key": key});
-  print("---请求完成${response}");
+  Response response = await Dio().get(url, queryParameters: {"type": type, "key": key});
+  print("---请求完成}");
   return response;
 }
 

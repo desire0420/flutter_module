@@ -42,13 +42,13 @@ class DialogStudyState extends State<MapListDemo> {
         });
   }
 
-
   //map
   bianliMap() {
     modalBottomSheetMenu(context);
     mostCare.forEach((k, v) {
       // print(k + "==" + v.toString()); //类型不一样的时候就toString()
     });
+    topTitles.forEach((item) => {print(item)});
 
     mostCare.keys.forEach((f) {
       // print(f); //打印所有的key

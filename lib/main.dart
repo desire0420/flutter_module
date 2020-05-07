@@ -33,14 +33,15 @@ class MyApp extends StatelessWidget {
         '/screen2': (BuildContext context) => new LiferecyleTwo(),
         '/screen3': (BuildContext context) => new LiferecyleThree(),
         '/main': (context) => MainTab(),
-        '/detail': (context) =>
-            MainDetailDemo(desc: '详情', url: 'https://ws1.sinaimg.cn/large/0065oQSqly1fytdr77urlj30sg10najf.jpg'),
+        '/detail': (context) => MainDetailDemo(
+            desc: '详情', url: 'https://ws1.sinaimg.cn/large/0065oQSqly1fytdr77urlj30sg10najf.jpg'),
         '/twoRouter': (context) => TwoRouteDemo(),
         '/gridDisplay': (context) => GankGirlDemo(),
         '/transmit_param': (context) => TransmitParam(),
       },
       // 错误路由处理，统一返回 UnknownPage
-      onUnknownRoute: (RouteSettings setting) => MaterialPageRoute(builder: (context) => UnKnowRouter()),
+      onUnknownRoute: (RouteSettings setting) =>
+          MaterialPageRoute(builder: (context) => UnKnowRouter()),
       home: widgetForRoute(window.defaultRouteName),
     );
   }

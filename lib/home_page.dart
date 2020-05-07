@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'common/page_jump_plugin_util.dart';
+
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
@@ -21,12 +23,10 @@ class MyHomePageState extends State<MyHomePage> {
   var nativeParams;
 
   //MethodChannel 使用场景：Flutter端向Native端发送通知
-  static const toAndroidPlugin =
-      const MethodChannel('com.demo.app.toandroid/plugin');
+  static const toAndroidPlugin = const MethodChannel('com.demo.app.toandroid/plugin');
 
 //EventChannel使用场景：Native端向Flutter端发送通知
-  static const fromAndroiPlugin =
-      const EventChannel('com.demo.app.toflutter/plugin');
+  static const fromAndroiPlugin = const EventChannel('com.demo.app.toflutter/plugin');
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,8 @@ class MyHomePageState extends State<MyHomePage> {
                 textColor: Colors.black,
                 child: new Text('跳转到原生界面--'),
                 onPressed: () {
-                  jumpToNative();
+                  PageJumpPluginUtil.flutterContentFinish();
+
                 }),
           ),
           new Padding(
@@ -69,7 +70,6 @@ class MyHomePageState extends State<MyHomePage> {
     print('---创建执行的第一个方法-----init state');
     startfromAndroiPlugin(); //开启监听
   }
-
 
   @override
   void dispose() {
@@ -107,9 +107,10 @@ class MyHomePageState extends State<MyHomePage> {
   }
 
   //跳转原生
-  Future<Null> jumpToNative() async {
-    Map<String, String> map = {"flutter": "这是一条来自flutter的参数"};
+ jumpToNative() async {
+    /* Map<String, String> map = {"flutter": "这是一条来自flutter的参数"};
     String result = await toAndroidPlugin.invokeMethod('flutterToNative', map);
-    print('--------result--------->>${result}');
+    print('--------result--------->>${result}');*/
+
   }
 }

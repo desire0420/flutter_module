@@ -11,6 +11,7 @@ class RouteDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
+
       appBar: TitleBar('Route-路由'),
       body: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -7,7 +7,6 @@ import 'package:flutter_module/common/app_bar_title.dart';
 class SingleThreadDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     testFuture() {
       // 声明一个匿名 Future异步任务
       Future(() => print('------f1'));
@@ -32,23 +31,28 @@ class SingleThreadDemo extends StatelessWidget {
       return 'Hello Flutter';
     }
 
+    /**在Dart中，有await标记的运算，其结果值都是一个Future对象，
+     * 对于异步函数返回的 Future 对象，如果调用者决定同步等待， 则需要在调用处使用 await 关键字，
+     * 并且在调用处的函数体使用 async 关键字。
+     * Dart 中的 await 并不是阻塞等待，而是异步等待，Dart 会将调用体的函数也视作异步函数，
+     * 将等待语句的上下文放入 Event Queue 中，一旦有了结果，Event Loop 就会把它从 Event Queue 中取出，等待代码继续执行。
+     */
     testAwaitAndAsync() async {
       String data = await fetchContent();
       print('-----${data}-----');
+      print('----------');
     }
 
-
-
-
 // 异步函数会同步等待 Hello 2019 的返回，并打印
-    func() async => print('-----${await fetchContent()}');
+    func() async {
+      print('-----${await fetchContent()}');
+    }
 
     testAwaitAndAsyncTwoSample() {
       print("-----func before");
       func();
       print("-----func after");
     }
-
 
     return Scaffold(
         appBar: TitleBar('SingleThreadDemo'),

@@ -18,7 +18,7 @@ description: A new flutter module project.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+  sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -44,7 +44,6 @@ dependencies:
   flutter_bloc: ^0.20.1
   meta: ^1.1.6
   equatable: ^0.1.0
-  image_picker: 0.6.1
   flutter_swiper: ^1.0.6
 
 
@@ -70,6 +69,8 @@ flutter:
     - images/pic6.jpg
     - images/pic7.jpg
     - images/pic8.png
+    - images/qipao1.png
+    - images/qipao2.png
     - images/lifecycle.png
   # - images/2x/lifecycle.png
 

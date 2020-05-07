@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_module/common/app_bar_title.dart';
@@ -10,8 +12,7 @@ class LiferecyleTest extends StatefulWidget {
   State<StatefulWidget> createState() => NewsDetailState();
 }
 
-class NewsDetailState extends State<LiferecyleTest>
-    with WidgetsBindingObserver {
+class NewsDetailState extends State<LiferecyleTest> with WidgetsBindingObserver {
   var text = 'setState';
 
   NewsDetailState() {
@@ -39,10 +40,7 @@ class NewsDetailState extends State<LiferecyleTest>
           new RaisedButton(
               child: Text(text),
               onPressed: () {
-                Navigator.push(
-                    context,
-                    new CupertinoPageRoute(
-                        builder: (context) => LiferecyleTwo())).then((value) {
+                Navigator.push(context, new CupertinoPageRoute(builder: (context) => LiferecyleTwo())).then((value) {
                   print('tag<<<<<<>>>>>>>one' + value);
                 });
               }),
@@ -55,6 +53,21 @@ class NewsDetailState extends State<LiferecyleTest>
     print('life--one--widget创建执行的第一个方法-----init state');
     super.initState();
     WidgetsBinding.instance.addObserver(this); //添加观察者
+
+    runZoned(() {
+      //同步抛出异常
+      throw StateError('This is a Dart exception.');
+    }, onError: (dynamic e, StackTrace stack) {
+      print('Sync error caught by zone-------${e}');
+      print('Sync error caught by zone=====${stack}');
+    });
+
+    runZoned(() {
+      //异步抛出异常
+      Future.delayed(Duration(seconds: 1)).then((e) => throw StateError('This is a Dart exception in Future.'));
+    }, onError: (dynamic e, StackTrace stack) {
+      print('Async error aught by zone${stack}');
+    });
   }
 
   @override
@@ -71,8 +84,7 @@ class NewsDetailState extends State<LiferecyleTest>
 
   @override
   void reassemble() {
-    print(
-        'life----one---reassemble---此回调是专门为了开发调试而提供的，在热重载(hot reload)时会被调用，此回调在Release模式下永远不会被调用。');
+    print('life----one---reassemble---此回调是专门为了开发调试而提供的，在热重载(hot reload)时会被调用，此回调在Release模式下永远不会被调用。');
     super.reassemble();
   }
 
