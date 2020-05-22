@@ -55,10 +55,9 @@ class WidgetDemoPage extends StatefulWidget {
 class WidgetDemoPageState extends State<WidgetDemoPage> {
   @override
   Widget build(BuildContext context) {
-    print('-----------<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>');
     return new Scaffold(
       appBar: AppBar(
-        title: Text('常用Widget'),
+        title: Text('常用-Widget'),
         centerTitle: true,
       ),
       body: ListView(

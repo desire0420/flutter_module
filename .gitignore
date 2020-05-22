@@ -1,9 +1,10 @@
 .DS_Store
 .dart_tool/
-
+*.iml
 .packages
 .pub/
-
+.gradle
+.gradle/
 .idea/
 .vagrant/
 .sconsign.dblite
@@ -39,4 +40,6 @@ build/
 .android/
 .ios/
 .flutter-plugins
+.flutter-plugins-dependencies
 pubspec.lock
+.packages
