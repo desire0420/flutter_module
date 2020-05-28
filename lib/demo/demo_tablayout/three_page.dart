@@ -40,7 +40,9 @@ class TextFieldState extends State<TextFieldDemo> {
             decoration: DecorationStyle.searchInputDecoration("搜索附近位置"),
           ),
           new TextField(
-            onChanged: (value) {},
+            onChanged: (value) {
+
+            },
             maxLength: 2000,
             maxLines: 7,
             textInputAction: TextInputAction.done,
