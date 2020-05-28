@@ -15,7 +15,7 @@ import 'demo/demo_route/unknow_router.dart';
 import 'demo/main_detail_demo.dart';
 
 void main() {
-  //debugPaintSizeEnabled = true;
+  // debugPaintSizeEnabled=true;//布局边界
   runApp(new MyApp());
 }
 
@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+    // debugShowCheckedModeBanner: false,
+      //Debug标记
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
