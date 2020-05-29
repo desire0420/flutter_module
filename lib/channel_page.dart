@@ -5,8 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_module/Fwidget/fl_toast.dart';
 import 'package:flutter_module/plugin/MethodChannelManager.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class ChannelPage extends StatefulWidget {
+  ChannelPage({Key key, this.title}) : super(key: key);
 
   final String title;
 
@@ -17,7 +17,7 @@ class MyHomePage extends StatefulWidget {
   }
 }
 
-class MyHomePageState extends State<MyHomePage> {
+class MyHomePageState extends State<ChannelPage> {
   int counter = 0;
 
   var nativeParams;
