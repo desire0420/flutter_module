@@ -26,11 +26,7 @@ Flutter 个人学习记录链接，欢迎各位Star提出意见
 
 [Flutter之常用布局组件](https://www.jianshu.com/p/5a01cbc7bee3)
 
-项目部分页面图片展示如下，有兴趣可自定clone下载学习
-
-<img src="https://github.com/wang709693972wei/NativeFlutterApp/blob/master/lib/demo/imageshow/image_show1.png" width="200">        <img src="https://github.com/wang709693972wei/NativeFlutterApp/blob/master/lib/demo/imageshow/image_show2.png" width="200">        <img src="https://github.com/wang709693972wei/NativeFlutterApp/blob/master/lib/demo/imageshow/image_show3.png" width="200">        <img src="https://github.com/wang709693972wei/NativeFlutterApp/blob/master/lib/demo/imageshow/image_show4.png" width="200">        <img src="https://github.com/wang709693972wei/NativeFlutterApp/blob/master/lib/demo/imageshow/image_show5.png" width="200">        <img src="https://github.com/wang709693972wei/NativeFlutterApp/blob/master/lib/demo/imageshow/image_show6.png" width="200">        <img src="https://github.com/wang709693972wei/NativeFlutterApp/blob/master/lib/demo/imageshow/image_show7.png" width="200">        <img src="https://github.com/wang709693972wei/NativeFlutterApp/blob/master/lib/demo/imageshow/image_show8.png" width="200">        <img src="https://github.com/wang709693972wei/NativeFlutterApp/blob/master/lib/demo/imageshow/image_show9.png" width="200">        <img src="https://github.com/wang709693972wei/NativeFlutterApp/blob/master/lib/demo/imageshow/image_show10.png" width="200">
-
-
+有兴趣可自定clone下载学习
 
 
 
