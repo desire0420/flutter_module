@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_module/home_page.dart';
 import 'package:flutter_module/main_tab.dart';
 import 'package:flutter_module/project/gank_girl_display.dart';
@@ -23,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-    // debugShowCheckedModeBanner: false,
+      // debugShowCheckedModeBanner: false,
       //Debug标记
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -49,9 +48,12 @@ class MyApp extends StatelessWidget {
 }
 
 Widget widgetForRoute(String route) {
+  print('----route--$route');
   switch (route) {
-    case 'MyHomePage':
+    case '/MyHomePage':
       return MyHomePage(title: 'Flutter  Home Page1');
+    case '/screen1':
+      return LiferecyleTest();
     default:
       return MainTab();
   }

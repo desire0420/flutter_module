@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_module/Fwidget/fl_toast.dart';
+import 'package:flutter_module/plugin/MethodChannelManager.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -21,32 +23,22 @@ class MyHomePageState extends State<MyHomePage> {
   var nativeParams;
 
   //MethodChannel 使用场景：Flutter端向Native端发送通知
-  static const toAndroidPlugin = const MethodChannel('com.demo.app.toandroid/plugin');
-
 //EventChannel使用场景：Native端向Flutter端发送通知
-  static const fromAndroiPlugin = const EventChannel('com.demo.app.toflutter/plugin');
+
   StreamSubscription fromAndroiSub;
-
   static const _channel = BasicMessageChannel('flutter_and_native_100', StringCodec());
-
-  //跳转原生
-  void exampleMethodChannel() async {
-    Map<String, String> map = {"flutter": "这是一条来自flutter的参数"};
-    String result = await toAndroidPlugin.invokeMethod('flutterToNative', map);
-    print('--------result--------->>${result}');
-  }
 
   void initBasicMessageChannel() {
     // Receive messages from platform
     _channel.setMessageHandler((String message) async {
-      print('---->Received message = $message');
-      return '---->我收到了延迟3秒发送过来的信息';
+      print('---->flutter接受到Android主动发送的信息 $message');
+      return 'A';
     });
   }
 
   void exampleBasicMessageChannel() async {
     final String reply = await _channel.send('Hello World form Dart');
-    print('---->$reply');
+    print('---->flutter接受到Android回复的信息$reply');
   }
 
   @override
@@ -69,7 +61,9 @@ class MyHomePageState extends State<MyHomePage> {
                 textColor: Colors.black,
                 child: new Text('--MethodChannel- 用于传递方法调用-'),
                 onPressed: () {
-                  exampleMethodChannel();
+                  MethodChannelManager.getInstance().sendMessage().then((data) {
+                    FLToast.show("native回传的数据$data", context);
+                  });
                 }),
           ),
           new Padding(
@@ -112,8 +106,9 @@ class MyHomePageState extends State<MyHomePage> {
   //加载来自原生的参数， Flutter接收原生发送的参数
   void startEventChannel() {
     if (fromAndroiSub == null) {
-      fromAndroiSub = fromAndroiPlugin.receiveBroadcastStream().listen((dynamic event) {
-        print('---------onfromAndroiEvent----- ${event}');
+      fromAndroiSub =
+          EventChannel('flutter_event_channel').receiveBroadcastStream().listen((dynamic event) {
+        // print('---------EventChannel----- ${event}');
         setState(() {
           nativeParams = event;
         });
