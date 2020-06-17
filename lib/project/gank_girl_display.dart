@@ -43,8 +43,7 @@ class GankGirlState extends State<GankGirl> implements FLView {
   int curPageNum = 1;
 
   bool isRefresh = true;
-  ScrollController scrollController =
-      new ScrollController(); // ListView 添加 ScrollController做滑动监听
+  ScrollController scrollController = new ScrollController(); // ListView 添加 ScrollController做滑动监听
 
   @override
   void initState() {
@@ -61,8 +60,7 @@ class GankGirlState extends State<GankGirl> implements FLView {
 
   void _scrollListener() {
     //判断当前滑动位置是不是到达底部，触发加载更多回调
-    if (scrollController.position.pixels ==
-        scrollController.position.maxScrollExtent) {
+    if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
       print('----------loadData----');
       loadData();
     }
@@ -89,12 +87,18 @@ class GankGirlState extends State<GankGirl> implements FLView {
   }
 
   Widget buildItemCard(BuildContext context, int index) {
-    final String item = datas[index].url;
+    String item;
+    if (index % 2 == 0) {
+      item = "https://resources.ninghao.org/images/undo.jpg";
+    } else {
+      item = "https://resources.ninghao.org/images/white-dragon.jpg";
+    }
+
+    print(item);
     return new GestureDetector(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) =>
-                MainDetailDemo(desc: datas[index].desc, url: item)));
+            builder: (context) => MainDetailDemo(desc: datas[index].desc, url: item)));
       },
       child: new Column(
         crossAxisAlignment: CrossAxisAlignment.center,
