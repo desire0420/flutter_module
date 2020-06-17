@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/demo/demo_tablayout/one_page.dart';
+import 'package:flutter_module/demo/demo_button/button_demo.dart';
+import 'package:flutter_module/demo/demo_tablayout/local_image_page.dart';
 import 'package:flutter_module/demo/demo_tablayout/three_page.dart';
-import 'package:flutter_module/demo/demo_tablayout/two_page.dart';
+import 'package:flutter_module/demo/demo_tablayout/image_page.dart';
 import 'package:flutter_module/demo/demo_text/text_demo.dart';
+import 'package:flutter_module/demo/demo_widget/widget_example.dart';
 
-const List<String> tabs = ['网络加载', '本地加载', "TextField输入", "Text"];
+const List<String> tabs = ["Widget",'网络加载', '本地加载', "TextField输入", "Text","Button"];
 
 class TabLayoutDemo extends StatelessWidget {
   @override
@@ -66,10 +68,12 @@ class TabLayoutPageState extends State<TabLayoutPage> with SingleTickerProviderS
           ),
       ),
       body: new TabBarView(controller: _tabController, children: [
-        OnePage(),
-        TwoPage(),
+        WidgetExamplePage(),
+        LocalImagePage(),
+        ImagePage(),
         TextFieldDemo(),
         TextDemoTest(),
+        ButtonStudyDemo(),
       ]),
     );
   }

@@ -63,14 +63,11 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
       ),
       body: ListView(
         children: <Widget>[
-          ListItem(title: '课程视图Widget', page: WidgetExamplePage()),
-          ListItem(title: 'Button', page: ButtonStudyDemo()),
           ListItem(title: '计数器', page: MyCounterPage()),
-          ListItem(title: 'TabLayout+Image', page: TabLayoutDemo()),
-
+          ListItem(title: 'TabLayout', page: TabLayoutDemo()),
+          ListItem(title: '动画', page: WaterView()),
           ListItem(title: '使用原生的View', page: SampleView()),
           ListItem(title: '单线程', page: SingleThreadDemo()),
-          ListItem(title: '动画', page: WaterView()),
           ListItem(title: '全局状态管理', page: LoginPage()),
           ListItem(title: '生命周期', page: LiferecyleTest()),
           ListItem(title: 'RouteDemo', page: RouteDemo()),

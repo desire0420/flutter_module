@@ -11,7 +11,7 @@ const int loadGifImg = 1;
 const int loadImgWithCache = 2;
 const int loadImgWithFade = 3;
 
-class OnePage extends StatelessWidget {
+class LocalImagePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

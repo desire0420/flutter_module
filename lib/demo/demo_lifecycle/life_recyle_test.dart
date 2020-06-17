@@ -6,6 +6,15 @@ import 'package:flutter_module/common/app_bar_title.dart';
 
 import 'life_recyle_two.dart';
 
+extension ExtendsFun on String {
+  int parseInt() {
+    return int.parse(this);
+  }  double parseDouble() {
+    return double.parse(this);
+  }
+}
+
+
 //生命周期测试
 class LiferecyleTest extends StatefulWidget {
   @override
@@ -15,8 +24,12 @@ class LiferecyleTest extends StatefulWidget {
 class NewsDetailState extends State<LiferecyleTest> with WidgetsBindingObserver {
   var text = 'setState';
 
+
   NewsDetailState() {
+    int i = '42'.parseInt();
+    print(i);
     print('life---one----构造函数');
+
   }
 
   ///生命周期变化时回调

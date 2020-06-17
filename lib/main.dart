@@ -54,6 +54,8 @@ Widget widgetForRoute(String route) {
       return ChannelPage(title: 'Flutter  Home Page1');
     case '/screen1':
       return LiferecyleTest();
+    case '/fragment':
+      return LiferecyleTest();
     default:
       return MainTab();
   }

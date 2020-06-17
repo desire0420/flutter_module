@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 
-class TwoPage extends StatelessWidget {
+class ImagePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String imageUrl = "https://resources.ninghao.org/images/candy-shop.jpg";

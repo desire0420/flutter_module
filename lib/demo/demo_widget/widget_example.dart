@@ -18,7 +18,7 @@ class WidgetExamplePageState extends State<WidgetExamplePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: TitleBar('WidgetExample'),
+     // appBar: TitleBar('WidgetExample'),
       body: SingleChildScrollView(
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.center,
