@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_module/mvp/fl_presenter.dart';
 import 'package:flutter_module/mvp/repository/fl_repository.dart';
 import 'package:flutter_module/mvp/repository/fl_repository_impl.dart';
@@ -15,6 +17,7 @@ class FLPresenterImpl implements FLPresenter {
   void loadFLData(int pageNum, int pageSize) {
     assert(view != null);
     repository.fetch(pageNum, pageSize).then((data) {
+
       view.onloadFLSucces(data);
     }).catchError((error) {
       print(error);

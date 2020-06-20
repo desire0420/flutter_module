@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
 const String imgNormalUrl =
-    'https://ww1.sinaimg.cn/large/0065oQSqly1fs02a9b0nvj30sg10vk4z.jpg';
+    'https://resources.ninghao.org/images/undo.jpg';
 
 const String imgGifUrl =
-    'http://s1.dwstatic.com/group1/M00/B3/31/6b640ceb4277d3993abb7422d61dd288.gif';
+    'http://5b0988e595225.cdn.sohucs.com/images/20171114/ec6bbe932f204917bea84b58d2c3b174.gif';
 
 const int loadNormalImg = 0;
 const int loadGifImg = 1;
 const int loadImgWithCache = 2;
 const int loadImgWithFade = 3;
 
-class OnePage extends StatelessWidget {
+class LocalImagePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

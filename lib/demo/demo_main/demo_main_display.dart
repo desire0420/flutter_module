@@ -38,7 +38,7 @@ import 'package:flutter_module/demo/demo_text/text_demo.dart';
 import 'package:flutter_module/demo/demo_viewpager/page_view_demo.dart';
 import 'package:flutter_module/demo/demo_viewpager/test_pageview.dart';
 import 'package:flutter_module/demo/demo_visible_gone/visible_gone_demo.dart';
-import 'package:flutter_module/demo/demo_widget/demo_widget.dart';
+import 'package:flutter_module/demo/demo_widget/widget_example.dart';
 
 import '../LoginPage.dart';
 import '../counter_demo.dart';
@@ -62,29 +62,20 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
       ),
       body: ListView(
         children: <Widget>[
-          ListItem(title: '使用原生的View', page: SampleView()),
-
-          ListItem(title: '单线程', page: SingleThreadDemo()),
+          ListItem(title: '计数器', page: MyCounterPage()),
+          ListItem(title: 'TabLayout', page: TabLayoutDemo()),
           ListItem(title: '动画', page: WaterView()),
-
+          ListItem(title: '使用原生的View', page: SampleView()),
+          ListItem(title: '单线程', page: SingleThreadDemo()),
           ListItem(title: '全局状态管理', page: LoginPage()),
           ListItem(title: '生命周期', page: LiferecyleTest()),
-          ListItem(title: 'Widget', page: WidgetDemo()),
           ListItem(title: 'RouteDemo', page: RouteDemo()),
           ListItem(title: 'TwoRouteDemo', page: TwoRouteDemo()),
-          ListItem(
-              title: '计数器',
-              page: MyCounterPage(
-                title: '计数器',
-              )),
           ListItem(title: 'InheritedWidget 父传子', page: InheritedWidgetDemo()),
           ListItem(title: 'Notification 子widget通知上級', page: ParentWidgetPage()),
           ListItem(title: 'EventBus', page: ParentWidget()),
           ListItem(title: 'MapListDemo', page: MapListDemo()),
           ListItem(title: '轮播图', page: SwiperPage()),
-
-
-
 
 /*--------------------------------------*/
 
@@ -98,7 +89,6 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: 'scoped_model_weater', page: WeaterApp()),
           ListItem(title: 'Http', page: HttpRequestDemo()),
           ListItem(title: 'BoxDecorationDemo', page: BoxDecorationDemo()),
-          ListItem(title: 'Button', page: ButtonStudyDemo()),
           ListItem(title: 'CardView', page: CardStudyDemo()),
           ListItem(title: 'CheckboxDemo', page: CheckboxDemo()),
           ListItem(title: 'ClipStudy', page: ClipStudyDemo()),
@@ -112,11 +102,10 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: 'InputDemo', page: InputDemo()),
           ListItem(title: 'SliverDemo', page: SliverDemo()),
           ListItem(title: 'StepStudyDemo', page: StepStudyDemo()),
-          ListItem(title: 'TextDemoTest', page: TextDemoTest()),
+
           ListItem(title: 'PageViewDemo', page: PageViewDemo()),
           ListItem(title: 'PageViewDemo1', page: TestPageView()),
           ListItem(title: 'VisibleAndGone', page: VisibleAndGone()),
-          ListItem(title: 'TabLayoutDemo', page: TabLayoutDemo()),
           ListItem(title: 'SharedPreferences', page: SharedPreferencesDemo()),
         ],
       ),

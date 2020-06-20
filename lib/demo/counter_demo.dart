@@ -9,7 +9,7 @@ class MyCounterPage extends StatefulWidget {
 }
 
 class _MyCounterPageState extends State<MyCounterPage> {
-  int _counter = 0;
+  int _counter = 11;
 
   void _incrementCounter() => setState(() {
         _counter++;
@@ -18,11 +18,11 @@ class _MyCounterPageState extends State<MyCounterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text(widget.title)),
+        appBar: AppBar(title: Text("计数器")),
         body: new Center(
           child: Text('You have pushed the button this many times:$_counter'),
         ),
         floatingActionButton:
-            FloatingActionButton(onPressed: _incrementCounter));
+            FloatingActionButton(child: const Icon(Icons.add), onPressed: _incrementCounter));
   }
 }

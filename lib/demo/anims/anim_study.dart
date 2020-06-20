@@ -1,6 +1,7 @@
 import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_module/common/ui_help.dart';
 
 /*
 // 使用CustomAnimatedWidget
@@ -88,22 +89,27 @@ class _WaterViewState extends State<WaterView> with SingleTickerProviderStateMix
   }
 
   Widget build(BuildContext context) {
-    return new ScaleTransition(
-      //设置动画的缩放中心
-      alignment: Alignment.center,
-      //动画控制器
-      scale: animation,
-      //将要执行动画的子view
-      child: new Stack(
-        alignment: AlignmentDirectional.center,
-        children: <Widget>[
-          Image.asset(
-            "images/qipao1.png",
-            height: 75,
-            width: 75,
-          ),
-          Text('2g', style: TextStyle(color: Color(0xFF3E69A3), fontWeight: FontWeight.bold)),
-        ],
+    return Container(
+      width: double.infinity,
+      height: double.infinity,
+      color: Color(0xFFFFFFFF),
+      child: new ScaleTransition(
+        //设置动画的缩放中心
+        alignment: Alignment.center,
+        //动画控制器
+        scale: animation,
+        //将要执行动画的子view
+        child: new Stack(
+          alignment: AlignmentDirectional.center,
+          children: <Widget>[
+            Image.asset(
+              "images/qipao1.png",
+              height: 75,
+              width: 75,
+            ),
+            Text('2g', style: TextStyle(color: Color(0xFF3E69A3), fontWeight: FontWeight.bold)),
+          ],
+        ),
       ),
     );
   }

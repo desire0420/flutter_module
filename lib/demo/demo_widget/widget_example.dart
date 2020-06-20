@@ -1,35 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_module/common/app_bar_title.dart';
+import 'package:flutter_module/common/decoration_style.dart';
 
-class WidgetDemo extends StatelessWidget {
+class WidgetExamplePage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return WidgetExamplePageState();
+  }
+}
+
+class WidgetExamplePageState extends State<WidgetExamplePage> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return new Scaffold(
-      appBar: TitleBar('Widget'),
+     // appBar: TitleBar('WidgetExample'),
       body: SingleChildScrollView(
         child: new Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            Text('-------Container-----Text----------'),
             Container(
-              child: Text('Container（容器）在 UI 框架中是一个很常见的概念，Flutter 也不例外。'),
-              padding: EdgeInsets.all(18.0),
-              // 内边距
-              margin: EdgeInsets.all(44.0),
-              // 外边距
-              width: 180.0,
+              child: Text('Container在 UI 框架中是一个很常见的概念',
+                  style: TextStyle(
+                      color: Color(0xFFE22F9C), fontSize: 12, fontWeight: FontWeight.bold)),
+              padding: EdgeInsets.all(8.0),
+              margin: EdgeInsets.all(8.0),
               height: 140,
-              alignment: Alignment.center,
-              // 子 Widget 居中对齐
-              decoration: BoxDecoration(
-                //Container 样式
-                color: Colors.red, // 背景色
-                borderRadius: BorderRadius.circular(10.0), // 圆角边框
-              ),
+              alignment: Alignment.topLeft,
+              decoration: DecorationStyle.shapeBorderBg(),
             ),
 
-            //Row 的用法示范0
             new Padding(
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.only(left: 10, top: 10, bottom: 10),
               child: Text('Row横向布局'),
             ),
             Row(
@@ -64,9 +71,7 @@ class WidgetDemo extends StatelessWidget {
             ),
             Row(
               children: <Widget>[
-                Expanded(
-                    flex: 1,
-                    child: Container(color: Colors.yellow, height: 60)),
+                Expanded(flex: 1, child: Container(color: Colors.yellow, height: 60)),
                 // 设置了 flex=1，因此宽度由 Expanded 来分配
                 Container(
                   color: Colors.red,
@@ -123,10 +128,7 @@ class WidgetDemo extends StatelessWidget {
                 Positioned(
                   left: 18.0,
                   top: 18.0,
-                  child: Container(
-                      color: Colors.green,
-                      width: 50,
-                      height: 50), // 叠加在黄色容器之上的绿色控件
+                  child: Container(color: Colors.green, width: 50, height: 50), // 叠加在黄色容器之上的绿色控件
                 ),
                 Positioned(
                   left: 18.0,
