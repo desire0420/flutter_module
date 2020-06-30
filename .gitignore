@@ -41,3 +41,4 @@ build/
 .flutter-plugins
 .flutter-plugins_dependencies
 pubspec.lock
+/.flutter-plugins-dependencies
