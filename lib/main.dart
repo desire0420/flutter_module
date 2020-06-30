@@ -30,7 +30,8 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/screen1': (BuildContext context) => new LiferecyleTest(),
-        '/screen2': (BuildContext context) => new LiferecyleTwo(),
+        '/screen2':
+            (BuildContext context) => new LiferecyleTwo(),
         '/screen3': (BuildContext context) => new LiferecyleThree(),
         '/main': (context) => MainTab(),
         '/detail': (context) => MainDetailDemo(
