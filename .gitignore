@@ -39,4 +39,5 @@ build/
 .android/
 .ios/
 .flutter-plugins
+.flutter-plugins_dependencies
 pubspec.lock
