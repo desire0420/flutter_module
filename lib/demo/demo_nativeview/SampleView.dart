@@ -18,7 +18,6 @@ class DefaultState extends State<DefaultPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
         appBar: AppBar(title: Text("SampleView")),
         body: Center(
           child: Container(width: 200, height: 200, child: SampleView(controller: controller)),

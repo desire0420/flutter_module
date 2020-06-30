@@ -75,7 +75,7 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: 'MapListDemo', page: MapListDemo()),
           ListItem(title: '轮播图', page: SwiperPage()),
 
-/*--------------------------------------*/
+/*----------------------------------------------------------------------------*/
 
           ListItem(title: 'bloc', page: CountBlocDemo()),
           ListItem(title: 'StreamDemo', page: StreamDemo()),
