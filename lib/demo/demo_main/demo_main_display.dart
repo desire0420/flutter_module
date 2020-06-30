@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_module/demo/anims/anim_study.dart';
 import 'package:flutter_module/demo/demo_bloc/test/count_bloc_demo.dart';
 import 'package:flutter_module/demo/demo_box_decoration/box_decoration_demo.dart';
-import 'package:flutter_module/demo/demo_button/button_demo.dart';
 import 'package:flutter_module/demo/demo_card/card_demo.dart';
 import 'package:flutter_module/demo/demo_checkbox/check_box_demo.dart';
 import 'package:flutter_module/demo/demo_clip/clip_demo.dart';
@@ -34,11 +33,9 @@ import 'package:flutter_module/demo/demo_step/step_demo.dart';
 import 'package:flutter_module/demo/demo_stream/stream_demo.dart';
 import 'package:flutter_module/demo/demo_swiper/SwiperPage.dart';
 import 'package:flutter_module/demo/demo_tablayout/tab_layout.dart';
-import 'package:flutter_module/demo/demo_text/text_demo.dart';
 import 'package:flutter_module/demo/demo_viewpager/page_view_demo.dart';
 import 'package:flutter_module/demo/demo_viewpager/test_pageview.dart';
 import 'package:flutter_module/demo/demo_visible_gone/visible_gone_demo.dart';
-import 'package:flutter_module/demo/demo_widget/widget_example.dart';
 
 import '../LoginPage.dart';
 import '../counter_demo.dart';
@@ -66,7 +63,7 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: '计数器', page: MyCounterPage()),
           ListItem(title: 'TabLayout', page: TabLayoutDemo()),
           ListItem(title: '动画', page: WaterView()),
-          ListItem(title: '使用原生的View', page: SampleView()),
+          ListItem(title: '使用原生的View', page: DefaultPage()),
           ListItem(title: '单线程', page: SingleThreadDemo()),
           ListItem(title: '全局状态管理', page: LoginPage()),
           ListItem(title: '生命周期', page: LiferecyleTest()),
@@ -103,7 +100,6 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: 'InputDemo', page: InputDemo()),
           ListItem(title: 'SliverDemo', page: SliverDemo()),
           ListItem(title: 'StepStudyDemo', page: StepStudyDemo()),
-
           ListItem(title: 'PageViewDemo', page: PageViewDemo()),
           ListItem(title: 'PageViewDemo1', page: TestPageView()),
           ListItem(title: 'VisibleAndGone', page: VisibleAndGone()),

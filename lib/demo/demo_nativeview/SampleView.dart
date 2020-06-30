@@ -1,47 +1,66 @@
-import 'dart:isolate';
-
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-import 'Manager.dart';
+class DefaultPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => DefaultState();
+}
 
-class SampleView extends StatelessWidget {
+class DefaultState extends State<DefaultPage> {
+  NativeViewController controller;
+
+  @override
+  void initState() {
+    controller = NativeViewController();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    print("----->>>build");
-    doSth(msg) => print("-----"+msg);
+    return Scaffold(
 
-    Isolate.spawn(doSth, "Hi");
-    Manager manager=new Manager();
-    Manager manager2= Manager.instance;
+        appBar: AppBar(title: Text("SampleView")),
+        body: Center(
+          child: Container(width: 200, height: 200, child: SampleView(controller: controller)),
+        ),
+        floatingActionButton: FloatingActionButton(
+            child: Icon(Icons.cached),
+            onPressed: () => controller.changeBackgroundColor()));
+  }
+}
 
-    // Manager manager2 = Manager.instance;
+class SampleView extends StatefulWidget {
+  const SampleView({
+    Key key,
+    this.controller,
+  }) : super(key: key);
 
+  final NativeViewController controller;
 
+  @override
+  State<StatefulWidget> createState() => _SampleViewState();
+}
 
-    Isolate isolate;
-//并发Isolate往管道发送一个字符串
-    getMsg(sendPort) => sendPort.send("Hello");
-
-    start() async {
-      ReceivePort receivePort= ReceivePort();//创建管道
-      //创建并发Isolate，并传入发送管道
-      isolate = await Isolate.spawn(getMsg, receivePort.sendPort);
-      //监听管道消息
-      receivePort.listen((data) {
-        print('Data：$data');
-        receivePort.close();//关闭管道
-        isolate?.kill(priority: Isolate.immediate);//杀死并发Isolate
-        isolate = null;
-      });
-    }
-
-    return new Scaffold(
-      appBar: new AppBar(
-        title: InkWell(child: new Text('11111')),
-      ),
-      ////使用Android平台的AndroidView，传入唯一标识符sampleView
-      /*  body: defaultTargetPlatform == TargetPlatform.android ?
-        AndroidView(viewType: 'sampleView') : UiKitView(viewType: 'sampleView')*/
+class _SampleViewState extends State<SampleView> {
+  @override
+  Widget build(BuildContext context) {
+    return AndroidView(
+      viewType: 'SampleView',
+      onPlatformViewCreated: _onPlatformViewCreated,
     );
+  }
+
+  _onPlatformViewCreated(int id) => widget.controller?.onCreate(id);
+}
+
+class NativeViewController {
+  MethodChannel _channel;
+
+  onCreate(int id) {
+    _channel = MethodChannel('samples.wangwei/native_views_$id');
+  }
+
+  changeBackgroundColor() async {
+    _channel.invokeMethod('changeBackgroundColor');
   }
 }
