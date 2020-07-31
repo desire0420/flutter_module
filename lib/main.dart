@@ -6,12 +6,14 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_module/channel_page.dart';
 import 'package:flutter_module/main_tab.dart';
 import 'package:flutter_module/project/gank_girl_display.dart';
+import 'package:provider/provider.dart';
 
 import 'common/util/fps_calculate.dart';
 import 'common/util/pv_exception.dart';
 import 'demo/demo_lifecycle/life_recyle_test.dart';
 import 'demo/demo_lifecycle/life_recyle_three.dart';
 import 'demo/demo_lifecycle/life_recyle_two.dart';
+import 'demo/demo_provider/CounterMode.dart';
 import 'demo/demo_route/transmit_param_demo.dart';
 import 'demo/demo_route/two_route_demo.dart';
 import 'demo/demo_route/unknow_router.dart';
@@ -24,7 +26,10 @@ Future<Null> main() async {
   };
 
   runZoned<Future<Null>>(() async {
-    runApp(MyApp());
+    runApp(ChangeNotifierProvider<CounterMode>.value(
+      value: CounterMode(),
+      child: MyApp(),
+    ));
     //我们可以在 window 对象上注册 onReportTimings 方法， 计算帧率
     SchedulerBinding.instance.addTimingsCallback(onReportTimings);
   }, onError: (error, stackTrace) async {

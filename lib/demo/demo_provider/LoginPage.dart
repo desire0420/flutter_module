@@ -27,7 +27,7 @@ class LoginPage extends StatelessWidget {
                   highlightColor: Colors.blue[300],
                   onPressed: () {
                     num++;
-                    providerModel.increment("new name$num");
+                    providerModel.increment();
                   },
                 ),
                 SizedBox(height: 20),

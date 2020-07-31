@@ -22,6 +22,7 @@ import 'package:flutter_module/demo/demo_lifecycle/load_page_time_test.dart';
 import 'package:flutter_module/demo/demo_listview_drawer/drawer_demo.dart';
 import 'package:flutter_module/demo/demo_listview_drawer/image_list.dart';
 import 'package:flutter_module/demo/demo_nativeview/SampleView.dart';
+import 'package:flutter_module/demo/demo_provider/provider_page.dart';
 import 'package:flutter_module/demo/demo_route/route_demo.dart';
 import 'package:flutter_module/demo/demo_route/two_route_demo.dart';
 import 'package:flutter_module/demo/demo_shared_preferences/shared_preferences_demo.dart';
@@ -39,7 +40,6 @@ import 'package:flutter_module/demo/demo_viewpager/test_pageview.dart';
 import 'package:flutter_module/demo/demo_visible_gone/visible_gone_demo.dart';
 
 import '../../channel_page.dart';
-import '../LoginPage.dart';
 import '../counter_demo.dart';
 import '../map_list_user.dart';
 
@@ -66,7 +66,7 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: '动画', page: WaterView()),
           ListItem(title: '使用原生的View', page: DefaultPage()),
           ListItem(title: '单线程', page: SingleThreadDemo()),
-          ListItem(title: '状态管理', page: LoginPage()),
+          ListItem(title: '状态管理', page: ProviderHomePage()),
           ListItem(title: '生命周期', page: LifeRecyleTest()),
           ListItem(title: '页面加载时长', page: LoadPageTimeTest()),
           ListItem(title: 'RouteDemo', page: RouteDemo()),
@@ -136,9 +136,6 @@ class ListItem extends StatelessWidget {
             trailing: Icon(Icons.keyboard_arrow_right),
             title: new Text(title),
             onTap: () {
-              /*  print("---点击了");
-              String ss = null;
-              print(ss.length);*/
               //  Future.delayed(Duration(seconds: 1)).then((e) => throw StateError('This is a Dart exception in Future.'));
               Navigator.push(context, new CupertinoPageRoute(builder: (context) => page));
             },

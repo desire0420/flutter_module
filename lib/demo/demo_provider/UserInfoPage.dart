@@ -9,7 +9,6 @@ class UserInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // print("${Provider.of<UserModel>(context).user}");
-
     return Container(
       color: Colors.white,
       child: Center(
@@ -17,9 +16,8 @@ class UserInfoPage extends StatelessWidget {
           children: <Widget>[
             Consumer<UserModel>(
               builder: (context, UserModel model, child) {
-                print("build111");
                 return Text(
-                  'Username: ${model.user}',
+                  '----: ${model.count}---',
                 );
               },
             ),
@@ -34,7 +32,6 @@ class UserInfoPage extends StatelessWidget {
 class UserInfoPageTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    print("build222");
     return Container(
       color: Colors.white,
       child: Center(
