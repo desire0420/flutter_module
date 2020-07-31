@@ -32,10 +32,11 @@ class UserInfoPage extends StatelessWidget {
 class UserInfoPageTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return Container(
-      color: Colors.white,
+      color: Colors.transparent,
       child: Center(
-        child: Text("UserInfoPageTwo"),
+        child: Text("----------------"),
       ),
     );
   }

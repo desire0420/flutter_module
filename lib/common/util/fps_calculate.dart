@@ -10,7 +10,6 @@ final lastFrames = List<FrameTiming>();
 //基准VSync信号周期
 const frameInterval = const Duration(microseconds: Duration.microsecondsPerSecond ~/ 60);
 
-
 void onReportTimings(List<FrameTiming> timings) {
   lastFrames.addAll(timings);
   //仅保留25帧
@@ -31,7 +30,7 @@ double get fps {
     int duration = timing.timestampInMicroseconds(FramePhase.rasterFinish) -
         timing.timestampInMicroseconds(FramePhase.buildStart);
     //判断耗时是否在Vsync信号周期内
-   // print("frameInterval : ${frameInterval.inMicroseconds}");
+    // print("frameInterval : ${frameInterval.inMicroseconds}");
     if (duration < frameInterval.inMicroseconds) {
       sum += 1;
     } else {

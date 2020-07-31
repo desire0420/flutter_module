@@ -6,7 +6,7 @@ int exceptionCount = 0;
 
 Future<Null> reportError(dynamic error, dynamic stackTrace) async {
   exceptionCount++; //累加异常次数
-  print("异常次数 : $exceptionCount");
+//  print("异常次数 : $exceptionCount");
   // FlutterCrashPlugin.getInstance().postException(error, stackTrace);
 }
 
@@ -18,8 +18,8 @@ class MyObserver extends NavigatorObserver {
   void didPush(Route route, Route previousRoute) {
     super.didPush(route, previousRoute);
     totalPV++; //累加PV
-    print("totalPV : $totalPV");
-    print("异常率 : ${pageException()}");
+   // print("totalPV : $totalPV");
+   // print("异常率 : ${pageException()}");
   }
 }
 

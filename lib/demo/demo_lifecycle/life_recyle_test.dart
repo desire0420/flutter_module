@@ -66,22 +66,6 @@ class NewsDetailState extends State<LifeRecyleTest> with WidgetsBindingObserver 
     print('life--one--widget创建执行的第一个方法-----init state');
     super.initState();
     WidgetsBinding.instance.addObserver(this); //添加观察者
-
-    runZoned(() {
-      //同步抛出异常
-      throw StateError('This is a Dart exception.');
-    }, onError: (dynamic e, StackTrace stack) {
-      print('Sync error caught by zone-------${e}');
-      print('Sync error caught by zone=====${stack}');
-    });
-
-    runZoned(() {
-      //异步抛出异常
-      Future.delayed(Duration(seconds: 1))
-          .then((e) => throw StateError('This is a Dart exception in Future.'));
-    }, onError: (dynamic e, StackTrace stack) {
-      print('Async error aught by zone${stack}');
-    });
   }
 
   @override

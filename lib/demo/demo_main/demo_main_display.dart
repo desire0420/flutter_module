@@ -126,7 +126,6 @@ class ListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return new Container(
       margin: EdgeInsets.only(bottom: 1),
       child: new Column(

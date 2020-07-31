@@ -13,6 +13,7 @@ import 'common/util/pv_exception.dart';
 import 'demo/demo_lifecycle/life_recyle_test.dart';
 import 'demo/demo_lifecycle/life_recyle_three.dart';
 import 'demo/demo_lifecycle/life_recyle_two.dart';
+import 'demo/demo_provider/ATheme.dart';
 import 'demo/demo_provider/CounterMode.dart';
 import 'demo/demo_route/transmit_param_demo.dart';
 import 'demo/demo_route/two_route_demo.dart';
@@ -26,8 +27,15 @@ Future<Null> main() async {
   };
 
   runZoned<Future<Null>>(() async {
-    runApp(ChangeNotifierProvider<CounterMode>.value(
+    /*   runApp(ChangeNotifierProvider<CounterMode>.value(
       value: CounterMode(),
+      child: MyApp(),
+    ));*/
+    runApp(MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(value: new ATheme()),
+        ChangeNotifierProvider.value(value: new CounterMode()),
+      ],
       child: MyApp(),
     ));
     //我们可以在 window 对象上注册 onReportTimings 方法， 计算帧率
