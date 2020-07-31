@@ -36,6 +36,7 @@ dependencies:
   #fluttertoast: ^3.0.3
   event_bus: ^1.0.1
   scoped_model: ^1.0.0
+  provider: 3.0.0+1 #provider依赖
   bloc: ^0.14.4
   flutter_bloc: ^0.20.1
   meta: ^1.1.6

@@ -1,14 +1,15 @@
 //user_model.dart
-import 'package:scoped_model/scoped_model.dart';
+import 'package:flutter/foundation.dart';
 
-class UserModel extends Model {
-  String _user;
+class UserModel with ChangeNotifier {
+  String _user = "user";
+  String memberName;
+  String headImg = "1111";
 
   String get user => _user;
 
-  set user(value) => _user = value;
-
-  bool verify(String username) {
-    return username == 'Linker';
+  void increment(value) {
+    _user = value;
+    notifyListeners();
   }
 }
