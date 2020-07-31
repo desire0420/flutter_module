@@ -8,17 +8,37 @@ import 'UserModel.dart';
 class UserInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    print("${Provider.of<UserModel>(context).user}");
+    // print("${Provider.of<UserModel>(context).user}");
+
     return Container(
       color: Colors.white,
       child: Center(
-        child: Consumer<UserModel>(
-          builder: (context, UserModel model, child) {
-            return Text(
-              'Username: ${model.user}',
-            );
-          },
+        child: Column(
+          children: <Widget>[
+            Consumer<UserModel>(
+              builder: (context, UserModel model, child) {
+                print("build111");
+                return Text(
+                  'Username: ${model.user}',
+                );
+              },
+            ),
+            UserInfoPageTwo(),
+          ],
         ),
+      ),
+    );
+  }
+}
+
+class UserInfoPageTwo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    print("build222");
+    return Container(
+      color: Colors.white,
+      child: Center(
+        child: Text("UserInfoPageTwo"),
       ),
     );
   }
