@@ -39,7 +39,7 @@ import 'package:flutter_module/demo/demo_viewpager/page_view_demo.dart';
 import 'package:flutter_module/demo/demo_viewpager/test_pageview.dart';
 import 'package:flutter_module/demo/demo_visible_gone/visible_gone_demo.dart';
 
-import '../../channel_page.dart';
+import '../demo_channel/channel_page.dart';
 import '../counter_demo.dart';
 import '../map_list_user.dart';
 

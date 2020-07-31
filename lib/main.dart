@@ -3,7 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_module/channel_page.dart';
+import 'package:flutter_module/demo/demo_channel/channel_page.dart';
 import 'package:flutter_module/main_tab.dart';
 import 'package:flutter_module/project/gank_girl_display.dart';
 import 'package:provider/provider.dart';
