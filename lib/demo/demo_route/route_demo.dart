@@ -39,7 +39,7 @@ class RouteDemo extends StatelessWidget {
               Navigator.push(
                   context,
                   new MaterialPageRoute(
-                      builder: (context) => LiferecyleTest()));
+                      builder: (context) => LifeRecyleTest()));
             },
             child: new Text('CupertinoPageRoute'),
             textColor: Colors.black,
@@ -57,7 +57,7 @@ class RouteDemo extends StatelessWidget {
                         return new FadeTransition(
                             //使用渐隐渐入过渡,
                             opacity: animation,
-                            child: LiferecyleTest()); //路由B
+                            child: LifeRecyleTest()); //路由B
                       }));
             },
             child: new Text('PageRouteBuilder'),

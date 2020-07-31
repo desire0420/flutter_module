@@ -5,6 +5,7 @@ class MethodChannelManager {
 
   static MethodChannelManager _instance;
 
+
   MethodChannelManager._internal() {
     if (_methodChannel == null) {
       _methodChannel = new MethodChannel("base_flutter");

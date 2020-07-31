@@ -2,15 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_module/common/app_bar_title.dart';
 
-import 'life_recyle_three.dart';
-
 //生命周期测试
-class LiferecyleTwo extends StatefulWidget {
+class LifeRecyleTwo extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => NewsDetailState();
 }
 
-class NewsDetailState extends State<LiferecyleTwo> with WidgetsBindingObserver {
+class NewsDetailState extends State<LifeRecyleTwo> with WidgetsBindingObserver {
   var text = 'setState';
 
   NewsDetailState() {
@@ -38,8 +36,7 @@ class NewsDetailState extends State<LiferecyleTwo> with WidgetsBindingObserver {
           new RaisedButton(
               child: Text(text),
               onPressed: () {
-                Navigator.pushReplacementNamed(context, '/screen3')
-                    .then((value) {
+                Navigator.pushReplacementNamed(context, '/screen3').then((value) {
                   print('tag<<<<<<>>>>>>>two' + value);
                   Navigator.pop(context);
                 });
@@ -75,7 +72,7 @@ class NewsDetailState extends State<LiferecyleTwo> with WidgetsBindingObserver {
   }
 
   @override
-  void didUpdateWidget(LiferecyleTwo oldWidget) {
+  void didUpdateWidget(LifeRecyleTwo oldWidget) {
     print('life----two-----组件状态改变时候调-用：didUpdateWidget');
     super.didUpdateWidget(oldWidget);
   }

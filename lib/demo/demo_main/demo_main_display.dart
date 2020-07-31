@@ -18,6 +18,7 @@ import 'package:flutter_module/demo/demo_gridview/grid_demo.dart';
 import 'package:flutter_module/demo/demo_http/http_request_dio.dart';
 import 'package:flutter_module/demo/demo_input/login_register_from_demo.dart';
 import 'package:flutter_module/demo/demo_lifecycle/life_recyle_test.dart';
+import 'package:flutter_module/demo/demo_lifecycle/load_page_time_test.dart';
 import 'package:flutter_module/demo/demo_listview_drawer/drawer_demo.dart';
 import 'package:flutter_module/demo/demo_listview_drawer/image_list.dart';
 import 'package:flutter_module/demo/demo_nativeview/SampleView.dart';
@@ -37,6 +38,7 @@ import 'package:flutter_module/demo/demo_viewpager/page_view_demo.dart';
 import 'package:flutter_module/demo/demo_viewpager/test_pageview.dart';
 import 'package:flutter_module/demo/demo_visible_gone/visible_gone_demo.dart';
 
+import '../../channel_page.dart';
 import '../LoginPage.dart';
 import '../counter_demo.dart';
 import '../map_list_user.dart';
@@ -54,7 +56,7 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: AppBar(
-        title: Text('常用-Widget'),
+        title: Text('常用Widget'),
         centerTitle: true,
       ),
       body: ListView(
@@ -64,8 +66,9 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: '动画', page: WaterView()),
           ListItem(title: '使用原生的View', page: DefaultPage()),
           ListItem(title: '单线程', page: SingleThreadDemo()),
-          ListItem(title: '全局状态管理', page: LoginPage()),
-          ListItem(title: '生命周期', page: LiferecyleTest()),
+          ListItem(title: '状态管理', page: LoginPage()),
+          ListItem(title: '生命周期', page: LifeRecyleTest()),
+          ListItem(title: '页面加载时长', page: LoadPageTimeTest()),
           ListItem(title: 'RouteDemo', page: RouteDemo()),
           ListItem(title: 'TwoRouteDemo', page: TwoRouteDemo()),
           ListItem(title: 'InheritedWidget 父传子', page: InheritedWidgetDemo()),
@@ -73,6 +76,7 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: 'EventBus', page: ParentWidget()),
           ListItem(title: 'MapListDemo', page: MapListDemo()),
           ListItem(title: '轮播图', page: SwiperPage()),
+          ListItem(title: 'Channel', page: ChannelPage(title: 'Flutter  Home Page1')),
 
 /*----------------------------------------------------------------------------*/
 
@@ -132,8 +136,10 @@ class ListItem extends StatelessWidget {
             trailing: Icon(Icons.keyboard_arrow_right),
             title: new Text(title),
             onTap: () {
-              print("---点击了");
-
+              /*  print("---点击了");
+              String ss = null;
+              print(ss.length);*/
+              //  Future.delayed(Duration(seconds: 1)).then((e) => throw StateError('This is a Dart exception in Future.'));
               Navigator.push(context, new CupertinoPageRoute(builder: (context) => page));
             },
           ),

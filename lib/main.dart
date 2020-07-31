@@ -1,10 +1,14 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_module/channel_page.dart';
 import 'package:flutter_module/main_tab.dart';
 import 'package:flutter_module/project/gank_girl_display.dart';
 
+import 'common/util/fps_calculate.dart';
+import 'common/util/pv_exception.dart';
 import 'demo/demo_lifecycle/life_recyle_test.dart';
 import 'demo/demo_lifecycle/life_recyle_three.dart';
 import 'demo/demo_lifecycle/life_recyle_two.dart';
@@ -13,9 +17,23 @@ import 'demo/demo_route/two_route_demo.dart';
 import 'demo/demo_route/unknow_router.dart';
 import 'demo/main_detail_demo.dart';
 
-void main() {
-  // debugPaintSizeEnabled=true;//布局边界
-  runApp(new MyApp());
+Future<Null> main() async {
+  FlutterError.onError = (FlutterErrorDetails details) async {
+    //将异常转发至Zone
+    Zone.current.handleUncaughtError(details.exception, details.stack);
+  };
+
+  runZoned<Future<Null>>(() async {
+    runApp(MyApp());
+    //我们可以在 window 对象上注册 onReportTimings 方法， 计算帧率
+    SchedulerBinding.instance.addTimingsCallback(onReportTimings);
+  }, onError: (error, stackTrace) async {
+    //拦截异常
+    print('error--object----------------------\n${error.toString()}');
+    print('error--stackTrace----------------------\n${stackTrace.toString()}');
+    //统计PV
+    await reportError(error, stackTrace);
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -25,14 +43,16 @@ class MyApp extends StatelessWidget {
       // debugShowCheckedModeBanner: false,
       //Debug标记
       title: 'Flutter Demo',
+      navigatorObservers: [
+        MyObserver(),
+      ],
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       routes: {
-        '/screen1': (BuildContext context) => new LiferecyleTest(),
-        '/screen2':
-            (BuildContext context) => new LiferecyleTwo(),
-        '/screen3': (BuildContext context) => new LiferecyleThree(),
+        '/screen1': (BuildContext context) => new LifeRecyleTest(),
+        '/screen2': (BuildContext context) => new LifeRecyleTwo(),
+        '/screen3': (BuildContext context) => new LifeRecyleThree(),
         '/main': (context) => MainTab(),
         '/detail': (context) => MainDetailDemo(
             desc: '详情', url: 'https://ws1.sinaimg.cn/large/0065oQSqly1fytdr77urlj30sg10najf.jpg'),
@@ -54,9 +74,9 @@ Widget widgetForRoute(String route) {
     case '/MyHomePage':
       return ChannelPage(title: 'Flutter  Home Page1');
     case '/screen1':
-      return LiferecyleTest();
+      return LifeRecyleTest();
     case '/fragment':
-      return LiferecyleTest();
+      return LifeRecyleTest();
     default:
       return MainTab();
   }

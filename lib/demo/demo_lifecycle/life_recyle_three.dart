@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_module/common/app_bar_title.dart';
 
 //生命周期测试
-class LiferecyleThree extends StatefulWidget  {
+class LifeRecyleThree extends StatefulWidget  {
   @override
   State<StatefulWidget> createState() => NewsDetailState();
 }
 
-class NewsDetailState extends State<LiferecyleThree>with WidgetsBindingObserver {
+class NewsDetailState extends State<LifeRecyleThree>with WidgetsBindingObserver {
   var text = 'setState';
 
   NewsDetailState() {
@@ -64,7 +64,7 @@ class NewsDetailState extends State<LiferecyleThree>with WidgetsBindingObserver 
   }
 
   @override
-  void didUpdateWidget(LiferecyleThree oldWidget) {
+  void didUpdateWidget(LifeRecyleThree oldWidget) {
     print('life----three-----组件状态改变时候调-用：didUpdateWidget');
     super.didUpdateWidget(oldWidget);
   }
