@@ -84,7 +84,9 @@ class MyApp extends StatelessWidget {
 Widget widgetForRoute(String route) {
   print('----route--$route');
   switch (route) {
-    case '/MyHomePage':
+    case '/MainTab':
+      return MainTab();
+    case '/ChannelPage':
       return ChannelPage(title: 'Flutter  Home Page1');
     case '/screen1':
       return LifeRecyleTest();

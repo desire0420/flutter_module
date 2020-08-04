@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_module/Fwidget/fl_toast.dart';
+import 'package:flutter_module/demo/demo_channel/SampleView.dart';
 import 'package:flutter_module/plugin/MethodChannelManager.dart';
+
+import 'NativeViewController.dart';
 
 class ChannelPage extends StatefulWidget {
   ChannelPage({Key key, this.title}) : super(key: key);
@@ -18,32 +20,34 @@ class ChannelPage extends StatefulWidget {
 }
 
 class MyHomePageState extends State<ChannelPage> {
+  NativeViewController controller;
   int counter = 0;
 
   var nativeParams;
 
-  //MethodChannel 使用场景：Flutter端向Native端发送通知
+  var basicMessageChannel;
+  var testMethodChannelManager;
+
+  static const _channel = BasicMessageChannel('BasicMessageChannelTest', StringCodec());
+
+//MethodChannel 使用场景：Flutter端向Native端发送通知
 //EventChannel使用场景：Native端向Flutter端发送通知
 
   StreamSubscription fromAndroiSub;
-  static const _channel = BasicMessageChannel('flutter_and_native_100', StringCodec());
 
   void initBasicMessageChannel() {
-    // Receive messages from platform
     _channel.setMessageHandler((String message) async {
-      print('---->flutter接受到Android主动发送的信息 $message');
-      return 'A';
+      setState(() {
+        basicMessageChannel = message;
+      });
+      return 'basicMessageChannel 回传给Native的信息';
     });
-  }
-
-  void exampleBasicMessageChannel() async {
-    final String reply = await _channel.send('Hello World form Dart');
-    print('---->flutter接受到Android回复的信息$reply');
   }
 
   @override
   void initState() {
     super.initState();
+    controller = NativeViewController();
     print('---创建执行的第一个方法-----init state');
     startEventChannel(); //监听原生数据的变化
     initBasicMessageChannel();
@@ -52,45 +56,45 @@ class MyHomePageState extends State<ChannelPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: new Center(
-          child: new ListView(
-        children: <Widget>[
-          new Padding(
-            padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
-            child: new RaisedButton(
-                textColor: Colors.black,
-                child: new Text('--MethodChannel- 用于传递方法调用-'),
-                onPressed: () {
-                  MethodChannelManager.getInstance().sendMessage().then((data) {
-                    FLToast.show("native回传的数据$data", context);
-                  });
-                }),
-          ),
-          new Padding(
-            padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
-            child: new RaisedButton(
-                textColor: Colors.black,
-                child: new Text('--BasicMessageChannel 主要是传递字符串json等数据和一些半结构体的数据，需要指定编码方式--'),
-                onPressed: () {
-                  exampleBasicMessageChannel();
-                }),
-          ),
-          new Padding(
-            padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
-            child: new Text('这是一个从原生获取的参数：$nativeParams'),
-          ),
-          new Padding(
-            padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
-            child: new RaisedButton(
-                textColor: Colors.black,
-                child: new Text('Flutter App'),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/main');
-                }),
-          ),
-        ],
-      )),
-    );
+        appBar: AppBar(title: Text("原生的一些交互")),
+        body: new Center(
+          child: Container(
+              padding: EdgeInsets.all(20),
+              child: new ListView(
+                children: <Widget>[
+                  new RaisedButton(
+                      textColor: Colors.black,
+                      child: new Text('--MethodChannel- 调用原生方法通道'),
+                      onPressed: () {
+                        MethodChannelManager.getInstance().sendMessage().then((data) {
+                          setState(() {
+                            testMethodChannelManager = "原生的方法调用成功并且回传给你一个$data";
+                          });
+                          //FLToast.show("native回传的数据$data", context);
+                        });
+                      }),
+                  new RaisedButton(
+                      textColor: Colors.black,
+                      child: new Text('BasicMessageChannel从flutter 端发送数据给原生'),
+                      onPressed: () async {
+                        final String reply =
+                            await _channel.send('BasicMessageChannel从flutter 端发送数据给原生');
+                        setState(() {
+                          basicMessageChannel = reply;
+                        });
+                      }),
+                  new Text('EventChannel获取原生的数据流：$nativeParams'),
+                  SizedBox(height: 20),
+                  new Text(basicMessageChannel ?? "--"),
+                  SizedBox(height: 20),
+                  new Text(testMethodChannelManager ?? "--"),
+                  new Text("flutter容器嵌套Native View1"),
+                  Container(width: 200, height: 200, child: SampleView(controller: controller)),
+                ],
+              )),
+        ),
+        floatingActionButton: FloatingActionButton(
+            child: Icon(Icons.cached), onPressed: () => controller.changeBackgroundColor()));
   }
 
   @override
@@ -108,7 +112,6 @@ class MyHomePageState extends State<ChannelPage> {
     if (fromAndroiSub == null) {
       fromAndroiSub =
           EventChannel('flutter_event_channel').receiveBroadcastStream().listen((dynamic event) {
-        // print('---------EventChannel----- ${event}');
         setState(() {
           nativeParams = event;
         });

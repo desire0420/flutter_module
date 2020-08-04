@@ -21,7 +21,7 @@ import 'package:flutter_module/demo/demo_lifecycle/life_recyle_test.dart';
 import 'package:flutter_module/demo/demo_lifecycle/load_page_time_test.dart';
 import 'package:flutter_module/demo/demo_listview_drawer/drawer_demo.dart';
 import 'package:flutter_module/demo/demo_listview_drawer/image_list.dart';
-import 'package:flutter_module/demo/demo_nativeview/SampleView.dart';
+import 'package:flutter_module/demo/demo_channel/SampleView.dart';
 import 'package:flutter_module/demo/demo_provider/provider_page.dart';
 import 'package:flutter_module/demo/demo_route/route_demo.dart';
 import 'package:flutter_module/demo/demo_route/two_route_demo.dart';
@@ -64,7 +64,6 @@ class WidgetDemoPageState extends State<WidgetDemoPage> {
           ListItem(title: '计数器', page: MyCounterPage()),
           ListItem(title: 'TabLayout', page: TabLayoutDemo()),
           ListItem(title: '动画', page: WaterView()),
-          ListItem(title: '使用原生的View', page: DefaultPage()),
           ListItem(title: '单线程', page: SingleThreadDemo()),
           ListItem(title: '状态管理', page: ProviderHomePage()),
           ListItem(title: '生命周期', page: LifeRecyleTest()),
